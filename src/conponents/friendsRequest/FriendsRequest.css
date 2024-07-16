@@ -1,0 +1,77 @@
+.users_list {
+	max-width: 400px;
+	background-color: var(--BGCOLORS);
+	padding: 0.3rem;
+	overflow-y: scroll; /* Enable vertical scrolling */
+	max-height: 344px;
+	flex: 3; /* Example height; adjust as needed */
+}
+
+.users_list::-webkit-scrollbar {
+	display: none;
+	width: 3px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #5e5c5c;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--BGCOLORS);
+}
+
+.nav_addFriend {
+	border: none;
+	color: #bab6b6;
+	font-size: 15px;
+	background: none;
+	cursor: pointer;
+}
+
+.friend_request_container {
+	background-color: #151515;
+	margin: 0.5rem 0;
+	border-radius: 0.2rem;
+}
+
+.friend_request_lists {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.3rem;
+}
+
+.friend_request_names {
+	flex: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+}
+
+.friend_request_name {
+	font-size: 15px;
+	color: #bab6b6;
+}
+
+.friend_request_image {
+	flex: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.friend_request_btn {
+	flex: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.friend_request_img {
+	width: 2.5rem;
+	height: 2.3rem;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 2px solid rgb(95, 94, 94);
+}

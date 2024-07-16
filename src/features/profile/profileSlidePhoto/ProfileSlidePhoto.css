@@ -1,0 +1,66 @@
+.ProfileSlidePhoto {
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	overflow-x: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+.PostImages {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	overflow-x: hidden;
+	width: 100%;
+	color: #fff;
+}
+
+.PostText {
+	max-width: 200px;
+	background-color: rgba(62, 61, 61, 0.482);
+	position: absolute;
+	bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	color: #fff;
+	text-align: center;
+	padding: 0.2rem 0.5rem;
+	border-radius: 0 0.3rem 0.3rem 0;
+}
+
+.ProfileSlide_text {
+	width: 100%;
+	min-height: 250px;
+	background-color: rgb(41, 41, 41);
+	display: flex;
+	align-items: start;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.PostText_only {
+	color: #fff;
+	font-size: 15px;
+	letter-spacing: 1.5px;
+}
+
+.ProfileSlidePhoto_image {
+	width: 100%;
+	height: 250px;
+	object-fit: cover;
+}
+
+.profileSlide_time {
+	position: absolute;
+	bottom: 0;
+	right: 25%;
+	color: #fff;
+	font-size: 12px;
+	letter-spacing: 1.5px;
+	background-color: rgb(41, 41, 41);
+	padding: 0.3rem 0.5rem;
+	border-radius: 0.3rem;
+}

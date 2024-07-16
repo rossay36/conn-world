@@ -1,0 +1,23 @@
+.feed {
+	flex: 5.5;
+	padding: 0.5rem;
+	height: 100vh;
+	overflow-y: scroll;
+	top: 0;
+	position: sticky;
+	padding: 0.5rem 0.7rem;
+	z-index: 0;
+}
+
+.feed::-webkit-scrollbar {
+	width: 3px;
+	display: none;
+}
+
+.feed::-webkit-scrollbar-track {
+	background-color: #5e5c5c;
+}
+
+.feed::-webkit-scrollbar-thumb {
+	background-color: var(--BGCOLORS);
+}

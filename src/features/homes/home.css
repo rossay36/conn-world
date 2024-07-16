@@ -1,0 +1,22 @@
+.home {
+	height: 100vh;
+	margin-top: -12px;
+	margin-bottom: 2rem;
+}
+
+.home_wrap {
+	display: flex;
+	align-items: center;
+}
+
+.home_left {
+	flex: 3.3;
+}
+
+.home_feed {
+	flex: 5.5;
+}
+
+.home_right {
+	flex: 3.2;
+}

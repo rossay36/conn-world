@@ -1,0 +1,69 @@
+.friendAccept::-webkit-scrollbar {
+	display: none;
+	width: 3px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #5e5c5c;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--BGCOLORS);
+}
+
+/* .nav_addFriend {
+	border: none;
+	color: #bab6b6;
+	font-size: 15px;
+	background: none;
+	cursor: pointer;
+} */
+.acceptFriends_container {
+	background-color: #151515;
+	margin: 0.5rem 0;
+	border-radius: 0.2rem;
+}
+
+.acceptFriends_lists {
+	display: grid;
+	gap: 1rem;
+	padding: 0.5rem;
+	margin-left: 1rem;
+	margin-top: 1rem;
+}
+
+.acceptFriends_top {
+	display: flex;
+	gap: 1rem;
+}
+
+.acceptFriends_names {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+}
+
+.acceptFriends_name {
+	font-size: 15px;
+	color: #bab6b6;
+}
+
+.acceptFriends_image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.acceptFriends_btn {
+	display: flex;
+	align-items: center;
+}
+
+.acceptFriends_img {
+	width: 2.5rem;
+	height: 2.3rem;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 2px solid rgb(95, 94, 94);
+}

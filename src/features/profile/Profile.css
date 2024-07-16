@@ -1,0 +1,155 @@
+.profile {
+	display: flex;
+	height: 100vh;
+	overflow-y: scroll;
+}
+
+.profile::-webkit-scrollbar {
+	width: 3px;
+	display: none;
+}
+
+.profile::-webkit-scrollbar-track {
+	background-color: #5e5c5c;
+}
+
+.profile::-webkit-scrollbar-thumb {
+	background-color: var(--BGCOLORS);
+}
+
+.profileRight {
+	flex: 9;
+	overflow-y: auto; /* Enable scrolling if necessary */
+	padding: 20px; /* Example padding */
+}
+
+.profileCover {
+	height: 320px;
+	position: relative;
+}
+
+.profileCoverImg {
+	width: 100%;
+	height: 250px;
+	object-fit: cover;
+}
+
+.profileUserImg {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	object-fit: cover;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	top: 150px;
+	border: 3px solid white;
+}
+
+.profile_detials {
+	width: 100%;
+	max-height: 400px;
+	display: flex;
+	align-items: start;
+	justify-content: space-between;
+	background-color: var(--BGCOLOR);
+	padding: 0.3rem;
+}
+
+.profileInfo {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: center;
+	padding-left: 0.5rem;
+}
+
+.profileInfoName {
+	font-size: 15px;
+	margin-bottom: 0.7rem;
+	letter-spacing: 1px;
+	color: #d2d0d0;
+}
+
+.info_name {
+	align-self: center;
+}
+
+.profileInfoDesc_key {
+	flex: 1;
+	margin-bottom: 1rem;
+	font-weight: 300;
+	color: #5e5c5c;
+	font-size: 13px;
+}
+
+.profileInfoDesc,
+.profileInfoDesc_value {
+	flex: 1;
+	margin-bottom: 1rem;
+	font-weight: 300;
+	font-size: 12px;
+	margin-left: 0.5rem;
+	letter-spacing: 1px;
+	color: #d2d0d0;
+}
+
+.profileRightBottom {
+	display: flex;
+}
+
+.ProfilePictures_bottons_control {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	bottom: 70px;
+	right: -2px;
+	z-index: 1;
+}
+
+.profile_botton {
+	position: absolute;
+	top: 0;
+	right: -2px;
+	z-index: 1;
+	padding: 0.2rem 0.5rem;
+	background-color: #000;
+	background: linear-gradient(135deg, rgb(74, 74, 74), #000);
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ProfilePictures_control_buttonA {
+	z-index: 1;
+	padding: 0.2rem 0.5rem;
+	background: linear-gradient(135deg, rgb(74, 74, 74), #000);
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ProfilePictures_control_buttonB {
+	z-index: 1;
+	padding: 0.2rem 0.5rem;
+	background: linear-gradient(135deg, rgb(74, 74, 74), #000);
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ProfilePictures_control_buttonC {
+	z-index: 1;
+	padding: 0.2rem 0.5rem;
+	background: linear-gradient(135deg, rgb(74, 74, 74), #000);
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

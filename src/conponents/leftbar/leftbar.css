@@ -1,0 +1,60 @@
+.leftbar {
+	flex: 3.3;
+	position: sticky;
+	top: 40px !important;
+	padding: 0.5rem;
+	flex-direction: column;
+	height: 100vh;
+	overflow-y: scroll;
+}
+
+.leftbar::-webkit-scrollbar {
+	width: 2px;
+	display: none;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #454444;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #454444;
+}
+
+.leftbar__icons {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1rem;
+	gap: 1rem;
+	cursor: pointer;
+}
+
+.leftbar_hr {
+	margin: 1.5rem 0;
+}
+
+.leftbar_friends {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	cursor: pointer;
+	max-width: max-content;
+	margin-bottom: 1rem;
+}
+
+.leftbar_img {
+	border-radius: 50%;
+	width: 2.5rem;
+	height: 2rem;
+}
+
+.leftbar_names {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.leftbar_name {
+	font-size: 17px;
+	color: #bab6b6;
+}

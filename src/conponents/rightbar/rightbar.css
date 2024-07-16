@@ -1,0 +1,119 @@
+.rightbar {
+	flex: 3.2;
+	padding: 0.5rem;
+	height: 100vh;
+	overflow-y: scroll;
+	top: 30px;
+}
+
+.rightbarButton {
+	margin-bottom: 1rem;
+}
+
+.rightbar::-webkit-scrollbar {
+	display: none;
+	width: 3px;
+}
+
+.rightbar::-webkit-scrollbar-track {
+	background-color: #5e5c5c;
+}
+
+.rightbar::-webkit-scrollbar-thumb {
+	background-color: var(--BGCOLORS);
+}
+
+.rightbarWrapper {
+	padding: 20px 10px 0 10px;
+}
+
+.birthdayContainer {
+	display: flex;
+	align-items: center;
+}
+
+.birthdayImg {
+	width: 40px;
+	height: 40px;
+	margin-right: 10px;
+	color: var(--INPUT-INVALID);
+}
+
+.birthdayText {
+	font-weight: 300;
+	font-size: 15px;
+}
+
+.rightbarAd {
+	width: 100%;
+	border-radius: 10px;
+	margin: 30px 0;
+}
+
+.rightbarTitle {
+	margin-bottom: 20px;
+}
+
+.rightbarFriendList {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.rightbarTitle {
+	font-size: 15px;
+	font-weight: 500;
+	margin-bottom: 10px;
+	letter-spacing: 1px;
+	color: #d2d0d0;
+}
+
+.rightbarInfo {
+	margin-bottom: 30px;
+}
+
+.rightbarInfoItem {
+	margin-bottom: 10px;
+}
+
+.rightbarInfoKey {
+	font-weight: 500;
+	margin-right: 15px;
+	color: #555;
+	font-size: 13px;
+}
+
+.rightbarInfoValue {
+	font-weight: 300;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: #d2d0d0;
+}
+
+.rightbarFollowings {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.rightbarFollowing {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+.rightbarFollowingImg {
+	width: 93px;
+	height: 93px;
+	object-fit: cover;
+	border-radius: 5px;
+}
+
+.flex {
+	display: flex;
+}
+
+.hidden {
+	display: none;
+}

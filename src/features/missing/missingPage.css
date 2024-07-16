@@ -1,0 +1,23 @@
+.missing{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 2rem;
+}
+
+.missing_text{
+    color: var(--STATUS-OPEN);
+}
+
+.missing_back{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.missing_icon{
+    font-size: 2rem;
+    color: var(--COLOR);
+}

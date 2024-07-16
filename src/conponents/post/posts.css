@@ -1,0 +1,244 @@
+.post {
+	max-width: 100%;
+	max-height: 100%;
+	border-radius: 10px;
+	background-color: var(--BGCOLORS);
+	box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.829);
+	margin: 0.5rem 0;
+	padding: 1rem 1rem 1.5rem 1rem;
+	z-index: 2;
+	z-index: 0;
+}
+
+.postWrapper {
+	position: relative;
+	padding: 5px;
+}
+
+.postTop {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.postTopLeft {
+	display: flex;
+	align-items: center;
+}
+
+.postProfileImg {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 2px solid rgb(90, 89, 89);
+	padding: 0.1rem;
+}
+
+.postUsername {
+	font-size: 15px;
+	font-weight: 500;
+	margin: 0 10px;
+}
+
+.postDate {
+	font-size: 10px;
+	font-weight: 200;
+	color: rgb(170, 168, 168);
+}
+
+.postCenter {
+	margin: 10px 0;
+}
+
+.postText {
+	margin: 0.5rem 0 0.5rem 0;
+	font-size: 13px;
+	font-weight: 200;
+	color: rgb(170, 168, 168);
+}
+
+/* .postImg {
+	margin-top: 10px;
+	width: 100%;
+	height: 70vh;
+	max-height: 500px;
+	object-fit: contain;
+	cursor: pointer;
+} */
+.postMediaContainer {
+	display: grid;
+	grid-template-columns: repeat(
+		auto-fit,
+		minmax(170px, 1fr)
+	); /* Two items per row, each item minimum width of 300px, expand to fill available space */
+	gap: 10px; /* Adjust spacing between items */
+}
+
+.postMedia {
+	position: relative; /* Ensure images and videos align properly */
+	overflow: hidden; /* Prevent content overflow */
+	max-height: 100%; /* Set a fixed height for uniformity, adjust as needed */
+}
+
+.postVideo,
+.postImg {
+	min-width: 470px; /* Ensure media items do not exceed container width */
+	max-height: 320px; /* Maintain aspect ratio */
+	display: block; /* Ensure proper display */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.3rem;
+}
+
+.post_img_multiple {
+	width: 240px;
+	height: 150px;
+	border-radius: 0.3rem;
+}
+
+.post_img_double {
+	width: 240px;
+	height: 250px;
+	border-radius: 0.3rem;
+}
+
+.postBottom {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.PostComment_container {
+	position: absolute;
+	max-width: 400px;
+	z-index: 1;
+	max-height: 300px;
+	bottom: -280px;
+	right: 5px;
+}
+
+.commment__toggle {
+	max-width: max-content;
+	display: flex;
+	position: absolute;
+	align-items: center;
+	right: 0;
+}
+
+.postBottomLeft {
+	position: relative;
+	display: flex;
+	align-items: center;
+	background-color: var(--BGCOLORS);
+}
+
+.likersDropdown {
+	min-width: max-content;
+	position: absolute;
+	bottom: 25px;
+	background-color: var(--BGCOLORS);
+}
+
+.likersDropdown_item {
+	background-color: var(--BLACKCOL);
+	overflow-y: scroll;
+	max-height: 29vh;
+	padding: 0.5rem 1rem 1rem 1rem;
+	border-radius: 0.3rem;
+}
+
+.likersDropdown_title {
+	margin: 0.5rem 0 0.5rem 0;
+	font-size: 13px;
+	font-weight: 200;
+	color: rgb(170, 168, 168);
+}
+
+.likeDropdown_name {
+	font-size: 13px;
+	font-weight: 300;
+	color: rgb(170, 168, 168);
+}
+
+.likeDropdown_list {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.likeDropdown_img {
+	width: 1.5rem;
+	height: 1.5rem;
+	object-fit: cover;
+	border-radius: 50%;
+	cursor: pointer; /* Ensure cursor changes on hover */
+}
+
+.postLikeCounter {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.postLikeCounter_icons {
+	font-size: 24px;
+}
+
+.likeIcon {
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.postLikeCounter {
+	font-size: 15px;
+}
+
+.postCommentText {
+	cursor: pointer;
+	border-bottom: 1px dashed gray;
+	margin: 0.5rem 0 0.5rem 0;
+	font-size: 13px;
+	font-weight: 200;
+	color: rgb(170, 168, 168);
+}
+
+/* New CSS for Photo Viewer Modal */
+.photoViewerModal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10000 !important; /* Ensure it's above other content */
+	flex: 12;
+}
+
+.expandedPhoto {
+	max-width: 100%;
+	max-height: 80%;
+	object-fit: contain;
+}
+
+.closeButton {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	padding: 10px;
+	background-color: white;
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 5px;
+	z-index: 10000;
+}

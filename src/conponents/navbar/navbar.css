@@ -1,0 +1,113 @@
+.nav {
+	display: flex;
+	align-items: center;
+	height: 40px;
+	padding: 1.5rem 1rem; /* border: 1px solid gray; */
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: var(--BGCOLORS);
+	z-index: 1;
+	position: relative;
+}
+
+.friendAccept {
+	min-width: 240px;
+	background-color: var(--BGCOLORS);
+	padding: 0.3rem;
+	overflow-y: scroll; /* Enable vertical scrolling */
+	position: absolute;
+	top: 50px;
+	right: -155px;
+	z-index: 999;
+	max-height: 300px;
+}
+
+.nav_logo {
+	flex: 3;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.nav_input {
+	flex: 5;
+	display: flex;
+	align-items: center;
+	margin: 0 1rem;
+	position: relative;
+}
+
+.nav_input_icon {
+	position: absolute;
+	left: 5px;
+	color: var(--BLACKCOL);
+}
+
+.nav_input_search {
+	width: 100%;
+	border-radius: 0.5rem;
+	padding-left: 1.5rem;
+	border: none;
+	outline: none;
+	background-color: rgb(157, 157, 157);
+}
+
+.nav_list {
+	flex: 4;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.nav_list_text {
+	display: flex;
+	align-items: center;
+	margin: 1rem;
+	gap: 1rem;
+}
+
+.nav_icons {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.nav_list_icon {
+	position: relative;
+	cursor: pointer;
+}
+
+.nav_icon {
+	color: var(--TABLE-BGCOLOR);
+	font-size: 2rem;
+}
+
+.nav_span {
+	width: 17px;
+	height: 17px;
+	font-size: 10px;
+	padding: 5px;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--INPUT-INVALID);
+	border-radius: 50%;
+	top: 0;
+	right: -3px;
+}
+
+.nav_profile_picture {
+	display: flex;
+	align-items: center;
+	margin-left: 2rem;
+}
+
+.nav_img {
+	width: 2.2rem;
+	height: 2rem;
+	border-radius: 50%;
+	object-fit: cover;
+}
