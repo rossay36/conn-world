@@ -3,7 +3,7 @@ import ProfileRightbar from "./ProfileRightbar";
 import HomeRightbar from "./HomeRightbar";
 import { useGetUsersQuery } from "../../features/profile/usersApiSlice";
 
-const Rigthbar = ({ friendId, userId, scrollToPictures }) => {
+const Rigthbar = ({ friendId, userId, scrollToPictures, openPhotoViewer }) => {
 	const {
 		data: users,
 		isSuccess,
@@ -32,6 +32,7 @@ const Rigthbar = ({ friendId, userId, scrollToPictures }) => {
 						userId={userId}
 						friendId={friendId}
 						scrollToPictures={scrollToPictures}
+						openPhotoViewer={openPhotoViewer}
 					/>
 				) : (
 					<HomeRightbar userId={userId} />

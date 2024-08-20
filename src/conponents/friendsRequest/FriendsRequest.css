@@ -1,10 +1,15 @@
+/* .userFriend_requests_column {
+	margin-top: -40px;
+	width: 100%;
+	height: 65vh;
+	overflow-y: scroll;
+	background-color: rgb(229, 213, 213);
+} */
+
 .users_list {
-	max-width: 400px;
-	background-color: var(--BGCOLORS);
+	height: 65vh;
+	max-width: 100%;
 	padding: 0.3rem;
-	overflow-y: scroll; /* Enable vertical scrolling */
-	max-height: 344px;
-	flex: 3; /* Example height; adjust as needed */
 }
 
 .users_list::-webkit-scrollbar {
@@ -20,6 +25,30 @@
 	background-color: var(--BGCOLORS);
 }
 
+.users_list_addFriends {
+	background-color: rgb(229, 213, 213);
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 0.5rem;
+}
+
+.users_list_addFriends_text {
+	background-color: rgb(229, 213, 213);
+	color: #000;
+}
+
+.users_list_addFriends_input {
+	border: none;
+	padding: 0.3rem;
+}
+
+.users_list_toggle {
+	width: 100%;
+	height: 65vh;
+	background-color: rgb(229, 213, 213);
+}
+
 .nav_addFriend {
 	border: none;
 	color: #bab6b6;
@@ -28,44 +57,61 @@
 	cursor: pointer;
 }
 
+.friend_request_username {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	padding: 0.1rem 0.5rem;
+}
+.friend_request_username_name {
+	font-size: 15px;
+	color: #5e5c5c;
+}
+
 .friend_request_container {
-	background-color: #151515;
+	background-color: #d1caca;
+	margin: 0.5rem 0;
+	border-radius: 0.2rem;
+}
+.friend_request_container_toggle {
+	background-color: #d1caca;
 	margin: 0.5rem 0;
 	border-radius: 0.2rem;
 }
 
 .friend_request_lists {
+	padding: 0.5rem 0 1rem 0;
 	display: flex;
-	align-items: center;
+	gap: 0.5rem;
+}
+
+.friend_request_image {
+	flex: 80%;
+	display: flex;
 	gap: 1rem;
-	padding: 0.3rem;
+	align-items: center;
+	padding: 0.2rem;
 }
 
 .friend_request_names {
-	flex: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: center;
 	gap: 0.5rem;
 }
 
 .friend_request_name {
 	font-size: 15px;
-	color: #bab6b6;
-}
-
-.friend_request_image {
-	flex: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	font-weight: 900;
+	color: #000;
 }
 
 .friend_request_btn {
-	flex: 100%;
+	flex: 20%;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: end;
+	padding: 0.2rem;
 }
 
 .friend_request_img {
@@ -74,4 +120,113 @@
 	object-fit: cover;
 	border-radius: 50%;
 	border: 2px solid rgb(95, 94, 94);
+}
+
+.friend_request_lists_bottom {
+	padding-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
+
+	margin-left: 0.6rem;
+}
+
+.friend_request_bottom_hr {
+	width: 99%;
+	height: 1px;
+	border: none;
+	margin: 0.3rem 0;
+	background-color: rgb(229, 213, 213);
+}
+
+.friend_request_bottom_list {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.friend_request_bottom_text {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: #181818;
+}
+
+.friend_request_bottom_keys {
+	color: #000;
+	font-size: 13px;
+	font-weight: 800;
+}
+.friend_request_bottom_value {
+	color: #000;
+	font-size: 11px;
+}
+
+@media screen and (max-width: 900px) {
+	.userFriend_requests_column {
+		margin-top: 30px;
+		width: 100%;
+		height: 85vh;
+		overflow-y: scroll;
+		background-color: rgb(229, 213, 213);
+	}
+	.users_list_addFriends {
+		margin-top: 2.5rem;
+	}
+
+	.friend_request_lists {
+		padding: 0.5rem 0 1rem 0;
+	}
+}
+@media screen and (max-width: 768px) {
+	.userFriend_requests_column {
+		margin-top: 30px;
+		width: 100%;
+		height: 90vh;
+		overflow-y: scroll;
+		background-color: rgb(229, 213, 213);
+	}
+
+	.users_list_addFriends {
+		margin-top: 2.5rem;
+	}
+
+	.friend_request_lists {
+		padding: 0.5rem 0 1rem 0;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.userFriend_requests_column {
+		margin-top: 50px;
+		width: 100%;
+		height: 90vh;
+		overflow-y: scroll;
+		background-color: rgb(229, 213, 213);
+	}
+	.users_list_addFriends {
+		margin-top: 2.5rem;
+	}
+
+	.friend_request_lists {
+		padding: 0.5rem 0 1rem 0;
+	}
+}
+@media screen and (max-width: 320px) {
+	.userFriend_requests_column {
+		margin-top: 30px;
+		width: 100%;
+		height: 90vh;
+		overflow-y: scroll;
+		background-color: rgb(229, 213, 213);
+	}
+
+	.users_list_addFriends {
+		margin-top: 2.5rem;
+	}
+
+	.friend_request_lists {
+		padding: 0.5rem 0 1rem 0;
+	}
 }

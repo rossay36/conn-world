@@ -1,13 +1,14 @@
 .rightbarFriend {
 	display: flex;
 	align-items: center;
-	margin-bottom: 15px;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
 }
 
 .rightbarProfileImgContainer {
-	z-index: -1;
 	margin-right: 10px;
 	position: relative;
+	z-index: -1;
 }
 
 .rightbarProfileImg {
@@ -26,6 +27,7 @@
 	top: -2px;
 	right: 0;
 	border: 2px solid white;
+	z-index: 1;
 }
 
 .rightbarUsername {

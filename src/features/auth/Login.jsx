@@ -5,6 +5,10 @@ import { setCredentials } from "./authSlice";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useLoginMutation } from "./authApiSlice";
 import usePersist from "../../hooks/usePersist";
+import "./Login.css";
+import { TbWorldHeart } from "react-icons/tb";
+
+const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const Login = () => {
 	const userRef = useRef();
@@ -57,56 +61,74 @@ const Login = () => {
 	if (isLoading) return <ClipLoader color={"#FFF"} />;
 
 	return (
-		<section className="public">
-			<header>
-				<h1>User Login</h1>
+		// login_section
+		<section className="login_section">
+			<header className="login_world_top">
+				<h1 className="login_title">Conn-World Login</h1>
+				<h1 className="login_title">Connect Your Wolrd</h1>
 			</header>
 			<main className="login">
-				<p ref={errRef} className={errClass} aria-live="assertive">
-					{errMsg}
-				</p>
-				<form className="form" onSubmit={handleSubmit}>
-					<label htmlFor="username">Username:</label>
-					<input
-						className="form__input"
-						type="text"
-						id="username"
-						ref={userRef}
-						value={username}
-						onChange={handleUserInput}
-						autoComplete="off"
-						required
-					/>
-
-					<label htmlFor="password">Password:</label>
-					<input
-						className="form__input"
-						type="password"
-						id="password"
-						onChange={handlePwdInput}
-						value={password}
-						required
-					/>
-					<button className="form__submit-button">Sign In</button>
-					<label htmlFor="persist" className="form__persist">
+				<div className="login_left_form_container">
+					<p ref={errRef} className={errClass} aria-live="assertive">
+						{errMsg}
+					</p>
+					<form className="login_form" onSubmit={handleSubmit}>
 						<input
-							type="checkbox"
-							className="form__checkbox"
-							id="persist"
-							onChange={handleToggle}
-							checked={persist}
+							className="login_form__input"
+							placeholder="Username"
+							type="text"
+							id="username"
+							ref={userRef}
+							value={username}
+							onChange={handleUserInput}
+							autoComplete="off"
+							required
 						/>
-						Trust This Device
-					</label>
-				</form>
-				<div className="register_btn">
-					<Link className="register_link " to="/register">
-						Don't an have account / Sign up
-					</Link>
+						<input
+							className="login_form__input"
+							placeholder="Password"
+							type="password"
+							id="password"
+							onChange={handlePwdInput}
+							value={password}
+							required
+						/>
+						<button className="login_btn">Sign In</button>
+						<label htmlFor="persist" className="login_form__persist">
+							<input
+								type="checkbox"
+								className="login_form__checkbox"
+								id="persist"
+								onChange={handleToggle}
+								checked={persist}
+							/>
+							Trust This Device
+						</label>
+					</form>
+					<div className="login_register_btn">
+						<Link className="login_register_link " to="/register">
+							Don't have an account / Sign up
+						</Link>
+					</div>
+				</div>
+				<div className="login_image_container">
+					<article className="login_image_text_colunm">
+						<h3 className="login_image_text">
+							Connect And Chat, Share Photos, Videos Feeling And More, With Your
+							Friends And Families Around The World On <span>Conn-World</span>
+						</h3>
+					</article>
+					<img
+						src={IMG_URL + "world.png"}
+						alt="Login Image"
+						className="login_image"
+					/>
 				</div>
 			</main>
-			<footer>
-				<Link to="/">Back to Home</Link>
+			<footer className="login_footer">
+				<Link className="login_footer_Link" to="/">
+					Back to Home
+				</Link>
 			</footer>
 		</section>
 	);

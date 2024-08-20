@@ -1,15 +1,17 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./navbar/Navbar";
 import Footer from "./footer/Footer";
 
 const HomeLayout = () => {
+	const location = useLocation();
+	const isMessengerPage = location.pathname.includes("messanger");
 	return (
 		<>
-			<Navbar />
+			{!isMessengerPage && <Navbar />}
 			<div className="dash-container">
 				<Outlet />
 			</div>
-			<Footer />
+			{!isMessengerPage && <Footer />}
 		</>
 	);
 };

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdMoreVert } from "react-icons/md";
 import { format } from "timeago.js";
+import MediaImageAndVideoController from "./mediaImageAndVideoController/MediaImageAndVideoController";
 
 const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
@@ -15,7 +16,7 @@ const PostDetails = ({ scrollToPictures, post, openPhotoViewer }) => {
 							className="postProfileImg"
 							src={
 								post?.profilePicture
-									? IMG_URL + post?.profilePicture
+									? post?.profilePicture
 									: IMG_URL + "/avatar2.png"
 							}
 							alt=""
@@ -29,32 +30,16 @@ const PostDetails = ({ scrollToPictures, post, openPhotoViewer }) => {
 				</div>
 			</div>
 			<div className="postCenter">
-				<p className="postText">{post?.text}</p>
+				<header className="postText_container">
+					<Link to={`/home/post/${post?._id}`}>
+						<p className="postText">{post?.text}</p>
+					</Link>
+				</header>
 				<div className="postMediaContainer">
-					{post?.image?.map((mediaUrl) => (
-						<div key={mediaUrl} className="postMedia">
-							{/* Check if the media is an image or video */}
-							{mediaUrl?.endsWith(".mp4") ? (
-								<video controls className="postVideo">
-									<source src={mediaUrl} type="video/mp4" />
-									Your browser does not support the video tag.
-								</video>
-							) : (
-								<img
-									className={
-										post?.image?.length === 2
-											? "post_img_double"
-											: post?.image?.length > 2
-											? "post_img_multiple"
-											: "postImg"
-									}
-									src={mediaUrl} // Assuming mediaUrl is the complete Firebase Storage URL
-									alt="post media"
-									onClick={() => openPhotoViewer(mediaUrl)}
-								/>
-							)}
-						</div>
-					))}
+					<MediaImageAndVideoController
+						mediaUrls={post?.image}
+						onClick={openPhotoViewer}
+					/>
 				</div>
 			</div>
 		</>

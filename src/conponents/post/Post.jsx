@@ -3,18 +3,14 @@ import { memo, useEffect, useRef, useState } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import useAuth from "../../hooks/useAuth";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import debounce from "lodash/debounce"; // Import debounce from lodash
 
-import {
-	useGetPostsQuery,
-	useLikePostMutation,
-	useUnlikePostMutation,
-} from "../../features/homes/postsApiSlice";
+import { useGetPostsQuery } from "../../features/homes/postsApiSlice";
 import PostComment from "./PostComment";
 import PostDetails from "../PostDetails";
 import PostLikes from "../comment/PostLikes";
 
 import CommentForm from "../commentForm/CommentForm";
+import { MdOutlineComment } from "react-icons/md";
 
 const Post = ({ postId, scrollToPictures }) => {
 	const [comments, setComments] = useState([]);
@@ -29,24 +25,11 @@ const Post = ({ postId, scrollToPictures }) => {
 		}),
 	});
 
-	const [like, setLike] = useState(post?.likes?.length || 0);
-	const [isLiked, setIsLiked] = useState(false);
-	const [likersVisible, setLikersVisible] = useState(false); // State to toggle dropdown visibility
-	const [likers, setLikers] = useState([]); // State to store users who liked the post
-
 	const [photoViewerOpen, setPhotoViewerOpen] = useState(false);
 	const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-	const [likePostMutation] = useLikePostMutation();
-	const [unlikePostMutation] = useUnlikePostMutation();
-
-	useEffect(() => {
-		setIsLiked(post?.likes?.includes(userId));
-	}, [post?.likes, userId]);
-
 	useEffect(() => {
 		if (post) {
-			setLikers(post.likes);
 			setComments(post?.comments);
 		}
 	}, [post]);
@@ -78,27 +61,6 @@ const Post = ({ postId, scrollToPictures }) => {
 	const toggleDropdown = (event) => {
 		event.stopPropagation(); // Prevents event from propagating to other click listeners
 		setIsOpen((prevIsOpen) => !prevIsOpen);
-	};
-
-	const likeHandler = async () => {
-		try {
-			if (isLiked) {
-				await unlikePostMutation(postId);
-				setLike((prev) => prev - 1);
-				setLikers((prev) => prev.filter((id) => id !== userId));
-			} else {
-				await likePostMutation(postId);
-				setLike((prev) => prev + 1);
-				setLikers((prev) => [...prev, userId]);
-			}
-			setIsLiked((prev) => !prev);
-		} catch (error) {
-			console.error("Error handling like:", error);
-		}
-	};
-
-	const toggleLikersVisible = () => {
-		setLikersVisible((prev) => !prev);
 	};
 
 	const openPhotoViewer = (imageUrl) => {
@@ -139,12 +101,8 @@ const Post = ({ postId, scrollToPictures }) => {
 				/>
 				<div className="postBottom">
 					<PostLikes
-						like={like}
-						likeHandler={likeHandler}
-						isLiked={isLiked}
-						likers={likers}
-						toggleLikersVisible={toggleLikersVisible}
-						likersVisible={likersVisible}
+						post={post}
+						postId={postId}
 						scrollToPictures={scrollToPictures}
 					/>
 					<>
@@ -167,7 +125,7 @@ const Post = ({ postId, scrollToPictures }) => {
 						<div className="commment__toggle" onClick={toggleDropdown}>
 							<span className="commment_text_comment">
 								<p>{post?.comments?.length}</p>
-								<p>{post?.comments?.length === 1 ? "comment " : "comments "}</p>
+								<MdOutlineComment className="commment_icons" />
 								{isOpen ? (
 									<IoIosArrowUp className="comment_icons" />
 								) : (

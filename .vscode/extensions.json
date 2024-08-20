@@ -1,3 +1,8 @@
 {
-	"recommendations": ["cardinal90.multi-cursor-case-preserve"]
+	"recommendations": [
+		"cardinal90.multi-cursor-case-preserve",
+		"cirlorm.mobileview",
+		"diemasmichiels.emulate",
+		"doctorview.doctorview"
+	]
 }

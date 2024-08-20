@@ -1,0 +1,495 @@
+.personsDetails {
+	background-color: var(--BGCOLOR);
+	height: 79vh;
+	display: flex;
+	padding-left: 0.5rem;
+	margin-left: 1rem;
+	margin-top: -20px;
+}
+
+.personsDetails_leftbar {
+	flex: 3.5;
+}
+
+.personsDetails_container {
+	flex: 7;
+	width: 100%;
+	margin-left: 1rem;
+	max-height: 90vh;
+	overflow-y: auto;
+}
+
+.personsDetails_container::-webkit-scrollbar {
+	width: 3px;
+	display: none;
+}
+
+.personsDetails_container::-webkit-scrollbar-track {
+	background-color: #5e5c5c;
+}
+
+.personsDetails_container::-webkit-scrollbar-thumb {
+	background-color: var(--BGCOLORS);
+}
+
+.EditEducation_details,
+.EditPersonalDetail_form {
+	margin-left: 0.5rem;
+	display: grid;
+}
+
+.EditAddress_address_selections {
+	width: 350px;
+	margin-bottom: 0.5rem;
+	background-color: #141414cf;
+	color: #8e8d8d;
+	border: none;
+	font-size: 14px;
+	padding: 0.3rem;
+	border-radius: 0.2rem;
+}
+
+.EditEducation_input,
+.EditEducation_select,
+.EditPersonalDetails_input,
+.EditPersonalDetails_select {
+	width: 500px;
+	margin-bottom: 0.5rem;
+	background-color: #141414cf;
+	color: #8e8d8d;
+	border: none;
+	font-size: 14px;
+	padding: 0.3rem;
+	border-radius: 0.2rem;
+}
+
+.EditPersonalDetails_inputs {
+	max-width: 500px;
+	max-height: 150px;
+	margin-bottom: 0.5rem;
+	background-color: #141414cf;
+	color: #8e8d8d;
+	border: none;
+	font-size: 14px;
+	padding: 0.3rem;
+	border-radius: 0.2rem;
+}
+
+.EditAddress_address_title,
+.EditEducation_title {
+	margin-bottom: 0.5rem;
+}
+
+.hr {
+	background-color: rgb(73, 73, 73) !important;
+	border: none;
+	max-width: 97%;
+	height: 1px;
+	margin-bottom: 0.5rem;
+	margin-top: 0.5rem;
+	margin-left: 0.5rem;
+}
+
+.EditAddress_options {
+	background-color: #383737;
+	color: #c9c8c8;
+	border: none;
+}
+
+.EditAddress_address_wrap {
+	display: flex;
+	align-items: start;
+	gap: 2rem;
+	padding-top: 1rem;
+}
+
+.EditAddress_address {
+	flex: 6;
+	margin-left: 0.5rem;
+	display: grid;
+}
+
+.EditAddress_selected_detail {
+	flex: 6;
+	display: grid;
+	gap: 0.6rem;
+}
+
+.EditAddress_selection_details {
+	margin-top: 0.5rem;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.EditAddress_selected_details_key {
+	color: #848383;
+	font-size: 14px;
+}
+
+.EditAddress_selected_details_value {
+	color: #c9c8c8;
+	font-size: 12px;
+}
+
+.EditEducation_button,
+.EditAddress_button {
+	margin: 0.5rem 0;
+	max-width: 200px;
+	padding: 0.2rem 0.5rem;
+	background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
+	color: #fff;
+	border: 1px solid gray;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(249, 248, 248, 0.228);
+	cursor: pointer;
+}
+
+.user_button_delete_container {
+	margin: 1.5rem 0.5rem 4rem 0.5rem;
+	width: 100%;
+	position: relative;
+}
+
+.user_button_delete_wrap {
+	width: 100%;
+	max-height: max-content;
+	position: absolute;
+	bottom: 40px;
+	padding: 0.8rem;
+	background-color: #4a0202d9;
+	color: #fff;
+	z-index: 1;
+}
+
+.user_delete_header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin: 0 0 0.5rem 0;
+}
+
+.user_delete_text_icon {
+	color: red;
+	background-color: #62626256;
+	width: 30px;
+	height: 30px;
+	padding: 0.3rem;
+	border-radius: 0.3rem;
+}
+
+.user_delete_text_icon_cancel {
+	width: 30px;
+	height: 30px;
+	padding: 0.2rem;
+	background: linear-gradient(135deg, rgb(55, 55, 55), #121212);
+	color: #fff;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(249, 248, 248, 0.395);
+	cursor: pointer;
+	margin-right: 1.5rem;
+}
+
+.user_deleting_note {
+	max-width: 95%;
+	background-color: #62626256;
+}
+
+.user_deleting_note_text {
+	letter-spacing: 2px;
+	line-height: 1.3;
+	margin: 0.5rem 0 0.5rem 0;
+	font-size: 13px;
+}
+
+.user_button_delete_text {
+	font-size: 10px;
+}
+
+.user_button_delete_toggle {
+	width: 210px;
+	padding: 0.2rem 0.5rem;
+	background: linear-gradient(135deg, rgb(28, 15, 15), #470101);
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(249, 248, 248, 0.228);
+	cursor: pointer;
+}
+
+.user_button_delete_agree {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.user_button_delete_accept {
+	font-size: 12px;
+}
+
+.user_button_delete_input {
+	width: 25px;
+	height: 25px;
+}
+
+.user_button_delete_contain {
+	padding: 0.5rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.user_button_delete_btn {
+	width: 200px;
+	padding: 0.2rem 0.5rem;
+	background: linear-gradient(135deg, rgb(30, 12, 12), #360101);
+	color: #fff;
+	border: 2px solid grey;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(249, 248, 248, 0.228);
+	cursor: pointer;
+	margin-right: 0.9rem;
+}
+
+.user_button_delete_btn:disabled {
+	cursor: not-allowed;
+	opacity: 0.6;
+	color: #373737;
+}
+
+@media screen and (max-width: 900px) {
+	.personsDetails_leftbar {
+		display: none;
+	}
+
+	.personsDetails {
+		background-color: var(--BGCOLOR);
+		display: flex;
+		padding-left: 0.5rem;
+		margin-left: 1rem;
+		margin-top: 0;
+	}
+
+	.EditAddress_address_selections {
+		width: 95%;
+	}
+
+	.EditEducation_input,
+	.EditEducation_select,
+	.EditPersonalDetails_input,
+	.EditPersonalDetails_select {
+		width: 95%;
+	}
+
+	.EditPersonalDetails_inputs {
+		max-width: 95%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.personsDetails_leftbar {
+		display: none;
+	}
+
+	.personsDetails_title {
+		text-align: center;
+		font-size: 17px;
+	}
+
+	.EditAddress_address_title,
+	.EditEducation_title {
+		margin-bottom: 0.5rem;
+		margin-left: 0.5rem;
+	}
+
+	.personsDetails {
+		background-color: var(--BGCOLOR);
+		display: flex;
+		padding-left: 0;
+		margin-left: 0;
+		margin-top: 0;
+	}
+
+	.EditAddress_selected_detail {
+		display: none;
+	}
+
+	.EditAddress_address_selections {
+		width: 95%;
+	}
+
+	.EditEducation_input,
+	.EditEducation_select,
+	.EditPersonalDetails_input,
+	.EditPersonalDetails_select {
+		width: 95%;
+	}
+
+	.EditPersonalDetails_inputs {
+		width: 95%;
+	}
+
+	.user_button_delete_container {
+		margin: 1.5rem 0 4rem 0;
+		width: 100%;
+		position: relative;
+	}
+
+	.user_button_delete_wrap {
+		width: 100%;
+		max-height: max-content;
+		position: absolute;
+		bottom: 40px;
+		padding: 0.8rem 0;
+	}
+
+	.user_button_delete_contain {
+		padding-left: 0.2rem;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.user_button_delete_btn {
+		width: 100px;
+		padding: 0.2rem 0.5rem;
+		margin-right: 0;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.personsDetails_leftbar {
+		display: none;
+	}
+
+	.personsDetails_title {
+		text-align: center;
+		font-size: 17px;
+	}
+
+	.EditAddress_address_title,
+	.EditEducation_title {
+		margin-bottom: 0.5rem;
+		margin-left: 0.5rem;
+	}
+
+	.personsDetails {
+		background-color: var(--BGCOLOR);
+		display: flex;
+		padding-left: 0;
+		margin-left: 0;
+		margin-top: 0;
+	}
+
+	.EditAddress_selected_detail {
+		display: none;
+	}
+
+	.EditAddress_address_selections {
+		width: 95%;
+	}
+
+	.EditEducation_input,
+	.EditEducation_select,
+	.EditPersonalDetails_input,
+	.EditPersonalDetails_select {
+		width: 95%;
+	}
+
+	.EditPersonalDetails_inputs {
+		width: 95%;
+		height: 85px;
+	}
+
+	.user_button_delete_container {
+		margin: 1.5rem 0 4rem 0;
+		width: 100%;
+		position: relative;
+	}
+
+	.user_button_delete_wrap {
+		width: 100%;
+		max-height: max-content;
+		position: absolute;
+		bottom: 40px;
+		padding: 0.8rem 0;
+	}
+
+	.user_button_delete_contain {
+		padding-left: 0.2rem;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.user_button_delete_btn {
+		width: 100px;
+		padding: 0.2rem 0.5rem;
+		margin-right: 0;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.personsDetails_leftbar {
+		display: none;
+	}
+
+	.personsDetails_title {
+		text-align: center;
+		font-size: 17px;
+	}
+
+	.EditAddress_address_title,
+	.EditEducation_title {
+		margin-bottom: 0.5rem;
+		margin-left: 0.5rem;
+	}
+
+	.personsDetails {
+		background-color: var(--BGCOLOR);
+		display: flex;
+		padding-left: 0;
+		margin-left: -0.5rem;
+		margin-top: 0;
+	}
+
+	.EditAddress_selected_detail {
+		display: none;
+	}
+
+	.EditAddress_address_selections {
+		width: 95%;
+	}
+
+	.EditEducation_input,
+	.EditEducation_select,
+	.EditPersonalDetails_input,
+	.EditPersonalDetails_select {
+		width: 95%;
+	}
+
+	.EditPersonalDetails_inputs {
+		width: 95%;
+	}
+
+	.user_button_delete_container {
+		margin: 1.5rem 0 4rem 0;
+		width: 100%;
+	}
+
+	.user_button_delete_wrap {
+		width: 100%;
+		max-height: max-content;
+		position: absolute;
+		bottom: 40px;
+		padding: 0.8rem 0;
+	}
+
+	.user_button_delete_contain {
+		padding-left: 0.2rem;
+	}
+
+	.user_button_delete_btn {
+		width: 90px;
+		padding: 0.2rem 0.5rem;
+		margin-right: 0;
+	}
+}

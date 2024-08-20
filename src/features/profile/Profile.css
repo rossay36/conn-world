@@ -1,7 +1,10 @@
 .profile {
+	margin-top: -10px;
+	width: 100%;
 	display: flex;
-	height: 100vh;
+	height: 77vh;
 	overflow-y: scroll;
+	background-color: var(--BGCOLOR);
 }
 
 .profile::-webkit-scrollbar {
@@ -17,6 +20,14 @@
 	background-color: var(--BGCOLORS);
 }
 
+.profile_rightbar_wrap {
+	flex: 3;
+}
+
+.profile_leftabar_wrap {
+	flex: 3.5;
+}
+
 .profileRight {
 	flex: 9;
 	overflow-y: auto; /* Enable scrolling if necessary */
@@ -30,11 +41,123 @@
 
 .profileCoverImg {
 	width: 100%;
-	height: 250px;
+	height: 310px;
 	object-fit: cover;
+	object-position: center top;
+	cursor: pointer;
 }
 
-.profileUserImg {
+.cover_filePreview_img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 310px;
+	object-fit: cover;
+	object-position: center top;
+	cursor: pointer;
+}
+
+.profileUserImg_friend {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	object-fit: cover;
+	position: absolute;
+	right: 0;
+	left: 0;
+	margin: auto;
+	top: 250px;
+	border: 3px solid white;
+}
+
+.profileInfoName_friend {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 15px;
+	margin-top: 0.5rem;
+	letter-spacing: 1px;
+	padding: 0.2rem 0.5rem;
+}
+
+.cover_inputs {
+	max-width: 180px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0.5rem;
+	margin-left: -4px;
+	margin-top: 1rem;
+	background-color: rgb(31, 31, 31);
+}
+
+.profile_inputs {
+	right: 0;
+	bottom: 0;
+	max-width: 180px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0.5rem;
+	margin-left: -4px;
+	background-color: rgb(31, 31, 31);
+	border-radius: 0 0 0.2rem 0;
+}
+
+.profile_Icon,
+.cover_Icon {
+	width: 1rem;
+	height: 1rem;
+	cursor: pointer;
+}
+
+.profile_file_input,
+.cover_file_input {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.cover_input_text,
+.profile_input_text {
+	font-weight: 300;
+	font-size: 10px;
+	margin-left: 0.5rem;
+	letter-spacing: 1px;
+	color: #d2d0d0;
+	cursor: pointer;
+}
+
+.profile_remove_button_wrap,
+.cover_remove_button_wrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	gap: 0.5rem;
+	margin: 0.8rem 0.3rem 0.3rem 0.3rem;
+	padding: 0.3rem;
+	background-color: rgb(41, 41, 41);
+	border-radius: 0.2rem;
+}
+
+.profile_file_upload_button,
+.cover_file_upload_button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	padding: 0.3rem 0.5rem;
+	background: linear-gradient(135deg, rgb(74, 74, 74), #000);
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profileUserImg,
+.profile_filePreview_img {
 	width: 150px;
 	height: 150px;
 	border-radius: 50%;
@@ -43,18 +166,54 @@
 	left: 0;
 	right: 0;
 	margin: auto;
-	top: 150px;
+	top: 230px;
 	border: 3px solid white;
 }
 
+.profile_bio_username {
+	margin-top: 4rem;
+	padding: 0.5rem 0.5rem;
+}
+
+.profile_personal_infos {
+	padding: 0.5rem.5rem;
+	background: linear-gradient(135deg, rgb(74, 74, 74), #000);
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(233, 232, 232, 0.454);
+	margin-left: 0.5rem;
+	cursor: pointer;
+}
+
+.profile_bio_username_hr {
+	width: 98%;
+	border: 1px solid rgba(33, 33, 33, 0.783);
+	margin: 0.5rem 0 1.5rem 0.5rem;
+}
+
 .profile_detials {
+	position: relative;
 	width: 100%;
-	max-height: 400px;
 	display: flex;
 	align-items: start;
 	justify-content: space-between;
-	background-color: var(--BGCOLOR);
 	padding: 0.3rem;
+}
+
+.profile_user_container {
+	position: absolute;
+	overflow-y: scroll;
+	max-height: max-content;
+	width: 100%;
+	display: flex;
+	align-items: start;
+	justify-content: space-between;
+	top: -10px;
+	background-color: rgb(16, 16, 16);
+	padding: 0.5rem;
+	border-radius: 0.3rem;
+	z-index: 1;
 }
 
 .profileInfo {
@@ -62,15 +221,18 @@
 	display: flex;
 	flex-direction: column;
 	align-items: start;
-	justify-content: center;
+	justify-content: start;
 	padding-left: 0.5rem;
 }
 
 .profileInfoName {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	font-size: 15px;
-	margin-bottom: 0.7rem;
+	margin-bottom: 1rem;
 	letter-spacing: 1px;
-	color: #d2d0d0;
+	padding: 0.2rem 0.5rem;
 }
 
 .info_name {
@@ -105,7 +267,7 @@
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	bottom: 70px;
+	bottom: 10px;
 	right: -2px;
 	z-index: 1;
 }
@@ -152,4 +314,466 @@
 	border: none;
 	border-radius: 3px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.CurrentUserFriends {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	background-color: transparent;
+	max-width: 100%;
+	max-height: 550px;
+	padding: 0.5rem;
+}
+
+.CurrentUserFriends_wrapper {
+	display: grid;
+	gap: 0.5rem;
+	border: 1px solid rgb(27, 26, 26);
+	justify-content: center;
+	padding: 0.3rem;
+	margin-top: 0.3rem;
+}
+
+.CurrentUserFriends_img {
+	width: 130px;
+	height: 100px;
+	border-radius: 0.3rem;
+	object-fit: cover;
+}
+
+.CurrentUserFriends_name_container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.CurrentUserFriends_name {
+	color: #d2d0d0;
+	font-size: 14px;
+}
+
+.seeMoreFriendsBtn_container {
+	height: 60px;
+	width: 100% !important;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	padding-right: 0.5rem;
+}
+
+.seeMoreFriendsBtn {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.seeMoreFriendsBtn:hover {
+	background-color: #0056b3;
+}
+
+@media screen and (max-width: 900px) {
+	.profile_rightbar_wrap {
+		display: none;
+	}
+
+	.profile_leftabar_wrap {
+		display: none;
+	}
+
+	.profileUserImg_friend {
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		object-fit: cover;
+		position: absolute;
+		right: 0;
+		left: 0;
+		margin: auto;
+		top: 250px;
+		border: 3px solid white;
+	}
+
+	.profileInfoName_friend {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 15px;
+		margin-top: 0.5rem;
+		letter-spacing: 1px;
+		padding: 0.2rem 0.5rem;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.profile_rightbar_wrap {
+		display: none;
+	}
+
+	.profile_leftabar_wrap {
+		display: none;
+	}
+
+	.profileRight {
+		width: 100%;
+		padding: 0;
+		margin-top: 1rem;
+	}
+
+	.EditProfilePicture_container,
+	.cover_edit_Container {
+		max-width: 180px;
+	}
+
+	.profile_bio_username {
+		margin-top: 0.5rem;
+		padding: 0.5rem 0.5rem;
+	}
+
+	.profileCover {
+		height: 320px;
+		position: relative;
+	}
+
+	.profileCoverImg {
+		width: 100%;
+		height: 270px;
+		object-fit: cover;
+		object-position: center top;
+		cursor: pointer;
+	}
+
+	.cover_filePreview_img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 270px;
+		object-fit: cover;
+		object-position: center top;
+		cursor: pointer;
+	}
+
+	.profileUserImg,
+	.profile_filePreview_img {
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		object-fit: cover;
+		position: absolute;
+		right: 0;
+		left: 0;
+		margin: auto;
+		top: 210px;
+		border: 3px solid white;
+	}
+
+	.profileUserImg_friend {
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		object-fit: cover;
+		position: absolute;
+		right: 0;
+		left: 0;
+		margin: auto;
+		top: 200px;
+		border: 3px solid white;
+	}
+
+	.profileInfoName_friend {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 15px;
+		margin-top: 0.5rem;
+		letter-spacing: 1px;
+		padding: 0.2rem 0.5rem;
+	}
+
+	.ProfilePictures_bottons_control {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		bottom: 10px;
+		top: -289px;
+		left: -2px;
+		z-index: 1;
+	}
+	.profile_user_container {
+		position: absolute;
+		width: 50%;
+		height: 35vh;
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.profile {
+		display: flex;
+		overflow-y: scroll;
+		background-color: var(--BGCOLOR);
+		padding: 0;
+		margin-left: 0;
+	}
+
+	.EditProfilePicture_container,
+	.cover_edit_Container {
+		max-width: 180px;
+	}
+
+	.profile_bio_username {
+		margin-top: -1rem;
+		padding: 0.5rem 0.5rem;
+	}
+
+	.profileInfoName {
+		display: flex;
+		align-items: center;
+		justify-content: end;
+		font-size: 15px;
+		margin-bottom: 0.5rem;
+		margin-right: 1rem;
+		letter-spacing: 1px;
+		padding: 0.2rem 0.5rem;
+	}
+	.profileInfoName_friend {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 15px;
+		margin-top: 0.5rem;
+		letter-spacing: 1px;
+		padding: 0.2rem 0.5rem;
+	}
+
+	.profile_rightbar_wrap {
+		display: none;
+	}
+
+	.profile_leftabar_wrap {
+		display: none;
+	}
+
+	.profileRight {
+		width: 100%;
+		padding: 0;
+		margin-top: 1rem;
+	}
+
+	.CurrentUserFriends {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		background-color: transparent;
+	}
+
+	.profile_user_container {
+		position: absolute;
+		width: 100%;
+		height: 35vh;
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+
+	.profileCover {
+		height: 320px;
+		position: relative;
+	}
+
+	.profileCoverImg {
+		width: 100%;
+		height: 270px;
+		object-fit: cover;
+		object-position: center top;
+		cursor: pointer;
+	}
+
+	.cover_filePreview_img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 270px;
+		object-fit: cover;
+		object-position: center top;
+		cursor: pointer;
+	}
+
+	.profileUserImg,
+	.profile_filePreview_img {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		object-fit: cover;
+		position: absolute;
+		right: -160px;
+		margin: auto;
+		top: 200px;
+		border: 3px solid white;
+	}
+
+	.profileUserImg_friend {
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		object-fit: cover;
+		position: absolute;
+		right: 0;
+		left: 0;
+		margin: auto;
+		top: 200px;
+		border: 3px solid white;
+	}
+
+	.ProfilePictures_bottons_control {
+		max-width: max-content;
+		position: absolute;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		bottom: 10px;
+		top: -289px;
+		left: -2px;
+		z-index: 1;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.profile_rightbar_wrap {
+		display: none;
+	}
+
+	.EditProfilePicture_container,
+	.cover_edit_Container {
+		max-width: 167px;
+	}
+
+	.profile_bio_username {
+		margin-top: -4.5rem;
+		padding: 0.5rem 0.5rem;
+	}
+
+	.profileInfoName {
+		display: flex;
+		align-items: center;
+		justify-content: end;
+		font-size: 12px;
+		margin-bottom: 0.5rem;
+		margin-right: 0.5rem;
+		letter-spacing: 1px;
+		padding: 0.2rem 0.5rem;
+	}
+
+	.profileInfoName_friend {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 15px;
+		margin-top: 0.3rem;
+		letter-spacing: 1px;
+		padding: 0.2rem 0.5rem;
+	}
+
+	.profile_leftabar_wrap {
+		display: none;
+	}
+
+	.profileRight {
+		width: 100%;
+		padding: 0;
+		margin-top: 1rem;
+	}
+
+	.CurrentUserFriends {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		background-color: transparent;
+		max-width: 100%;
+		max-height: 300px;
+		padding: 0.5rem;
+	}
+
+	.profile_user_container {
+		position: absolute;
+		width: 100%;
+		height: 50vh;
+		display: grid;
+		grid-template-columns: 1fr;
+		align-items: start;
+		justify-content: space-between;
+		top: -10px;
+		background-color: rgb(29, 29, 29);
+		padding: 0.5rem;
+		border-radius: 0.3rem;
+		z-index: 1;
+	}
+
+	.profileCover {
+		height: 320px;
+		position: relative;
+	}
+
+	.profileCoverImg {
+		width: 100%;
+		height: 200px;
+		object-fit: cover;
+		object-position: center top;
+		cursor: pointer;
+	}
+
+	.cover_filePreview_img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 200px;
+		object-fit: cover;
+		object-position: center top;
+		cursor: pointer;
+	}
+
+	.profileUserImg,
+	.profile_filePreview_img {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		object-fit: cover;
+		position: absolute;
+		right: -160px;
+		margin: auto;
+		top: 150px;
+		border: 3px solid white;
+	}
+
+	.profileUserImg_friend {
+		width: 110px;
+		height: 110px;
+		border-radius: 50%;
+		object-fit: cover;
+		position: absolute;
+		right: 0;
+		left: 0;
+		margin: auto;
+		top: 140px;
+		border: 3px solid white;
+	}
+
+	.ProfilePictures_bottons_control {
+		max-width: max-content;
+		position: absolute;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		bottom: 10px;
+		top: -289px;
+		left: -2px;
+		z-index: 1;
+	}
 }

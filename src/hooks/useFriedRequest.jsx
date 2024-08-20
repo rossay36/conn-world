@@ -4,9 +4,7 @@ import { RingLoader } from "react-spinners";
 
 import {
 	useSendFriendRequestMutation,
-	useAcceptFriendRequestMutation,
 	useCancelFriendRequestMutation,
-	useRejectFriendRequestMutation,
 	useUnfollowFriendUserMutation,
 	useGetUsersQuery,
 } from "../features/profile/usersApiSlice";
@@ -40,24 +38,6 @@ const useFriendRequest = (userId, friendId) => {
 	] = useSendFriendRequestMutation();
 
 	const [
-		acceptFriendRequest,
-		{
-			isLoading: acceptLoading,
-			isError: acceptError,
-			isSuccess: acceptSuccess,
-		},
-	] = useAcceptFriendRequestMutation();
-
-	const [
-		rejectFriendRequest,
-		{
-			isLoading: rejectLoading,
-			isError: rejectError,
-			isSuccess: rejectSuccess,
-		},
-	] = useRejectFriendRequestMutation();
-
-	const [
 		cancelFriendRequest,
 		{
 			isLoading: cancelLoading,
@@ -82,28 +62,20 @@ const useFriendRequest = (userId, friendId) => {
 			refetchUserFriend();
 		};
 
-		if (
-			sendSuccess ||
-			acceptSuccess ||
-			rejectSuccess ||
-			cancelSuccess ||
-			unfollowSuccess
-		) {
+		if (sendSuccess || cancelSuccess || unfollowSuccess) {
 			refetchData();
 		}
 
 		if (
-			currentUser?.friendRequests?.includes(friendId) ||
-			currentUser?.friends?.includes(friendId) ||
-			userFriend?.friendReceiver?.includes(userId) ||
-			userFriend?.friends?.includes(userId)
+			currentUser?.friendReceiver?.includes(userId) ||
+			currentUser?.friends?.includes(userId) ||
+			userFriend?.friendReceiver?.includes(friendId) ||
+			userFriend?.friends?.includes(friendId)
 		) {
 			refetchData();
 		}
 	}, [
 		sendSuccess,
-		acceptSuccess,
-		rejectSuccess,
 		cancelSuccess,
 		unfollowSuccess,
 		currentUser,
@@ -177,46 +149,13 @@ const useFriendRequest = (userId, friendId) => {
 		}
 	};
 
-	const acceptFriendshipButtons = () => {
-		if (!currentUser?.friendReceiver?.length) {
-			return (
-				<div className="accept_buttons">
-					<button
-						className="accept_btn_accept"
-						onClick={() => acceptFriendRequest({ friendId, userId })}
-						disabled={acceptLoading}
-					>
-						{acceptLoading ? (
-							<RingLoader size={20} margin="auto" color="#000" />
-						) : (
-							"accept"
-						)}
-					</button>
-					<button
-						className="accept_btn_reject"
-						onClick={() => rejectFriendRequest({ friendId, userId })}
-						disabled={rejectLoading}
-					>
-						{rejectLoading ? (
-							<RingLoader size={20} margin="auto" color="#000" />
-						) : (
-							"reject"
-						)}
-					</button>
-					{renderLoadingError(
-						acceptLoading || rejectLoading,
-						acceptError || rejectError
-					)}
-				</div>
-			);
-		} else {
-			return null;
-		}
-	};
-
 	const renderLoadingError = (loading, error) => {
 		if (error) {
-			return <p>Error: {error?.message}</p>;
+			return (
+				<p style={{ color: "red", fontSize: "8px" }}>
+					Error: {error?.data?.message}
+				</p>
+			);
 		}
 		return null;
 	};
@@ -237,7 +176,6 @@ const useFriendRequest = (userId, friendId) => {
 	// Return necessary functions and states for the component using this hook
 	return {
 		sendFriendshipButtons,
-		acceptFriendshipButtons,
 	};
 };
 

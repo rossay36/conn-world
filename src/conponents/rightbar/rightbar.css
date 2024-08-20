@@ -1,7 +1,8 @@
 .rightbar {
 	flex: 3.2;
-	padding: 0.5rem;
-	height: 100vh;
+	position: sticky;
+	top: 0;
+	height: 78vh;
 	overflow-y: scroll;
 	top: 30px;
 }
@@ -51,7 +52,7 @@
 }
 
 .rightbarTitle {
-	margin-bottom: 20px;
+	margin: 1rem 0 1rem 0;
 }
 
 .rightbarFriendList {
@@ -99,21 +100,53 @@
 .rightbarFollowing {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 20px;
 	cursor: pointer;
 }
 
 .rightbarFollowingImg {
-	width: 93px;
-	height: 93px;
+	width: 130px;
+	height: 130px;
 	object-fit: cover;
 	border-radius: 5px;
 }
 
-.flex {
-	display: flex;
+.carousel_wrap {
+	position: relative;
+	z-index: -1;
+	width: 100%; /* Ensure the carousel takes up the full width */
+	overflow: hidden; /* Hide overflow to prevent showing partial next images */
 }
 
-.hidden {
-	display: none;
+.carousel .carousel-slide {
+	max-width: 100%; /* Ensure image does not exceed carousel width */
+	height: 80%; /* Maintain the aspect ratio of the image */
+	margin: 0 auto; /* Center image if necessary */
+	display: flex; /* Use flexbox to center the image */
+	justify-content: center; /* Center the image horizontally */
+	align-items: center; /* Center the image vertically */
+	transition: opacity 1s ease-in-out; /* Add a transition for smooth fading */
+}
+
+.carousel_img {
+	max-width: 100%; /* Ensure image does not exceed carousel width */
+	height: 80%; /* Maintain the aspect ratio of the image */
+	margin: 0 auto; /* Center image if necessary */
+}
+
+.fade-out {
+	animation: fadeOut 1s ease-out;
+}
+
+.carousel-slide.fade-out {
+	opacity: 0;
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
 }

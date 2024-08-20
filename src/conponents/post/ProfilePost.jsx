@@ -138,12 +138,8 @@ const ProfilePost = ({ postId, scrollToPictures, profilePostId }) => {
 						<div className="postBottom">
 							{/* {post like component } */}
 							<PostLikes
-								like={like}
-								likeHandler={likeHandler}
-								isLiked={isLiked}
-								likers={likers}
-								toggleLikersVisible={toggleLikersVisible}
-								likersVisible={likersVisible}
+								post={post}
+								postId={postId}
 								scrollToPictures={scrollToPictures}
 							/>
 							<>

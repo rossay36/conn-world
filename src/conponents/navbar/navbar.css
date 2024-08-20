@@ -1,8 +1,8 @@
 .nav {
 	display: flex;
-	align-items: center;
-	height: 40px;
-	padding: 1.5rem 1rem; /* border: 1px solid gray; */
+	flex-direction: column;
+	height: 60px;
+	padding: 0.5rem 1rem; /* border: 1px solid gray; */
 	position: sticky;
 	top: 0;
 	left: 0;
@@ -12,31 +12,40 @@
 	position: relative;
 }
 
+.nav_top {
+	display: flex;
+	align-items: center;
+	padding-bottom: 0.5rem;
+}
+
 .friendAccept {
-	min-width: 240px;
-	background-color: var(--BGCOLORS);
+	min-width: 540px;
+	background-color: rgb(229, 213, 213);
 	padding: 0.3rem;
 	overflow-y: scroll; /* Enable vertical scrolling */
 	position: absolute;
-	top: 50px;
-	right: -155px;
+	top: 35px;
+	right: -160px;
 	z-index: 999;
-	max-height: 300px;
+	max-height: 460px;
+	border-radius: 0.3rem 0 0 0.3rem;
 }
 
 .nav_logo {
-	flex: 3;
+	flex: 2;
 	display: flex;
 	align-items: center;
 	gap: 1rem;
 }
 
 .nav_input {
-	flex: 5;
+	flex: 6;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	margin: 0 1rem;
 	position: relative;
+	gap: 0.5rem;
 }
 
 .nav_input_icon {
@@ -46,19 +55,75 @@
 }
 
 .nav_input_search {
-	width: 100%;
+	width: 60%;
 	border-radius: 0.5rem;
-	padding-left: 1.5rem;
+	padding: 0.2rem 0 0.2rem 1.5rem;
 	border: none;
 	outline: none;
 	background-color: rgb(157, 157, 157);
+	font-size: 13px;
+}
+
+.nav_share_dropdown {
+	width: 50%;
+}
+
+.nav_share_toggling {
+	position: absolute;
+	height: 200px;
+	background-color: #121212;
+	left: 100px;
+	right: 30px;
+	top: 30px;
+	padding-top: 1rem;
+}
+
+.nav_share_button {
+	width: 230px;
+	font-size: 13px;
+	padding: 0.2rem 0.5rem;
+	background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
+	color: #fff;
+	border: 1px solid gray;
+	border-radius: 0.5rem;
+	box-shadow: 0 4px 6px rgba(249, 248, 248, 0.228);
+	cursor: pointer;
+}
+
+.feed_share_dropdown {
+	display: none;
+	margin: 1rem;
+	width: 90%;
+}
+
+.feed_share_toggling {
+	position: absolute;
+	height: 200px;
+	background-color: #121212;
+	left: 0;
+	right: 0;
+	top: 60px;
+	padding-top: 1rem;
+	z-index: 1;
+}
+
+.feed_share_button {
+	width: 100%;
+	font-size: 13px;
+	padding: 0.2rem 0.5rem;
+	background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
+	color: #fff;
+	border: 1px solid gray;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(249, 248, 248, 0.228);
+	cursor: pointer;
 }
 
 .nav_list {
-	flex: 4;
+	flex: 2.5;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: end;
 }
 
 .nav_list_text {
@@ -110,4 +175,505 @@
 	height: 2rem;
 	border-radius: 50%;
 	object-fit: cover;
+}
+
+@media screen and (max-width: 900px) {
+	.nav {
+		margin-bottom: 2rem;
+	}
+
+	.nav_top {
+		display: flex;
+		align-items: center;
+		padding: 0 0.5rem 0.5rem 0;
+	}
+
+	.nav_logo {
+		flex: 3.5;
+		padding: 0.8rem 0.3rem;
+	}
+	.nav_list {
+		flex: 8;
+		padding: 0.8rem 0.3rem;
+	}
+
+	.nav_logo_text {
+		font-size: 15px;
+	}
+
+	.nav_addFriend {
+		display: none;
+	}
+
+	.friendAccept {
+		min-width: 800px;
+		background-color: rgb(229, 213, 213);
+		padding: 0.3rem;
+		overflow-y: scroll; /* Enable vertical scrolling */
+		position: absolute;
+		top: 35px;
+		right: -115px;
+		z-index: 999;
+		max-height: 70vh;
+		border-radius: 0.3rem 0 0 0.3rem;
+	}
+
+	.nav_share_dropdown {
+		display: none;
+	}
+
+	.nav_input-icon {
+		display: flex;
+	}
+
+	.nav_input {
+		flex: 9;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 1rem;
+		position: relative;
+		gap: 0.5rem;
+	}
+
+	.nav_input_search {
+		display: flex;
+		width: 100%;
+	}
+
+	.homepage,
+	.timeline {
+		display: none;
+	}
+
+	.nav_profile_picture {
+		display: none;
+		align-items: center;
+		margin-left: 2rem;
+	}
+
+	.feed_share_dropdown {
+		margin: -0.8rem 0 0.5rem 0;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		padding: 0;
+	}
+
+	.feed_share_toggling {
+		position: absolute;
+		height: 200px;
+		background-color: #121212;
+		left: 0;
+		right: 0;
+		top: 103px;
+		padding-top: 1rem;
+		z-index: 1;
+	}
+
+	.feed_share_button {
+		width: 100%;
+		font-size: 13px;
+		padding: 0.5rem 0.5rem;
+		background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
+		color: #fff;
+		border: 1px solid gray;
+		border-radius: 0 0 5rem 5rem;
+		box-shadow: 0 4px 6px rgba(249, 248, 248, 0.228);
+		cursor: pointer;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.nav {
+		margin-bottom: 2rem;
+		padding: 0.5rem 0.2rem;
+	}
+
+	.nav_logo_text {
+		font-size: 15px;
+	}
+
+	.nav_top {
+		display: flex;
+		align-items: center;
+		padding: 0 0.5rem 0.5rem 0;
+	}
+
+	.nav_input {
+		flex: 8;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 1rem;
+		position: relative;
+		gap: 0.5rem;
+	}
+
+	.nav_input_search {
+		display: flex;
+		width: 100%;
+	}
+
+	.nav_logo {
+		flex: 3.5;
+		padding: 0.8rem 0.3rem;
+	}
+	.nav_list {
+		flex: 8;
+		padding: 0.8rem 0.3rem;
+	}
+
+	.nav_addFriend {
+		display: none;
+	}
+
+	.friendAccept {
+		min-width: 760px;
+		background-color: rgb(229, 213, 213);
+		padding: 0.3rem;
+		overflow-y: scroll; /* Enable vertical scrolling */
+		position: absolute;
+		top: 35px;
+		right: -115px;
+		z-index: 999;
+		max-height: 70vh;
+		border-radius: 0.3rem 0 0 0.3rem;
+	}
+
+	.nav_share_dropdown {
+		display: none;
+	}
+
+	.nav_input-icon {
+		display: flex;
+	}
+
+	.homepage,
+	.timeline {
+		display: none;
+	}
+
+	.nav_profile_picture {
+		display: none;
+		align-items: center;
+		margin-left: 2rem;
+	}
+
+	.feed_share_dropdown {
+		margin: -0.8rem 0 0.5rem 0;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		padding: 0;
+	}
+
+	.feed_share_toggling {
+		position: absolute;
+		height: 200px;
+		background-color: #121212;
+		left: 0;
+		right: 0;
+		top: 103px;
+		padding-top: 1rem;
+		z-index: 2;
+	}
+
+	.feed_share_button {
+		width: 100%;
+		font-size: 13px;
+		padding: 0.5rem 0.5rem;
+		background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
+		color: #fff;
+		border: 1px solid gray;
+		border-radius: 0 0 5rem 5rem;
+		box-shadow: 0 4px 6px rgba(249, 248, 248, 0.228);
+		cursor: pointer;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.nav {
+		margin-bottom: 2rem;
+	}
+
+	.nav_top {
+		display: flex;
+		align-items: center;
+	}
+	.nav_logo {
+		flex: 3.5;
+		padding: 0.8rem 0.3rem;
+	}
+	.nav_list {
+		flex: 8;
+		padding: 0.8rem 0.3rem;
+	}
+
+	.nav_logo_text {
+		font-size: 15px;
+	}
+
+	.nav_addFriend {
+		display: none;
+	}
+
+	.nav_input {
+		display: none;
+	}
+
+	.friendAccept {
+		min-width: 420px;
+		background-color: rgb(229, 213, 213);
+		padding: 0.3rem 0.3rem 0.3rem 0.5rem;
+		overflow-y: scroll; /* Enable vertical scrolling */
+		position: absolute;
+		top: 35px;
+		right: -150px;
+		z-index: 999;
+		max-height: 93vh;
+		border-radius: 0.3rem 0 0 0.3rem;
+	}
+
+	.nav_share_dropdown {
+		display: none;
+	}
+
+	.nav_input-icon {
+		display: none;
+	}
+
+	.nav_input-search {
+		display: none;
+	}
+
+	.homepage,
+	.timeline {
+		display: none;
+	}
+
+	.nav_profile_picture {
+		display: none;
+		align-items: center;
+		margin-left: 2rem;
+	}
+
+	.feed_share_dropdown {
+		margin: -0.8rem 0 0.5rem 0;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		padding: 0;
+	}
+
+	.feed_share_toggling {
+		position: absolute;
+		height: 200px;
+		background-color: #121212;
+		left: 0;
+		right: 0;
+		top: 100px;
+		padding-top: 1rem;
+		z-index: 10;
+	}
+
+	.feed_share_button {
+		width: 100%;
+		font-size: 13px;
+		padding: 0.4rem 0.5rem;
+		background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
+		color: #fff;
+		border: 1px solid gray;
+		border-radius: 0 0 5rem 5rem;
+		box-shadow: 0 4px 6px rgba(249, 248, 248, 0.228);
+		cursor: pointer;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.nav {
+		margin-bottom: 2rem;
+	}
+
+	.nav_logo_text {
+		font-size: 15px;
+	}
+
+	.nav_logo {
+		flex: 3.5;
+		padding: 0.8rem 0.3rem;
+	}
+	.nav_list {
+		flex: 8;
+		padding: 0.8rem 0.3rem;
+	}
+
+	.nav_addFriend {
+		display: none;
+	}
+
+	.nav_input {
+		display: none;
+	}
+
+	.friendAccept {
+		min-width: 380px;
+		background-color: rgb(229, 213, 213);
+		padding: 0.3rem 0.3rem 0.3rem 0.5rem;
+		overflow-y: scroll; /* Enable vertical scrolling */
+		position: absolute;
+		top: 35px;
+		right: -150px;
+		z-index: 999;
+		max-height: 93vh;
+		border-radius: 0.3rem 0 0 0.3rem;
+	}
+
+	.nav_share_dropdown {
+		display: none;
+	}
+
+	.nav_input-icon {
+		display: none;
+	}
+
+	.nav_input-search {
+		display: none;
+	}
+
+	.homepage,
+	.timeline {
+		display: none;
+	}
+
+	.nav_profile_picture {
+		display: none;
+		align-items: center;
+		margin-left: 2rem;
+	}
+
+	.feed_share_dropdown {
+		margin: -0.8rem 0 0.5rem 0;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		padding: 0;
+	}
+
+	.feed_share_toggling {
+		position: absolute;
+		height: 200px;
+		background-color: #121212;
+		left: 0;
+		right: 0;
+		top: 100px;
+		padding-top: 1rem;
+		z-index: 10;
+	}
+
+	.feed_share_button {
+		width: 100%;
+		font-size: 13px;
+		padding: 0.4rem 0.5rem;
+		background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
+		color: #fff;
+		border: 1px solid gray;
+		border-radius: 0 0 5rem 5rem;
+		box-shadow: 0 4px 6px rgba(249, 248, 248, 0.228);
+		cursor: pointer;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	nav {
+		margin-bottom: 1.5rem;
+	}
+
+	.nav_logo_text {
+		font-size: 15px;
+	}
+
+	.nav_logo {
+		flex: 3.5;
+		padding: 0.5rem 0.2rem;
+	}
+	.nav_list {
+		flex: 8;
+		padding: 0.5rem 0.2rem;
+	}
+
+	.nav_input {
+		display: none;
+	}
+
+	.nav_addFriend {
+		display: none;
+	}
+
+	.nav_share_dropdown {
+		display: none;
+	}
+
+	.friendAccept {
+		min-width: 335px;
+		background-color: rgb(229, 213, 213);
+		padding: 0.3rem;
+		overflow-y: scroll; /* Enable vertical scrolling */
+		position: absolute;
+		top: 30px;
+		right: -115px;
+		z-index: 999;
+		max-height: 100vh;
+		border-radius: 0.3rem 0 0 0.3rem;
+	}
+
+	.nav_input-icon {
+		display: none;
+	}
+
+	.nav_input-search {
+		display: none;
+	}
+
+	.homepage,
+	.timeline {
+		display: none;
+	}
+
+	.nav_profile_picture {
+		display: none;
+		align-items: center;
+		margin-left: 2rem;
+	}
+
+	.feed_share_dropdown {
+		margin: -0.8rem 0 0.5rem 0;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		padding: 0;
+	}
+
+	.feed_share_toggling {
+		position: absolute;
+		height: 200px;
+		background-color: #121212;
+		left: 0;
+		right: 0;
+		top: 95px;
+		padding-top: 1rem;
+		z-index: 10;
+	}
+
+	.feed_share_button {
+		width: 100%;
+		font-size: 13px;
+		padding: 0.3rem 0.5rem;
+		background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
+		color: #fff;
+		border: 1px solid gray;
+		border-radius: 0 0 5rem 5rem;
+		box-shadow: 0 4px 6px rgba(249, 248, 248, 0.228);
+		cursor: pointer;
+	}
 }

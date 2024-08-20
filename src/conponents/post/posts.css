@@ -1,12 +1,11 @@
 .post {
 	max-width: 100%;
-	max-height: 100%;
+	min-height: 50%;
 	border-radius: 10px;
 	background-color: var(--BGCOLORS);
 	box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.829);
 	margin: 0.5rem 0;
-	padding: 1rem 1rem 1.5rem 1rem;
-	z-index: 2;
+	padding: 1rem 1rem 1rem 1rem;
 	z-index: 0;
 }
 
@@ -48,7 +47,14 @@
 }
 
 .postCenter {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	margin: 10px 0;
+}
+
+.postText_container {
+	width: 100%;
 }
 
 .postText {
@@ -58,49 +64,28 @@
 	color: rgb(170, 168, 168);
 }
 
-/* .postImg {
-	margin-top: 10px;
-	width: 100%;
-	height: 70vh;
-	max-height: 500px;
-	object-fit: contain;
-	cursor: pointer;
-} */
 .postMediaContainer {
-	display: grid;
-	grid-template-columns: repeat(
-		auto-fit,
-		minmax(170px, 1fr)
-	); /* Two items per row, each item minimum width of 300px, expand to fill available space */
-	gap: 10px; /* Adjust spacing between items */
-}
-
-.postMedia {
-	position: relative; /* Ensure images and videos align properly */
-	overflow: hidden; /* Prevent content overflow */
-	max-height: 100%; /* Set a fixed height for uniformity, adjust as needed */
-}
-
-.postVideo,
-.postImg {
-	min-width: 470px; /* Ensure media items do not exceed container width */
-	max-height: 320px; /* Maintain aspect ratio */
-	display: block; /* Ensure proper display */
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.5rem 0 0.5rem 0.5rem;
+}
+
+.post_img_single {
+	width: 100%;
+	height: 100%;
+	display: block;
 	border-radius: 0.3rem;
 }
 
 .post_img_multiple {
-	width: 240px;
-	height: 150px;
+	width: 200px;
+	height: 200px;
 	border-radius: 0.3rem;
 }
 
 .post_img_double {
-	width: 240px;
+	width: 200px;
 	height: 250px;
 	border-radius: 0.3rem;
 }
@@ -137,7 +122,7 @@
 }
 
 .likersDropdown {
-	min-width: max-content;
+	width: 300px;
 	position: absolute;
 	bottom: 25px;
 	background-color: var(--BGCOLORS);
@@ -168,7 +153,21 @@
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	margin-top: 1rem;
+	margin-top: 0.5rem;
+}
+
+.likeDropdwon_name_img {
+	flex: 80%;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.likeDropdown_friend_request_btn {
+	flex: 20%;
+	display: flex;
+	align-items: center;
+	justify-content: end;
 }
 
 .likeDropdown_img {
@@ -177,6 +176,14 @@
 	object-fit: cover;
 	border-radius: 50%;
 	cursor: pointer; /* Ensure cursor changes on hover */
+}
+
+.likeDropdown_hr {
+	border: none;
+	width: 98%;
+	height: 1px;
+	background-color: rgb(57, 55, 55);
+	margin-top: 0.5rem;
 }
 
 .postLikeCounter {
@@ -241,4 +248,95 @@
 	font-weight: bold;
 	border-radius: 5px;
 	z-index: 10000;
+}
+
+@media screen and (max-width: 768px) {
+	.post {
+		max-width: 100%;
+		min-height: 50%;
+		border-radius: 10px;
+		background-color: var(--BGCOLORS);
+		box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.829);
+		margin: 0.5rem 0;
+		padding: 1rem 1rem 1rem 1rem;
+		z-index: 0;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.post {
+		max-width: 100%;
+		min-height: 60%;
+		margin: 1.5rem 0 0.5rem 0;
+		padding: 0;
+		z-index: 0;
+	}
+
+	.postWrapper {
+		position: relative;
+		padding: 0;
+	}
+
+	.postProfileImg {
+		border-radius: 50%;
+		object-fit: cover;
+		border: 2px solid rgb(90, 89, 89);
+		padding: 0.1rem;
+	}
+
+	.postMediaContainer {
+		display: flex;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0;
+	}
+
+	.PostComment_container {
+		display: none;
+		position: absolute;
+		max-width: 280px;
+		z-index: 1;
+		max-height: 300px;
+		bottom: -240px;
+		right: 5px;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.post {
+		max-width: 100%;
+		min-height: 60%;
+		margin: 1.5rem 0 0.5rem 0;
+		padding: 0;
+		z-index: 0;
+	}
+
+	.postWrapper {
+		position: relative;
+		padding: 0;
+	}
+
+	.postProfileImg {
+		border-radius: 50%;
+		object-fit: cover;
+		border: 2px solid rgb(90, 89, 89);
+		padding: 0.1rem;
+	}
+
+	.postMediaContainer {
+		display: flex;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0;
+	}
+
+	.PostComment_container {
+		display: none;
+		position: absolute;
+		max-width: 280px;
+		z-index: 1;
+		max-height: 300px;
+		bottom: -240px;
+		right: 5px;
+	}
 }

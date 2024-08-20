@@ -1,10 +1,11 @@
 .home {
-	height: 100vh;
-	margin-top: -12px;
-	margin-bottom: 2rem;
+	height: 78vh;
+	margin-top: 0;
+	padding-bottom: 2rem;
 }
 
 .home_wrap {
+	margin-top: -20px;
 	display: flex;
 	align-items: center;
 }
@@ -19,4 +20,31 @@
 
 .home_right {
 	flex: 3.2;
+}
+
+@media screen and (max-width: 900px) {
+	.home_left {
+		flex: 3.3;
+		display: none;
+	}
+
+	.home_right {
+		flex: 3.2;
+		display: none;
+	}
+}
+@media screen and (max-width: 768px) {
+	.home {
+		min-height: 50vh;
+		padding-bottom: 0;
+	}
+	.home_left {
+		flex: 3.3;
+		display: none;
+	}
+
+	.home_right {
+		flex: 3.2;
+		display: none;
+	}
 }

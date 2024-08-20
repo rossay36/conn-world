@@ -4,6 +4,8 @@ const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useGetCommentsQuery } from "../../features/homes/commentApiSlice";
+import { getStorage, ref, getMetadata } from "firebase/storage";
+import { useEffect, useState } from "react";
 
 const PostComment = ({ post, openPhotoViewer, scrollToPictures, comments }) => {
 	const { username, userId } = useAuth();
@@ -21,9 +23,36 @@ const PostComment = ({ post, openPhotoViewer, scrollToPictures, comments }) => {
 		refetchOnMountOrArgChange: true,
 	});
 
-	if (postsSuccess) {
-		const { ids } = comment;
-	}
+	const [mediaTypes, setMediaTypes] = useState({});
+	const [isMute, setIsMuste] = useState(true);
+
+	useEffect(() => {
+		const fetchMediaTypes = async () => {
+			const mediaTypePromises = post?.image?.map(async (mediaUrl) => {
+				const storage = getStorage();
+				const storageRef = ref(storage, mediaUrl);
+				try {
+					const metadata = await getMetadata(storageRef);
+					return { url: mediaUrl, type: metadata.contentType };
+				} catch (error) {
+					console.error("Error fetching metadata:", error);
+					return { url: mediaUrl, type: null };
+				}
+			});
+			const mediaTypeResults = await Promise.all(mediaTypePromises);
+			const mediaTypesMap = mediaTypeResults.reduce((acc, { url, type }) => {
+				acc[url] = type;
+				return acc;
+			}, {});
+			setMediaTypes(mediaTypesMap);
+		};
+
+		fetchMediaTypes();
+	}, [post?.image]);
+
+	const handleMute = () => {
+		setIsMuste(!isMute);
+	};
 
 	return (
 		<>
@@ -39,7 +68,7 @@ const PostComment = ({ post, openPhotoViewer, scrollToPictures, comments }) => {
 									className="postProfileImg"
 									src={
 										post?.profilePicture
-											? IMG_URL + post?.profilePicture
+											? post?.profilePicture
 											: IMG_URL + "/avatar2.png"
 									}
 									alt=""
@@ -66,12 +95,19 @@ const PostComment = ({ post, openPhotoViewer, scrollToPictures, comments }) => {
 									: "comment_img_container_single"
 							}
 						>
-							{post?.image?.map((mediaUrl) => (
+							{post?.image.map((mediaUrl) => (
 								<div key={mediaUrl} className="comment_Media">
 									{/* Check if the media is an image or video */}
-									{mediaUrl?.endsWith(".mp4") ? (
-										<video controls className="comment_Video">
-											<source src={mediaUrl} type="video/mp4" />
+									{mediaTypes[mediaUrl]?.startsWith("video/") ? (
+										<video
+											controls
+											autoPlay
+											muted={isMute}
+											loop={true}
+											className="postVideo"
+											onClick={handleMute}
+										>
+											<source src={mediaUrl} type={mediaTypes[mediaUrl]} />
 											Your browser does not support the video tag.
 										</video>
 									) : (
@@ -98,17 +134,19 @@ const PostComment = ({ post, openPhotoViewer, scrollToPictures, comments }) => {
 					)}
 				</div>
 				<p className="comment_title">
-					{!comments?.length
+					{!post?.comments?.length
 						? "no comments"
-						: comments?.length === 1
-						? `${comments?.length} comment`
-						: `${comments?.length} comments`}
+						: post?.comments?.length === 1
+						? `${post?.comments?.length} comment`
+						: `${post?.comments?.length} comments`}
 				</p>
+				<hr className="comment_hr"></hr>
 				{post?.comments?.map((commentId) => (
 					<Comments
 						key={commentId}
 						commentId={commentId}
 						openPhotoViewer={openPhotoViewer}
+						comments={comments}
 					/>
 				))}
 			</ul>

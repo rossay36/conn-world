@@ -1,0 +1,86 @@
+.UserFriendRequests {
+	height: 75vh;
+	display: flex;
+	align-items: start;
+}
+
+.UserFriendRequests_leftbar {
+	flex: 3.5;
+}
+.UserFriendRequests_friend {
+	flex: 5.5;
+	height: 75vh;
+	overflow-y: scroll;
+	background-color: #fff;
+}
+.UserFriendRequests_rightbar {
+	flex: 3.2;
+}
+
+@media screen and (max-width: 900px) {
+	.UserFriendRequests {
+		margin-top: -2rem;
+	}
+	.UserFriendRequests_leftbar {
+		flex: 3.5;
+		display: none;
+	}
+	.UserFriendRequests_friend {
+		flex: 5.5;
+		max-height: 85vh;
+		overflow-y: scroll;
+	}
+	.UserFriendRequests_rightbar {
+		flex: 3.2;
+		display: none;
+	}
+}
+@media screen and (max-width: 768px) {
+	.UserFriendRequests_leftbar {
+		flex: 3.5;
+		display: none;
+	}
+	.UserFriendRequests_friend {
+		flex: 5.5;
+		max-height: 90vh;
+		overflow-y: scroll;
+	}
+	.UserFriendRequests_rightbar {
+		flex: 3.2;
+		display: none;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.UserFriendRequests {
+		margin-top: -2rem;
+	}
+	.UserFriendRequests_leftbar {
+		flex: 3.5;
+		display: none;
+	}
+	.UserFriendRequests_friend {
+		flex: 5.5;
+		max-height: 80vh;
+		overflow-y: scroll;
+	}
+	.UserFriendRequests_rightbar {
+		flex: 3.2;
+		display: none;
+	}
+}
+@media screen and (max-width: 320px) {
+	.UserFriendRequests_leftbar {
+		flex: 3.5;
+		display: none;
+	}
+	.UserFriendRequests_friend {
+		flex: 5.5;
+		max-height: 70vh;
+		overflow-y: scroll;
+	}
+	.UserFriendRequests_rightbar {
+		flex: 3.2;
+		display: none;
+	}
+}

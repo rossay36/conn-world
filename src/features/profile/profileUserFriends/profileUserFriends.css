@@ -1,0 +1,176 @@
+.CurrentUserFriends_container {
+	max-height: 60vh;
+	width: 100%;
+	overflow-y: scroll;
+}
+
+.profileFriends_wrapper {
+	background-color: rgb(229, 213, 213);
+}
+
+.CurrentUserFriends_container_header {
+	padding: 0.5rem 0;
+	max-width: 200px;
+}
+
+.CurrentUserFriends_container_btn {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.profileUserFriends_username {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	padding: 0.2rem 0.5rem;
+}
+.profileUserFriends_username_name {
+	font-size: 15px;
+	color: #5e5c5c;
+}
+
+.profileUserFriends_container {
+	background-color: #d1caca;
+	margin: 0.5rem 0;
+	border-radius: 0.2rem;
+}
+
+.users_list::-webkit-scrollbar {
+	display: none;
+	width: 3px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #5e5c5c;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--BGCOLORS);
+}
+
+.profileUserFriends_lists {
+	padding: 2rem 0;
+	display: flex;
+	gap: 1rem;
+	padding: 0.3rem;
+}
+
+.profileUserFriends_image {
+	flex: 80%;
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	padding: 0.2rem;
+}
+
+.profileUserFriends_names {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.profileUserFriends_name {
+	font-size: 15px;
+	font-weight: 900;
+	color: #000;
+}
+
+.profileUserFriends_btn {
+	flex: 20%;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	padding: 0.2rem;
+}
+
+.profileUserFriends_img {
+	width: 2.5rem;
+	height: 2.3rem;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 2px solid rgb(95, 94, 94);
+}
+
+.profileUserFriends_lists_bottom {
+	padding-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
+
+	margin-left: 0.6rem;
+}
+
+.profileUserFriends_bottom_hr {
+	width: 99%;
+	height: 1px;
+	border: none;
+	margin: 0.3rem 0;
+	background-color: rgb(229, 213, 213);
+}
+
+.profileUserFriends_bottom_list {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.profileUserFriends_bottom_text {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: #181818;
+}
+
+.profileUserFriends_bottom_keys {
+	color: #000;
+	font-size: 13px;
+	font-weight: 800;
+}
+.profileUserFriends_bottom_value {
+	color: #000;
+	font-size: 11px;
+}
+
+/* @media screen and (max-width: 900px) {
+	.profileUserFriends_container {
+	max-height: 40vh;
+	width: 100%;
+	overflow-y: scroll;
+	background-color: rgb(229, 213, 213);
+}
+}
+@media screen and (max-width: 768px) {
+	.profileUserFriends_container {
+	max-height: 40vh;
+	width: 100%;
+	overflow-y: scroll;
+	background-color: rgb(229, 213, 213);
+}
+}
+
+@media screen and (max-width: 480px) {
+	.profileUserFriends_container {
+	max-height: 40vh;
+	width: 100%;
+	overflow-y: scroll;
+	background-color: rgb(229, 213, 213);
+}
+}
+@media screen and (max-width: 320px) {
+	.profileUserFriends_container {
+	max-height: 40vh;
+	width: 100%;
+	overflow-y: scroll;
+	background-color: rgb(229, 213, 213);
+}
+} */

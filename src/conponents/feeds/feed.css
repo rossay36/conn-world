@@ -1,12 +1,14 @@
 .feed {
+	position: relative;
 	flex: 5.5;
 	padding: 0.5rem;
-	height: 100vh;
+	height: 78vh;
 	overflow-y: scroll;
 	top: 0;
 	position: sticky;
 	padding: 0.5rem 0.7rem;
 	z-index: 0;
+	padding-bottom: 4rem;
 }
 
 .feed::-webkit-scrollbar {
@@ -20,4 +22,10 @@
 
 .feed::-webkit-scrollbar-thumb {
 	background-color: var(--BGCOLORS);
+}
+
+@media screen and (max-width: 480px) {
+}
+
+@media screen and (max-width: 320px) {
 }

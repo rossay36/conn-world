@@ -43,11 +43,71 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 			}),
 			invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
 		}),
+		updateProfilePicture: builder.mutation({
+			query: (initialUserData) => ({
+				url: "/users/profile-picture",
+				method: "PUT",
+				body: {
+					...initialUserData,
+				},
+			}),
+			invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+		}),
+		updateCoverPicture: builder.mutation({
+			query: (initialUserData) => ({
+				url: "/users/cover-picture",
+				method: "PUT",
+				body: {
+					...initialUserData,
+				},
+			}),
+			invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+		}),
+		updatePersonalDetails: builder.mutation({
+			query: (initialUserData) => ({
+				url: "/users/personal-details",
+				method: "PUT",
+				body: {
+					...initialUserData,
+				},
+			}),
+			invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+		}),
+		updateUserLives: builder.mutation({
+			query: (initialUserData) => ({
+				url: "/users/personal-lives",
+				method: "PUT",
+				body: {
+					...initialUserData,
+				},
+			}),
+			invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+		}),
+		updateUserAddress: builder.mutation({
+			query: (initialUserData) => ({
+				url: "/users/personal-address",
+				method: "PUT",
+				body: {
+					...initialUserData,
+				},
+			}),
+			invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+		}),
+		updateEducation: builder.mutation({
+			query: (initialUserData) => ({
+				url: "/users/userEducation",
+				method: "PUT",
+				body: {
+					...initialUserData,
+				},
+			}),
+			invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+		}),
 		deleteUser: builder.mutation({
-			query: ({ id }) => ({
+			query: ({ userId }) => ({
 				url: `/users`,
 				method: "DELETE",
-				body: { id },
+				body: { userId },
 			}),
 			invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
 		}),
@@ -61,40 +121,41 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 				console.log("Sending friend request...");
 			},
 		}),
-		acceptFriendRequest: builder.mutation({
-			query: ({ userId, friendId }) => ({
-				url: "/users/friend-request/accept",
-				method: "POST",
-				body: { userId, friendId },
-			}),
-			onQueryStarted: (arg, { dispatch, getState }) => {
-				console.log("Accepting friend request...");
-			},
-		}),
-		rejectFriendRequest: builder.mutation({
-			query: ({ userId, friendId }) => ({
-				url: "/users/friend-request/reject",
-				method: "POST",
-				body: { userId, friendId },
-			}),
-			onQueryStarted: (arg, { dispatch, getState }) => {
-				console.log("Rejecting friend request...");
-			},
-		}),
 		cancelFriendRequest: builder.mutation({
 			query: ({ userId, friendId }) => ({
 				url: "/users/friend-request/cancel",
-				method: "POST",
+				method: "DELETE",
 				body: { userId, friendId },
 			}),
 			onQueryStarted: (arg, { dispatch, getState }) => {
 				console.log("Canceling friend request...");
 			},
 		}),
+		acceptFriendRequest: builder.mutation({
+			query: (friendId) => ({
+				url: "/users/friend-request/accept",
+				method: "POST",
+				body: { friendId },
+			}),
+			onQueryStarted: (arg, { dispatch, getState }) => {
+				console.log("Accepting friend request...");
+			},
+		}),
+		rejectFriendRequest: builder.mutation({
+			query: (friendId) => ({
+				url: "/users/friend-request/reject",
+				method: "DELETE",
+				body: { friendId },
+			}),
+			onQueryStarted: (arg, { dispatch, getState }) => {
+				console.log("Rejecting friend request...");
+			},
+		}),
+
 		unfollowFriendUser: builder.mutation({
 			query: ({ userId, friendId }) => ({
 				url: "/users/unfollow",
-				method: "POST",
+				method: "DELETE",
 				body: { userId, friendId },
 			}),
 		}),
@@ -119,6 +180,12 @@ export const {
 	useCancelFriendRequestMutation,
 	useUnfollowFriendUserMutation,
 	useUpdateActiveSlideMutation,
+	useUpdateProfilePictureMutation,
+	useUpdateCoverPictureMutation,
+	useUpdatePersonalDetailsMutation,
+	useUpdateEducationMutation,
+	useUpdateUserAddressMutation,
+	useUpdateUserLivesMutation,
 } = usersApiSlice;
 
 // returns the query result object

@@ -1,6 +1,6 @@
 import "./footer.css";
 import { MdHome, MdOutlineEventRepeat } from "react-icons/md";
-import { BsBlockquoteRight, BsBagDash } from "react-icons/bs";
+import { BsBlockquoteRight } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -10,10 +10,14 @@ import {
 import { useEffect } from "react";
 import { useGetUsersQuery } from "../../features/profile/usersApiSlice";
 import useAuth from "../../hooks/useAuth";
+import { FaUserFriends } from "react-icons/fa";
+import { toggleFrindAndFeedComponent } from "../../features/auth/authSlice";
+import { useDispatch } from "react-redux";
 
 const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 const Footer = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const [sendLogout, { isLoading, isSuccess, isError, error }] =
 		useSendLogoutMutation();
 
@@ -36,8 +40,12 @@ const Footer = () => {
 		navigate(".");
 	};
 
+	const handleToggleFrindAndFeedComponent = () => {
+		dispatch(toggleFrindAndFeedComponent());
+	};
+
 	return (
-		<div className="footers footer">
+		<div className="footer">
 			<div className="footer_top">
 				<p className="footer_text">Conn-World</p>
 				<h3 className="footer_name">{user?.username}</h3>
@@ -46,7 +54,7 @@ const Footer = () => {
 						className="footer_img"
 						src={
 							user?.profilePicture
-								? IMG_URL + user?.profilePicture
+								? user?.profilePicture
 								: IMG_URL + "avatar2.png"
 						}
 						alt="profile"
@@ -62,10 +70,12 @@ const Footer = () => {
 
 				<BsBlockquoteRight className="footer_icon" />
 				<MdOutlineEventRepeat className="footer_icon" />
-				<BsBagDash className="footer_icon" />
+				<Link to="/home/friend-request">
+					<FaUserFriends className="footer_icon" />
+				</Link>
 			</div>
 			<div className="footer_logout">
-				<p>Logout</p>
+				<p className="footer_logout_text">Logout</p>
 				<MdLogout
 					className="footer_icon"
 					title="Logout"

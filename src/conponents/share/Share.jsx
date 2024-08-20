@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { MdOutlinePermMedia } from "react-icons/md";
-import { BiSolidTagAlt } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
 import { RiEmotionLine } from "react-icons/ri";
 import { FcCancel } from "react-icons/fc";
@@ -15,10 +13,12 @@ import { storage } from "../../features/homes/FirebaseApp";
 import useAuth from "../../hooks/useAuth";
 import "./share.css";
 import { RingLoader } from "react-spinners";
+import { GrTag } from "react-icons/gr";
+import { LiaPhotoVideoSolid } from "react-icons/lia";
 
 const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
-const Share = ({ isShareVisible }) => {
+const Share = ({ isShareVisible, shareDrop }) => {
 	const errRef = useRef();
 
 	const [text, setText] = useState("");
@@ -129,7 +129,7 @@ const Share = ({ isShareVisible }) => {
 	}
 
 	return (
-		<div className={`share ${isShareVisible ? "" : "share_hidden"}`}>
+		<div>
 			<div className="shareWrapper">
 				<div className="shareTop">
 					<Link to={`/home/${user?._id}`}>
@@ -137,7 +137,7 @@ const Share = ({ isShareVisible }) => {
 							className="shareProfileImg"
 							src={
 								user?.profilePicture
-									? IMG_URL + user?.profilePicture
+									? user?.profilePicture
 									: IMG_URL + "avatar2.png"
 							}
 							alt="img"
@@ -155,11 +155,11 @@ const Share = ({ isShareVisible }) => {
 					<div className="shareOptions">
 						<div className="shareOption">
 							<label htmlFor="fileInput" className="fileInput">
-								<MdOutlinePermMedia
+								<LiaPhotoVideoSolid
+									title="Photo or Video"
 									style={{ color: "tomato" }}
 									className="shareIcon"
 								/>
-								<span className="shareOptionText">Photo or Video</span>
 								<input
 									style={{ display: "none" }}
 									type="file"
@@ -171,19 +171,25 @@ const Share = ({ isShareVisible }) => {
 							</label>
 						</div>
 						<div className="shareOption">
-							<BiSolidTagAlt style={{ color: "blue" }} className="shareIcon" />
-							<span className="shareOptionText">Tag</span>
+							<GrTag
+								title="Tag"
+								style={{ color: "blue" }}
+								className="shareIcon"
+							/>
 						</div>
 						<div className="shareOption">
-							<ImLocation style={{ color: "green" }} className="shareIcon" />
-							<span className="shareOptionText">Location</span>
+							<ImLocation
+								title="Location"
+								style={{ color: "green" }}
+								className="shareIcon"
+							/>
 						</div>
 						<div className="shareOption">
 							<RiEmotionLine
+								title="Feelings"
 								style={{ color: "goldenrod" }}
 								className="shareIcon"
 							/>
-							<span className="shareOptionText">Feelings</span>
 						</div>
 					</div>
 					<div className="filePreview">

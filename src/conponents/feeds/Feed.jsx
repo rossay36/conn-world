@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import Share from "../share/Share";
 import Post from "../post/Post";
 import { useGetPostsQuery } from "../../features/homes/postsApiSlice";
 import useAuth from "../../hooks/useAuth";
 import "./feed.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import ProfilePost from "../post/ProfilePost";
+import { useGetUsersQuery } from "../../features/profile/usersApiSlice";
 
 const Feed = ({ scrollToPictures, profilePostId }) => {
 	const { userId } = useAuth();
@@ -21,6 +21,12 @@ const Feed = ({ scrollToPictures, profilePostId }) => {
 		pollingInterval: 5000,
 		refetchOnFocus: true,
 		refetchOnMountOrArgChange: true,
+	});
+
+	const { user } = useGetUsersQuery("usersList", {
+		selectFromResult: ({ data }) => ({
+			user: data?.entities[userId],
+		}),
 	});
 
 	const [isShareVisible, setIsShareVisible] = useState(true);
@@ -68,8 +74,9 @@ const Feed = ({ scrollToPictures, profilePostId }) => {
 	if (postsSuccess) {
 		const { ids } = posts || {};
 
-		const postContent = profilePostId
-			? ids?.map((postId) => (
+		const postContent = profilePostId ? (
+			ids?.length ? (
+				ids?.map((postId) => (
 					<ProfilePost
 						key={postId}
 						postId={postId}
@@ -77,22 +84,27 @@ const Feed = ({ scrollToPictures, profilePostId }) => {
 						profilePostId={profilePostId}
 						isOpen={postId === profilePostId}
 					/>
-			  ))
-			: ids?.map((postId) => (
-					<Post
-						key={postId}
-						postId={postId}
-						scrollToPictures={scrollToPictures}
-						profilePostId={profilePostId}
-						isOpen={postId === profilePostId}
-					/>
-			  ));
+				))
+			) : (
+				<p style={{ color: "#fff" }}>"No Post To Display"</p>
+			)
+		) : (
+			ids?.map((postId) => (
+				<Post
+					key={postId}
+					postId={postId}
+					scrollToPictures={scrollToPictures}
+					profilePostId={profilePostId}
+					isOpen={postId === profilePostId}
+				/>
+			))
+		);
 
 		content = (
 			<div className="feed" ref={feedRef}>
-				{!profilePostId || profilePostId === userId ? (
+				{/* {!profilePostId || profilePostId === userId ? (
 					<Share isShareVisible={isShareVisible} />
-				) : null}
+				) : null} */}
 				{postContent}
 			</div>
 		);

@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
+@font-face {
+	font-family: "MyCustomFont";
+	src: url("/path-to-your-font/font.woff2") format("woff2"),
+		url("/path-to-your-font/font.woff") format("woff");
+	font-display: swap;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -77,14 +84,6 @@ svg {
 	max-width: 100%;
 }
 
-/* Remove built-in form typography styles */
-input,
-button,
-textarea,
-select {
-	font: inherit;
-}
-
 /* Avoid text overflows */
 p,
 h1,
@@ -126,17 +125,6 @@ h6 {
 	white-space: nowrap;
 }
 
-.icon-button {
-	width: 48px;
-	height: 48px;
-	font-size: 2.5rem;
-	background-color: transparent;
-	border: none;
-	color: green;
-	display: flex;
-	place-content: center;
-}
-
 .icon-button:hover,
 .icon-button:focus-visible {
 	transform: scale(1.2);
@@ -167,40 +155,10 @@ a:focus-visible {
 }
 
 /* || PAGES */
-.public,
 .welcome {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
-}
-
-.public {
-	padding: 1em;
-	flex-grow: 1;
-}
-
-.public__main,
-.login {
-	flex-grow: 1;
-	border-top: 2px solid var(--BORDER-COLOR);
-	border-bottom: 2px solid var(--BORDER-COLOR);
-	padding: 1em 0;
-}
-
-.public__addr {
-	margin-top: 1em;
-}
-
-.public_link {
-	display: flex;
-	gap: 2rem;
-}
-
-.public_footer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 2rem;
 }
 
 .welcome a::before {
@@ -210,8 +168,7 @@ a:focus-visible {
 /* || DASH HEADER, CONTAINER & FOOTER */
 .dash-header {
 	position: sticky;
-	top: 0;
-	z-index: 1;
+	top: 0; /* z-index: 1; */
 	background-color: var(--BGCOLOR);
 	padding: 0 0.5em;
 	border-bottom: 1px solid var(--BORDER-COLOR);
@@ -236,15 +193,14 @@ a:focus-visible {
 }
 
 .dash-container {
-	padding: 0.75em 0.5em 0.5em;
+	padding: 0.75em 0;
 	flex-grow: 1;
 }
 
 .dash-footer {
 	font-size: 1rem;
 	position: sticky;
-	bottom: 0;
-	z-index: 1;
+	bottom: 0; /* z-index: 1; */
 	background-color: var(--BGCOLOR);
 	padding: 0.5em;
 	border-top: 1px solid var(--BORDER-COLOR);
@@ -284,8 +240,7 @@ tr {
 
 .table__thead {
 	position: sticky;
-	top: 0;
-	z-index: 1;
+	top: 0; /* z-index: 1; */
 }
 
 .table__th,
@@ -323,192 +278,3 @@ tr {
 .note__status--completed {
 	color: var(--STATUS-COMPLETE);
 }
-
-.register {
-	min-height: 100vh;
-}
-
-/* || FORM - GENERAL */
-.register_footer {
-	display: flex;
-	align-items: center;
-	padding-left: 1rem;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	border: 1px solid var(--COLOR);
-	height: 40px;
-	width: 100%;
-	margin-top: 1rem;
-}
-
-.register_btn {
-	max-width: 800px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-bottom: 1rem;
-}
-
-.register_link {
-	border: 1px solid gray;
-	background-color: green;
-	padding: 0.3rem 1rem;
-	border-radius: 0.3rem;
-}
-
-.register_link:hover {
-	background-color: var(--COLOR);
-	color: var(--BLACKCOL);
-}
-
-.blue {
-	background-color: blue;
-}
-
-.form {
-	display: flex;
-	flex-flow: column nowrap;
-	gap: 1rem;
-	max-width: 800px;
-	margin-bottom: 1rem;
-	padding-left: 1rem;
-}
-
-.form__checkbox-container {
-	display: flex;
-	align-items: center;
-	width: fit-content;
-	gap: 0.5em;
-}
-
-.form__persist {
-	display: flex;
-	align-items: center;
-	width: 100%;
-	gap: 0.5em;
-}
-
-.form__title-row {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	border: 1px solid var(--COLOR);
-	height: 40px;
-	margin-bottom: 2rem;
-	padding: 0.5rem;
-}
-
-.forn_title_save {
-	display: flex;
-	align-items: center;
-}
-
-.form__input,
-.form__submit-button {
-	padding: 0.2rem 0.5rem;
-	border-radius: 0.3rem;
-}
-
-.form__submit-button {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.5rem;
-	background-color: green;
-	color: var(--COLOR);
-}
-
-.form__submit-button:hover {
-	background-color: var(--COLOR);
-	color: var(--BLACKCOL);
-}
-
-.form__input--text {
-	min-height: 100px;
-}
-
-.form__input--incomplete {
-	border: 1px solid var(--INPUT-INVALID);
-	outline: 1px solid var(--INPUT-INVALID);
-}
-
-.form__checkbox {
-	width: 24px;
-	height: 24px;
-}
-
-.form__select {
-	width: fit-content;
-	padding: 0.25em;
-}
-
-.form__action-buttons {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	gap: 0.5em;
-	position: absolute;
-	right: 0.5em;
-}
-
-.form__row {
-	display: flex;
-	flex-flow: row nowrap;
-	gap: 2em;
-}
-
-.form__divider {
-	display: flex;
-	flex-flow: column nowrap;
-	gap: 0.5em;
-}
-
-@media screen and (max-width: 400px) {
-	h1 {
-		font-size: 2rem;
-	}
-
-	.dash-header__nav {
-		gap: 0;
-	}
-
-	.icon-button {
-		font-size: 1.5rem;
-	}
-}
-
-/* @media screen and (min-width: 768px) {
-
-  body {
-font-size: 1.25rem;
-  }
-
-  .dash-header {
-padding: 0 1em;
-  }
-
-  .dash-container {
-padding: 1em;
-  }
-
-  .table {
-font-size: 1.5rem;
-  }
-
-  .table--notes {
-grid-template-columns: repeat(3, 1fr) 2fr repeat(2, 1fr);
-  }
-
-  .note__created,
-  .note__updated,
-  .note__username {
-display: block
-  }
-
-  .form__action-buttons {
-position: static;
-  }
-} */

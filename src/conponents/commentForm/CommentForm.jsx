@@ -121,7 +121,7 @@ const CommentForm = ({ post }) => {
 						onChange={handleCommentFileChange}
 					/>
 				</label>
-				<textarea
+				<input
 					placeholder={`${username} comment ${post?.username} post`}
 					className="comment_input"
 					value={commentText}

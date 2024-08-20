@@ -15,6 +15,8 @@ import {
 	SlArrowDown,
 } from "react-icons/sl";
 import { RingLoader } from "react-spinners";
+import EditProfilePicture from "./EditProfilePicture";
+import EditCoverPicture from "./EditCoverPicture";
 
 const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
@@ -23,8 +25,9 @@ const ProfilePictures = ({ profileSectionRef, user, openPhotoViewer }) => {
 		useUpdateActiveSlideMutation();
 	const { userId } = useAuth();
 	const { userId: paramId } = useParams();
+	const [isEduOpen, setIsEduOpen] = useState(false);
 
-	const { users, isLoading, error } = useGetUsersQuery("postsList", {
+	const { users, isLoading, error } = useGetUsersQuery("usersList", {
 		selectFromResult: ({ data }) => ({
 			users: data?.entities[userId],
 		}),
@@ -103,6 +106,13 @@ const ProfilePictures = ({ profileSectionRef, user, openPhotoViewer }) => {
 		));
 	}
 
+	const sex =
+		user?.gender === "Male" ? "His" : user?.gender === "Female" ? "Her" : null;
+
+	const handleEducation = () => {
+		setIsEduOpen((prev) => !prev);
+	};
+
 	return (
 		<div className="profileRightTop">
 			<div className="profileCover">
@@ -163,110 +173,211 @@ const ProfilePictures = ({ profileSectionRef, user, openPhotoViewer }) => {
 								{content}
 							</Carousel>
 						) : (
-							<img
-								ref={profileSectionRef}
-								className="profileCoverImg"
-								src={
-									user?.coverPicture
-										? IMG_URL + user?.coverPicture
-										: IMG_URL + "avatar3.png"
-								}
-								alt=""
-								onClick={() =>
-									openPhotoViewer(
+							<>
+								<img
+									ref={profileSectionRef}
+									className="profileCoverImg"
+									src={
 										user?.coverPicture
-											? IMG_URL + user?.coverPicture
+											? user?.coverPicture
 											: IMG_URL + "avatar3.png"
-									)
-								}
-							/>
+									}
+									alt=""
+									onClick={() =>
+										openPhotoViewer(
+											user?.coverPicture
+												? user?.coverPicture
+												: IMG_URL + "avatar3.png"
+										)
+									}
+								/>
+								<div className="cover_edit_Container">
+									<EditCoverPicture />
+								</div>
+							</>
 						)}
 					</>
 				)}
-				<img
-					className="profileUserImg"
-					src={
-						user?.profilePicture
-							? IMG_URL + user?.profilePicture
-							: IMG_URL + "avatar2.png"
-					}
-					alt=""
-					onClick={() =>
-						openPhotoViewer(
+
+				<div className="profile_image_container">
+					<img
+						className={
+							userId !== paramId ? "profileUserImg_friend" : "profileUserImg"
+						}
+						src={
 							user?.profilePicture
-								? IMG_URL + user?.profilePicture
+								? user?.profilePicture
 								: IMG_URL + "avatar2.png"
-						)
-					}
-				/>
+						}
+						alt=""
+						onClick={() =>
+							openPhotoViewer(
+								user?.profilePicture
+									? user?.profilePicture
+									: IMG_URL + "avatar2.png"
+							)
+						}
+					/>
+
+					<div className="EditProfilePicture_container">
+						<EditProfilePicture />
+					</div>
+				</div>
 			</div>
+			<div className="profile_bio_username">
+				<h4
+					className={
+						userId !== paramId ? "profileInfoName_friend" : "profileInfoName"
+					}
+				>{`${user?.firstname} ${user?.lastname}`}</h4>
+				<div className="rightbarInfoItem_bio">
+					<span className="profileInfoDesc_key">Bio:</span>
+					<span className="profileInfoDesc_value">{user?.bio}</span>
+				</div>
+			</div>
+			<hr className="profile_bio_username_hr"></hr>
+			<button className="profile_personal_infos" onClick={handleEducation}>
+				{user?.username}: Informations
+			</button>
+			<hr className="profile_bio_username_hr"></hr>
 			<div className="profile_detials">
-				<div className="profileInfo">
-					<h4 className="profileInfoName">Hobbies</h4>
-					{user?.hobbies?.map((hob) => (
-						<span className="profileInfoDesc" key={hob}>
-							{hob}
-						</span>
-					))}
-				</div>
-				<div className="profileInfo">
-					<h4 className="profileInfoName info_name">{user?.username}</h4>
-					<div className="rightbarInfoItem">
-						<span className="profileInfoDesc_key">Bio:</span>
-						<span className="profileInfoDesc_value">{user?.bio}</span>
+				{isEduOpen && (
+					<div className="profile_user_container">
+						<div className="profileInfo">
+							<header className="profileInfoName">Contacts</header>
+							{user?.contacts?.emailAdress?.length > 0 ? (
+								user?.contacts?.emailAdress?.map((con) => (
+									<span className="profileInfoDesc" key={con}>
+										{`email: ${con}`}
+									</span>
+								))
+							) : (
+								<span className="profileInfoDesc">
+									{user?._id === paramId
+										? `${user?.username} Update Your Contact`
+										: `${user?.username} Has Not Updated ${sex} Contact`}
+								</span>
+							)}
+						</div>
+						<div className="profileInfo">
+							<header className="profileInfoName">
+								Lives In, Status & Job
+							</header>
+							<div className="rightbarInfoItem">
+								<span className="profileInfoDesc_key">Relationship:</span>
+								<span className="profileInfoDesc_value">
+									{user?.relationship}
+								</span>
+							</div>
+							<div className="rightbarInfoItem">
+								<span className="profileInfoDesc_key">Country:</span>
+								<span className="profileInfoDesc_value">
+									{user?.lives?.currentCountry}
+								</span>
+							</div>
+							<div className="rightbarInfoItem">
+								<span className="profileInfoDesc_key">State:</span>
+								<span className="profileInfoDesc_value">
+									{user?.lives?.currentState}
+								</span>
+							</div>
+							<div className="rightbarInfoItem">
+								<span className="profileInfoDesc_key">City:</span>
+								<span className="profileInfoDesc_value">
+									{user?.lives?.currentCity}
+								</span>
+							</div>
+							<div className="rightbarInfoItem">
+								<span className="profileInfoDesc_key">Street:</span>
+								<span className="profileInfoDesc_value">
+									{user?.lives?.currentStreet}
+								</span>
+							</div>
+							<div className="rightbarInfoItem">
+								<span className="profileInfoDesc_key">Job:</span>
+								<span className="profileInfoDesc_value">{user?.job}</span>
+							</div>
+							<div className="rightbarInfoItem">
+								<span className="profileInfoDesc_key">Working:</span>
+								<span className="profileInfoDesc_value">{user?.workAt}</span>
+							</div>
+						</div>
+						<div className="profileInfo">
+							<header className="profileInfoName">Education</header>
+							<div className="profile_edu">
+								<span className="profileInfoDesc_key">University: </span>
+								<span className="profileInfoDesc_value">
+									{user?.education?.university}
+								</span>
+							</div>
+							<div className="profile_edu">
+								<span className="profileInfoDesc_key">Colloege: </span>
+								<span className="profileInfoDesc_value">
+									{user?.education?.college}
+								</span>
+							</div>
+							<div className="profile_edu">
+								<span className="profileInfoDesc_key">Degree: </span>
+								<span className="profileInfoDesc_value">
+									{user?.education?.degree}
+								</span>
+							</div>
+							<div className="profile_edu">
+								<span className="profileInfoDesc_key">Courses: </span>
+								<span className="profileInfoDesc_value">
+									{user?.education?.fieldOfStudy}
+								</span>
+							</div>
+							<div className="profile_edu">
+								<span className="profileInfoDesc_key">Start Year: </span>
+								<span className="profileInfoDesc_value">
+									{user?.education?.startYear}
+								</span>
+							</div>
+							<div className="profile_edu">
+								<span className="profileInfoDesc_key">End Year: </span>
+								<span className="profileInfoDesc_value">
+									{user?.education?.endYear}
+								</span>
+							</div>
+						</div>
+						<div className="profileInfo">
+							<header className="profileInfoName">Address</header>
+							<div className="profile_edu">
+								<div className="profile_edu">
+									<span className="profileInfoDesc_key">Country: </span>
+									<span className="profileInfoDesc_value">
+										{user?.address?.country}
+									</span>
+								</div>
+								<div className="profile_edu">
+									<span className="profileInfoDesc_key">State: </span>
+									<span className="profileInfoDesc_value">
+										{user?.address?.state}
+									</span>
+								</div>
+								<div className="profile_edu">
+									<span className="profileInfoDesc_key">City: </span>
+									<span className="profileInfoDesc_value">
+										{user?.address?.city}
+									</span>
+								</div>
+								<div className="profile_edu">
+									<span className="profileInfoDesc_key">Street: </span>
+									<span className="profileInfoDesc_value">
+										{user?.address?.street}
+									</span>
+								</div>
+								<div className="profile_edu">
+									<span className="profileInfoDesc_key">Postal Code: </span>
+									<span className="profileInfoDesc_value">
+										{user?.address?.postalCode}
+									</span>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div className="rightbarInfoItem">
-						<span className="profileInfoDesc_key">Relationship:</span>
-						<span className="profileInfoDesc_value">{user?.relationship}</span>
-					</div>
-					<div className="rightbarInfoItem">
-						<span className="profileInfoDesc_key">Job:</span>
-						<span className="profileInfoDesc_value">{user?.job}</span>
-					</div>
-					<div className="rightbarInfoItem">
-						<span className="profileInfoDesc_key">Working:</span>
-						<span className="profileInfoDesc_value">{user?.workAt}</span>
-					</div>
-				</div>
-				<div className="profileInfo">
-					<h4 className="profileInfoName">Education</h4>
-					<div className="profile_edu">
-						<span className="profileInfoDesc_key">University: </span>
-						<span className="profileInfoDesc_value">
-							{user?.education?.university}
-						</span>
-					</div>
-					<div className="profile_edu">
-						<span className="profileInfoDesc_key">Colloege: </span>
-						<span className="profileInfoDesc_value">
-							{user?.education?.college}
-						</span>
-					</div>
-					<div className="profile_edu">
-						<span className="profileInfoDesc_key">Degree: </span>
-						<span className="profileInfoDesc_value">
-							{user?.education?.degree}
-						</span>
-					</div>
-					<div className="profile_edu">
-						<span className="profileInfoDesc_key">Courses: </span>
-						<span className="profileInfoDesc_value">
-							{user?.education?.fieldOfStudy}
-						</span>
-					</div>
-					<div className="profile_edu">
-						<span className="profileInfoDesc_key">Start Year: </span>
-						<span className="profileInfoDesc_value">
-							{user?.education?.startYear}
-						</span>
-					</div>
-					<div className="profile_edu">
-						<span className="profileInfoDesc_key">End Year: </span>
-						<span className="profileInfoDesc_value">
-							{user?.education?.endYear}
-						</span>
-					</div>
-				</div>
+				)}
 			</div>
 		</div>
 	);

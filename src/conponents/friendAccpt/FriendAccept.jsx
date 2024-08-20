@@ -13,22 +13,36 @@ const FriendAccept = () => {
 	});
 
 	return (
-		<div className="friendAccept">
-			{currentUser?.friendReceiver?.length ? (
-				<>
-					<p className="friendAccept_title">
-						{currentUser?.friendReceiver.length === 1
-							? `${currentUser?.friendReceiver.length} Friend Request`
-							: "Friend Requests"}
-					</p>
-					{currentUser?.friendReceiver?.map((requestId) => (
-						<AcceptFriends key={requestId} requestId={requestId} />
-					))}
-				</>
-			) : (
-				"No Friend Request"
+		<>
+			{currentUser?.friendReceiver?.length === 0 ? null : (
+				<div className="friendAccept">
+					{currentUser?.friendReceiver?.length ? (
+						<>
+							<header className="friendAccept_title">
+								<span className="friendAccept_length_text">
+									{currentUser?.friendReceiver.length}
+								</span>
+
+								<span className="friendAccept_length_text">
+									{currentUser?.friendReceiver.length === 1
+										? `${currentUser?.friendReceiver.length} Friend Request`
+										: "Friend Requests"}
+								</span>
+							</header>
+							{currentUser?.friendReceiver?.map((friendId) => (
+								<AcceptFriends
+									key={friendId}
+									friendId={friendId}
+									userId={currentUser?._id}
+								/>
+							))}
+						</>
+					) : (
+						"No Friend Request"
+					)}
+				</div>
 			)}
-		</div>
+		</>
 	);
 };
 

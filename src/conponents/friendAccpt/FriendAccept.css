@@ -11,29 +11,54 @@
 	background-color: var(--BGCOLORS);
 }
 
-/* .nav_addFriend {
-	border: none;
-	color: #bab6b6;
-	font-size: 15px;
-	background: none;
-	cursor: pointer;
-} */
+.friendAccept_title {
+	padding: 0.5rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+.friendAccept_length_text {
+	color: #000;
+}
 .acceptFriends_container {
-	background-color: #151515;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	background-color: #d1caca;
 	margin: 0.5rem 0;
 	border-radius: 0.2rem;
 }
 
+.acceptFriends_username {
+	width: 100%;
+	padding: 0 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+}
+
+.acceptFriends_username_name {
+	font-size: 15px;
+	color: #5e5c5c;
+}
+
 .acceptFriends_lists {
-	display: grid;
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
 	gap: 1rem;
-	padding: 0.5rem;
-	margin-left: 1rem;
-	margin-top: 1rem;
+	padding: 0 0.5rem;
 }
 
 .acceptFriends_top {
 	display: flex;
+	gap: 1rem;
+}
+
+.acceptFriends_image {
+	flex: 80%;
+	display: flex;
+	align-items: center;
 	gap: 1rem;
 }
 
@@ -46,16 +71,12 @@
 
 .acceptFriends_name {
 	font-size: 15px;
-	color: #bab6b6;
-}
-
-.acceptFriends_image {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	color: #000;
+	font-weight: 800;
 }
 
 .acceptFriends_btn {
+	flex: 20%;
 	display: flex;
 	align-items: center;
 }
@@ -66,4 +87,14 @@
 	object-fit: cover;
 	border-radius: 50%;
 	border: 2px solid rgb(95, 94, 94);
+}
+
+@media screen and (max-width: 900px) {
+}
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 480px) {
+}
+@media screen and (max-width: 320px) {
 }

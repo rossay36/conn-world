@@ -1,6 +1,6 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Layout from "./conponents/Layout";
-import Public from "./conponents/Public";
+import Public from "./conponents/puplic/Public";
 import Login from "./features/auth/Login";
 import Register from "./features/auth/Register";
 import Home from "./features/homes/Home";
@@ -10,6 +10,10 @@ import Profile from "./features/profile/Profile";
 import Prefetch from "./features/auth/Prefetch";
 import PersistLogin from "./features/auth/PersistLogin";
 import { ROLES } from "./config/roles";
+import PersonsDetails from "./conponents/personsDetails/PersonsDetails";
+import Messanger from "./features/messenger/Messanger";
+import UserFriendRequests from "./features/homes/friendRequsts/UserFriendRequests";
+import SinglePost from "./features/homes/singlePost/SinglePost";
 
 const App = () => {
 	return (
@@ -26,8 +30,17 @@ const App = () => {
 							<Route index element={<Home />} />
 							<Route path=":userId" element={<Profile />} />
 
+							<Route path="post/:postId" element={<SinglePost />} />
+
+							<Route path="persons" element={<PersonsDetails />} />
+							<Route path="friend-request" element={<UserFriendRequests />} />
+							{/* Messanger Route */}
+							<Route path="messanger" element={<Messanger />}>
+								<Route path=":recipientId" element={<Messanger />} />
+							</Route>
 							{/* End of Profile Route */}
 						</Route>
+
 						{/* End of HomeLayout */}
 					</Route>
 				</Route>

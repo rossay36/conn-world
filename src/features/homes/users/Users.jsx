@@ -3,8 +3,13 @@ import { RingLoader } from "react-spinners";
 import FriendsRequest from "../../../conponents/friendsRequest/FriendsRequest";
 import { useGetUsersQuery } from "../../profile/usersApiSlice";
 import useAuth from "../../../hooks/useAuth";
+import { selectShowfriendsOrFeedComponent } from "../../auth/authSlice";
+import { useSelector } from "react-redux";
 
 const Users = () => {
+	const showfriendsOrFeedComponent = useSelector(
+		selectShowfriendsOrFeedComponent
+	);
 	// const { userId } = useAuth();
 	const {
 		data: friendRequests,
@@ -40,7 +45,22 @@ const Users = () => {
 		return null;
 	}
 
-	return <div className="users_list">{content}</div>;
+	return (
+		<div
+			className={showfriendsOrFeedComponent ? "users_list_toggle" : "user_list"}
+		>
+			<div className="users_list_addFriends">
+				<h3 className="users_list_addFriends_text">
+					Follow And Unfollow Frinds List
+				</h3>
+				<input
+					className="users_list_addFriends_input"
+					placeholder="Search for Frineds"
+				/>
+			</div>
+			{content}
+		</div>
+	);
 };
 
 export default Users;
