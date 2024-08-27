@@ -6,7 +6,7 @@ import PhotoAndVideoeViewer from "../../features/auth/PhotoAndVideoeViewer";
 
 const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
-const ProfileUsersFriends = ({ currentUser }) => {
+const ProfileUsersFriends = ({ userFriend }) => {
 	const [mediaTypes, setMediaTypes] = useState({});
 	const [isMuted, setIsMuted] = useState(true); // Default to muted
 	const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const ProfileUsersFriends = ({ currentUser }) => {
 
 	useEffect(() => {
 		const fetchMediaTypes = async () => {
-			const validMediaUrls = currentUser?.media
+			const validMediaUrls = userFriend?.media
 				?.map((mediaItem) => mediaItem.url)
 				.filter((url) => url); // Extract URLs
 
@@ -42,10 +42,10 @@ const ProfileUsersFriends = ({ currentUser }) => {
 			}
 		};
 
-		if (currentUser?.media) {
+		if (userFriend?.media) {
 			fetchMediaTypes();
 		}
-	}, [currentUser]);
+	}, [userFriend]);
 
 	const toggleMute = () => {
 		setIsMuted(!isMuted);
@@ -59,7 +59,7 @@ const ProfileUsersFriends = ({ currentUser }) => {
 	return (
 		<>
 			<div className="rightbarFollowings">
-				{currentUser?.media?.map((mediaItem, index) => {
+				{userFriend?.media?.map((mediaItem, index) => {
 					const mediaUrl = mediaItem.url;
 					const mediaType =
 						mediaTypes[mediaUrl] || mediaItem.type || "image/jpeg"; // Fallback to mediaItem.type if available

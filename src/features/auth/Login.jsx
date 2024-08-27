@@ -7,6 +7,7 @@ import { useLoginMutation, useRefreshMutation } from "./authApiSlice";
 import usePersist from "../../hooks/usePersist";
 import "./Login.css";
 import { TbWorldHeart } from "react-icons/tb";
+import EmptyOrErroCOmponent from "../../conponents/emptyOrErroCOmponent/EmptyOrErroCOmponent";
 
 // const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
@@ -59,7 +60,17 @@ const Login = () => {
 
 	const errClass = errMsg ? "errmsg" : "offscreen";
 
-	if (isLoading) return <ClipLoader color={"#FFF"} />;
+	if (isLoading) {
+		return (
+			<div>
+				<EmptyOrErroCOmponent
+					title={"Login..."}
+					desc={"Please Await"}
+					icons={<ClipLoader color="#fff" />}
+				/>
+			</div>
+		);
+	}
 
 	return (
 		// login_section

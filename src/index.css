@@ -65,7 +65,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	font-family: "Nunito", sans-serif;
 	min-height: 100vh;
-	background-color: var(--BGCOLOR);
+	background-color: rgba(0, 0, 0, 0.97);
 	color: var(--COLOR);
 	background-image: url("/images/social-img.png");
 	background-size: cover;

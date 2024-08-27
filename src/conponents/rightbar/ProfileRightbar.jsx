@@ -52,15 +52,15 @@ const ProfileRightbar = ({
 					</div>
 				)}
 			</div>
-			<h4 className="rightbarTitle">{currentUser?.username} albium</h4>
+			<h4 className="rightbarTitle">{userFriend?.username} albium</h4>
 			<div className="rightbarFollowings">
-				{currentUser?.media?.length ? (
+				{userFriend?.media?.length ? (
 					<ProfileUsersFriends
-						currentUser={currentUser}
+						userFriend={userFriend}
 						scrollToPictures={scrollToPictures}
 					/>
 				) : (
-					<p>you don't have current Users add friends</p>
+					<p>{`${userFriend?.username} don't have a current Pictures/Vidoes`}</p>
 				)}
 			</div>
 		</>

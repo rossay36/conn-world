@@ -45,8 +45,6 @@ const SinglePost = () => {
 
 	// comming from post logics, like handles and some comment
 	const [comments, setComments] = useState([]);
-	const [photoViewerOpen, setPhotoViewerOpen] = useState(false);
-	const [selectedPhoto, setSelectedPhoto] = useState(null);
 
 	const scrollToPictures = () => {
 		profileSectionRef.current.scrollIntoView({
@@ -61,16 +59,6 @@ const SinglePost = () => {
 			setComments(post.comments); // Ensure comments is set to an empty array if undefined
 		}
 	}, [post]); // Only depend on post
-
-	const openPhotoViewer = (imageUrl) => {
-		setSelectedPhoto(imageUrl);
-		setPhotoViewerOpen(true);
-	};
-
-	const closePhotoViewer = () => {
-		setSelectedPhoto(null);
-		setPhotoViewerOpen(false);
-	};
 
 	if (isLoading) {
 		return (
@@ -148,7 +136,6 @@ const SinglePost = () => {
 									commentId={commentId}
 									postId={postId}
 									post={post}
-									openPhotoViewer={openPhotoViewer}
 									scrollToPictures={scrollToPictures}
 									comments={comments}
 								/>
@@ -161,18 +148,6 @@ const SinglePost = () => {
 			<div className="singlePost_rightbar">
 				<Rigthbar />
 			</div>
-			{photoViewerOpen && (
-				<div className={"photoViewerModal"}>
-					<img
-						src={selectedPhoto}
-						alt="Expanded Photo"
-						className="expandedPhoto"
-					/>
-					<button onClick={closePhotoViewer} className="closeButton">
-						Close
-					</button>
-				</div>
-			)}
 		</div>
 	);
 };

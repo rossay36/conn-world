@@ -224,15 +224,15 @@
 	.singlePost_container {
 		max-width: 100%;
 		flex: 5.5;
-		min-height: 70vh;
+		min-height: 55vh;
 	}
 
 	.singlePost_wrapp {
-		height: 70vh;
+		height: 55vh;
 	}
 
 	.SingPost_scroll {
-		height: 68.5vh;
+		max-height: 55vh;
 	}
 	.singlePost_rightbar {
 		flex: 3.2;

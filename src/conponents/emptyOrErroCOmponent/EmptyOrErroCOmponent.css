@@ -1,0 +1,35 @@
+.emptyOrErroCOmponent {
+	width: 100%;
+	min-height: 100vh;
+	border-radius: 10px;
+	background-color: var(--BGCOLORS);
+	box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.829);
+	margin: 0.5rem 0;
+	z-index: 0;
+}
+
+.emptyOrErroCOmponent_container {
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	align-items: start;
+	justify-content: center;
+	color: #fff;
+	padding-top: 6rem;
+}
+
+.emptyOrErroCOmponent_icon {
+	font-size: 30px;
+	margin-left: 10px;
+	color: yellow;
+}
+.emptyOrErroCOmponent_desc {
+	font-size: 15px;
+	margin-left: 10px;
+	color: yellow;
+}
+.emptyOrErroCOmponent_icons {
+	font-size: 30px;
+	margin-left: 10px;
+	color: #fff;
+}

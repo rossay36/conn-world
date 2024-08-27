@@ -180,14 +180,14 @@ const ProfilePictures = ({ profileSectionRef, user, openPhotoViewer }) => {
 									src={
 										user?.coverPicture
 											? user?.coverPicture
-											: "/images/avatar2.png"
+											: "/images/avatar3.png"
 									}
 									alt=""
 									onClick={() =>
 										openPhotoViewer(
 											user?.coverPicture
 												? user?.coverPicture
-												: "/images/avatar2.png"
+												: "/images/avatar3.png"
 										)
 									}
 								/>

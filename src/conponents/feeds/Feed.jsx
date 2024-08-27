@@ -6,13 +6,17 @@ import "./feed.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import ProfilePost from "../post/ProfilePost";
 import { useGetUsersQuery } from "../../features/profile/usersApiSlice";
+import { useParams } from "react-router-dom";
+import EmptyOrErroCOmponent from "../emptyOrErroCOmponent/EmptyOrErroCOmponent";
+import { FaFrownOpen } from "react-icons/fa";
 
 const Feed = ({ scrollToPictures, profilePostId }) => {
 	const { userId } = useAuth();
 	const feedRef = useRef(null);
+	const { userId: friendId } = useParams();
 
 	const {
-		data: posts,
+		data: post,
 		isLoading: postsLoading,
 		isError: postsError,
 		isSuccess: postsSuccess,
@@ -25,9 +29,11 @@ const Feed = ({ scrollToPictures, profilePostId }) => {
 
 	const { user } = useGetUsersQuery("usersList", {
 		selectFromResult: ({ data }) => ({
-			user: data?.entities[userId],
+			user: data?.entities[friendId],
 		}),
 	});
+
+	console.log(user?.posts);
 
 	const [isShareVisible, setIsShareVisible] = useState(true);
 	const [lastScrollTop, setLastScrollTop] = useState(0);
@@ -72,11 +78,11 @@ const Feed = ({ scrollToPictures, profilePostId }) => {
 	}
 
 	if (postsSuccess) {
-		const { ids } = posts || {};
+		const { ids } = post || {};
 
 		const postContent = profilePostId ? (
-			ids?.length ? (
-				ids?.map((postId) => (
+			user?.posts?.length ? (
+				user?.posts.map((postId) => (
 					<ProfilePost
 						key={postId}
 						postId={postId}
@@ -86,7 +92,7 @@ const Feed = ({ scrollToPictures, profilePostId }) => {
 					/>
 				))
 			) : (
-				<p style={{ color: "#fff" }}>"No Post To Display"</p>
+				<EmptyOrErroCOmponent title={"No Post Found!"} icon={<FaFrownOpen />} />
 			)
 		) : (
 			ids?.map((postId) => (
@@ -107,31 +113,17 @@ const Feed = ({ scrollToPictures, profilePostId }) => {
 		);
 	}
 
-	if (!posts?.ids?.length) {
+	if (!post?.ids?.length) {
 		content = (
-			<div
-				style={{
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "center",
-					flexDirection: "column",
-					gap: "1rem",
-				}}
-			>
-				<h3>No Post To Display</h3>
-				<div
-					style={{
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-						gap: "1rem",
-						color: "GrayText",
-					}}
-				>
-					<p>Check your network connection or reload... </p>
-					<ClipLoader color="#fff" />
-				</div>
-			</div>
+			<>
+				{postsError && (
+					<EmptyOrErroCOmponent
+						title={"No Post To Display"}
+						desc={"Check your network connection"}
+						icons={<ClipLoader color="#fff" />}
+					/>
+				)}
+			</>
 		);
 	}
 

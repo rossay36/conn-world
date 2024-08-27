@@ -116,52 +116,45 @@ const ProfilePost = ({ postId, scrollToPictures, profilePostId }) => {
 	}
 
 	return (
-		<>
-			{profilePostId === post?.user && (
-				<div className="post">
-					<div className="postWrapper">
-						<PostDetails post={post} scrollToPictures={scrollToPictures} />
-						<div className="postBottom">
-							<PostLikes
-								post={post}
-								postId={postId}
-								scrollToPictures={scrollToPictures}
-							/>
-							<>
-								{isOpen && (
-									<div
-										className="PostComment_container"
-										ref={commentContainerRef}
-									>
-										<p className="postComment_topbar">{`${post?.username} Post And Comments`}</p>
-										<div className="postComment_container_top">
-											<PostComment
-												post={post}
-												scrollToPictures={scrollToPictures}
-												isOpen={isOpen}
-												comments={comments}
-											/>
-										</div>
-										<CommentForm post={post} />
-									</div>
-								)}
-								<div className="commment__toggle" onClick={toggleDropdown}>
-									<span className="commment_text_comment">
-										<p>{post?.comments?.length}</p>
-										<MdOutlineComment className="commment_icons" />
-										{isOpen ? (
-											<IoIosArrowUp className="comment_icons" />
-										) : (
-											<IoIosArrowDown className="comment_icons" />
-										)}
-									</span>
+		<div className="post">
+			<div className="postWrapper">
+				<PostDetails post={post} scrollToPictures={scrollToPictures} />
+				<div className="postBottom">
+					<PostLikes
+						post={post}
+						postId={postId}
+						scrollToPictures={scrollToPictures}
+					/>
+					<>
+						{isOpen && (
+							<div className="PostComment_container" ref={commentContainerRef}>
+								<p className="postComment_topbar">{`${post?.username} Post And Comments`}</p>
+								<div className="postComment_container_top">
+									<PostComment
+										post={post}
+										scrollToPictures={scrollToPictures}
+										isOpen={isOpen}
+										comments={comments}
+									/>
 								</div>
-							</>
+								<CommentForm post={post} />
+							</div>
+						)}
+						<div className="commment__toggle" onClick={toggleDropdown}>
+							<span className="commment_text_comment">
+								<p>{post?.comments?.length}</p>
+								<MdOutlineComment className="commment_icons" />
+								{isOpen ? (
+									<IoIosArrowUp className="comment_icons" />
+								) : (
+									<IoIosArrowDown className="comment_icons" />
+								)}
+							</span>
 						</div>
-					</div>
+					</>
 				</div>
-			)}
-		</>
+			</div>
+		</div>
 	);
 };
 
