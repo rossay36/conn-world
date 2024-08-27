@@ -4,6 +4,7 @@
 	display: flex;
 	height: 77vh;
 	overflow-y: scroll;
+	background-color: rgba(0, 0, 0, 0.97);
 }
 
 .profile::-webkit-scrollbar {
