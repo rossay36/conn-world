@@ -10,6 +10,14 @@ export default defineConfig({
 			input: {
 				main: "./index.html",
 			},
+			output: {
+				manualChunks: {
+					// Example: Create a chunk for vendor libraries
+					vendor: ["react", "react-dom"],
+				},
+			},
 		},
+		chunkSizeWarningLimit: 1000, // Increase the limit to suppress warnings for larger chunks
 	},
+	assetsInclude: ["**/*.woff", "**/*.woff2"], // Ensure font files are included in the build
 });
