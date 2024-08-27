@@ -12,12 +12,12 @@ export default defineConfig({
 			},
 			output: {
 				manualChunks: {
-					// Example: Create a chunk for vendor libraries
 					vendor: ["react", "react-dom"],
 				},
 			},
 		},
-		chunkSizeWarningLimit: 1000, // Increase the limit to suppress warnings for larger chunks
+		chunkSizeWarningLimit: 1000,
 	},
-	assetsInclude: ["**/*.woff", "**/*.woff2"], // Ensure font files are included in the build
+	assetsInclude: ["**/*.woff", "**/*.woff2"],
+	base: "/", // Ensure this is correct for your deployment
 });
