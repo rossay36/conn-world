@@ -15,99 +15,35 @@ import SinglePostForm from "./SinglePostForm";
 import { useGetCommentsQuery } from "../commentApiSlice";
 import SinglePostComment from "./SinglePostComment";
 import MediaImageAndVideoController from "../../../conponents/mediaImageAndVideoController/MediaImageAndVideoController";
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+import Comments from "../../../conponents/comment/Comments";
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const SinglePost = () => {
 	const { postId } = useParams();
 	const { userId } = useAuth();
+
+	const {
+		data: comment,
+		isLoading: postsLoading,
+		isError: postsError,
+		isSuccess: postsSuccess,
+		error: postsErrorData,
+	} = useGetCommentsQuery("postsList", {
+		pollingInterval: 3000,
+		refetchOnFocus: true,
+		refetchOnMountOrArgChange: true,
+	});
 
 	const { post, isLoading, error, refetch } = useGetPostsQuery("postsList", {
 		selectFromResult: ({ data }) => ({
 			post: data?.entities[postId],
 		}),
 	});
-
 	const handleCommentAdded = () => {
 		refetch(); // Refetch comments to get the latest updates
 	};
-	const [mediaTypes, setMediaTypes] = useState({});
-	const [isMuted, setIsMuted] = useState(true); // Default to muted
-	const videoRefs = useRef({}); // To keep track of video elements
-
-	useEffect(() => {
-		// Fetch media types from Firebase Storage
-		const fetchMediaTypes = async () => {
-			if (!post?.image || !Array.isArray(post.image)) {
-				console.warn("No images available or post.image is not an array.");
-				return;
-			}
-			const mediaTypePromises = post?.image?.map(async (mediaUrl) => {
-				const storage = getStorage();
-				const storageRef = ref(storage, mediaUrl);
-				try {
-					const metadata = await getMetadata(storageRef);
-					return { url: mediaUrl, type: metadata.contentType };
-				} catch (error) {
-					console.error("Error fetching metadata:", error);
-					return { url: mediaUrl, type: null };
-				}
-			});
-			const mediaTypeResults = await Promise.all(mediaTypePromises);
-			const mediaTypesMap = mediaTypeResults.reduce((acc, { url, type }) => {
-				acc[url] = type;
-				return acc;
-			}, {});
-			setMediaTypes(mediaTypesMap);
-		};
-
-		fetchMediaTypes();
-	}, [post?.image]);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					const video = videoRefs.current[entry.target.src];
-					if (video) {
-						if (entry.isIntersecting) {
-							video.play();
-							video.muted = isMuted;
-						} else {
-							video.pause();
-							video.currentTime = 0; // Optional: reset the video to the beginning
-						}
-					}
-				});
-			},
-			{ threshold: 0.5 } // Play video if at least 50% of it is visible
-		);
-
-		Object.values(videoRefs.current).forEach((video) => {
-			if (video) observer.observe(video);
-		});
-
-		return () => {
-			Object.values(videoRefs.current).forEach((video) => {
-				if (video) observer.unobserve(video);
-			});
-		};
-	}, [post?.image, isMuted]); // Re-run when `isMuted` changes
-
-	const handleSingleMute = () => {
-		setIsMuted((prevMuted) => {
-			const newMuted = !prevMuted;
-			// Update all videos to the new mute state
-			Object.values(videoRefs.current).forEach((video) => {
-				if (video) {
-					video.muted = newMuted;
-				}
-			});
-			return newMuted;
-		});
-	};
 
 	// comming from post logics, like handles and some comment
-
 	const [comments, setComments] = useState([]);
 	const [photoViewerOpen, setPhotoViewerOpen] = useState(false);
 	const [selectedPhoto, setSelectedPhoto] = useState(null);
@@ -170,7 +106,7 @@ const SinglePost = () => {
 										src={
 											post?.profilePicture
 												? post?.profilePicture
-												: IMG_URL + "/avatar2.png"
+												: "/images/avatar2.png"
 										}
 										alt=""
 									/>
@@ -206,13 +142,17 @@ const SinglePost = () => {
 							</>
 						</div>
 						<div className="singlePost_comment_wrapper">
-							<SinglePostComment
-								postId={postId}
-								post={post}
-								openPhotoViewer={openPhotoViewer}
-								scrollToPictures={scrollToPictures}
-								comments={comments}
-							/>
+							{post?.comments?.map((commentId) => (
+								<Comments
+									key={commentId}
+									commentId={commentId}
+									postId={postId}
+									post={post}
+									openPhotoViewer={openPhotoViewer}
+									scrollToPictures={scrollToPictures}
+									comments={comments}
+								/>
+							))}
 						</div>
 					</div>
 					<SinglePostForm post={post} handleCommentAdded={handleCommentAdded} />

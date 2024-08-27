@@ -4,23 +4,29 @@ const authSlice = createSlice({
 	name: "auth",
 	initialState: {
 		token: null,
+		showComponentA: false,
+		showfriendsOrFeedComponent: false,
+		showReqest: false,
 	},
 	reducers: {
 		setCredentials: (state, action) => {
 			const { accessToken } = action.payload;
 			state.token = accessToken;
 		},
-		logOut: (state, action) => {
+		logOut: (state) => {
 			state.token = null;
+			state.showComponentA = false;
+			state.showfriendsOrFeedComponent = false;
+			state.showReqest = false;
 		},
 		toggleComponent: (state) => {
-			state.showComponentA = !state.showComponentA; // Toggle between true and false
+			state.showComponentA = !state.showComponentA;
 		},
 		toggleFrindAndFeedComponent: (state) => {
-			state.showfriendsOrFeedComponent = !state.showfriendsOrFeedComponent; // Toggle between true and false
+			state.showfriendsOrFeedComponent = !state.showfriendsOrFeedComponent;
 		},
 		toggleRequest: (state) => {
-			state.showReqest = !state.showReqest; // Toggle between true and false
+			state.showReqest = !state.showReqest;
 		},
 	},
 });

@@ -14,6 +14,7 @@ import PostLikes from "../comment/PostLikes";
 import { RingLoader } from "react-spinners";
 import CommentForm from "../commentForm/CommentForm";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { MdOutlineComment } from "react-icons/md";
 
 const ProfilePost = ({ postId, scrollToPictures, profilePostId }) => {
 	const { post, isLoading, error } = useGetPostsQuery("postsList", {
@@ -96,16 +97,6 @@ const ProfilePost = ({ postId, scrollToPictures, profilePostId }) => {
 		setLikersVisible((prev) => !prev);
 	};
 
-	const openPhotoViewer = (imageUrl) => {
-		setSelectedPhoto(imageUrl);
-		setPhotoViewerOpen(true);
-	};
-
-	const closePhotoViewer = () => {
-		setSelectedPhoto(null);
-		setPhotoViewerOpen(false);
-	};
-
 	if (isLoading) {
 		return (
 			<div
@@ -129,48 +120,35 @@ const ProfilePost = ({ postId, scrollToPictures, profilePostId }) => {
 			{profilePostId === post?.user && (
 				<div className="post">
 					<div className="postWrapper">
-						{/* {post like component containing profile picturea and post images } */}
-						<PostDetails
-							post={post}
-							scrollToPictures={scrollToPictures}
-							openPhotoViewer={openPhotoViewer}
-						/>
+						<PostDetails post={post} scrollToPictures={scrollToPictures} />
 						<div className="postBottom">
-							{/* {post like component } */}
 							<PostLikes
 								post={post}
 								postId={postId}
 								scrollToPictures={scrollToPictures}
 							/>
 							<>
-								<div
-									className="PostComment_container"
-									ref={commentContainerRef}
-								>
-									{isOpen && (
-										<>
-											<div className="post_comment_wrapper">
-												<PostComment
-													post={post}
-													openPhotoViewer={openPhotoViewer}
-													scrollToPictures={scrollToPictures}
-													isOpen={isOpen}
-													comments={comments}
-												/>
-											</div>
-											<CommentForm post={post} />
-										</>
-									)}
-								</div>
-								<div className="commment__toggle">
-									<span
-										className="commment_text_comment"
-										onClick={toggleDropdown}
+								{isOpen && (
+									<div
+										className="PostComment_container"
+										ref={commentContainerRef}
 									>
+										<p className="postComment_topbar">{`${post?.username} Post And Comments`}</p>
+										<div className="postComment_container_top">
+											<PostComment
+												post={post}
+												scrollToPictures={scrollToPictures}
+												isOpen={isOpen}
+												comments={comments}
+											/>
+										</div>
+										<CommentForm post={post} />
+									</div>
+								)}
+								<div className="commment__toggle" onClick={toggleDropdown}>
+									<span className="commment_text_comment">
 										<p>{post?.comments?.length}</p>
-										<p>
-											{post?.comments?.length === 1 ? "comment " : "comments "}
-										</p>
+										<MdOutlineComment className="commment_icons" />
 										{isOpen ? (
 											<IoIosArrowUp className="comment_icons" />
 										) : (
@@ -181,18 +159,6 @@ const ProfilePost = ({ postId, scrollToPictures, profilePostId }) => {
 							</>
 						</div>
 					</div>
-					{photoViewerOpen && (
-						<div className={"photoViewerModal"}>
-							<img
-								src={selectedPhoto}
-								alt="Expanded Photo"
-								className="expandedPhoto"
-							/>
-							<button onClick={closePhotoViewer} className="closeButton">
-								Close
-							</button>
-						</div>
-					)}
 				</div>
 			)}
 		</>

@@ -1,6 +1,6 @@
 import { useGetUsersQuery } from "../../features/profile/usersApiSlice";
 import "./Online.css";
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const Online = ({ friendsId }) => {
 	const { userFriends, isLoading, isError, error } = useGetUsersQuery(
@@ -19,7 +19,7 @@ const Online = ({ friendsId }) => {
 					src={
 						userFriends?.profilePicture
 							? userFriends?.profilePicture
-							: IMG_URL + "avatar2.png"
+							: "/images/avatar2.png"
 					}
 					alt=""
 				/>

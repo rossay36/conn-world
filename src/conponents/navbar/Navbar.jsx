@@ -18,7 +18,7 @@ import {
 	toggleRequest,
 } from "../../features/auth/authSlice";
 import { useState } from "react";
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const Navbar = () => {
 	const { userId } = useAuth();
@@ -27,7 +27,7 @@ const Navbar = () => {
 	const { "*": personParam } = useParams(); // Destructure '*'
 
 	const location = useLocation();
-	const isMessengerPage = location.pathname.includes("messanger");
+	const isMessengerPage = location.pathname.includes("messenger");
 
 	const [shareDrop, setShareDrop] = useState(false);
 	const [smallMediaQeryShare, setSmallMediaQeryShare] = useState(false);
@@ -126,7 +126,7 @@ const Navbar = () => {
 							)}
 							{showReqest && <FriendAccept />}
 						</div>
-						<Link to="/home/messanger">
+						<Link to="/home/messenger">
 							<div className="nav_list_icon">
 								<MdOutlineChat
 									title="chat notifications"
@@ -148,7 +148,7 @@ const Navbar = () => {
 								src={
 									user?.profilePicture
 										? user?.profilePicture
-										: IMG_URL + "avatar2.png"
+										: "/images/avatar2.png"
 								}
 								alt="profile"
 								className="nav_img"

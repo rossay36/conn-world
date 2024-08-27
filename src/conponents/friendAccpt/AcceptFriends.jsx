@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useGetUsersQuery } from "../../features/profile/usersApiSlice";
 import useAcceptRequest from "../../hooks/useAcceptRequest";
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const AcceptFriends = ({ friendId }) => {
 	// const { userId } = useAuth();
@@ -39,7 +39,7 @@ const AcceptFriends = ({ friendId }) => {
 						src={
 							friendUsers?.profilePicture
 								? friendUsers?.profilePicture
-								: IMG_URL + "/avatar2.png"
+								: "/images/avatar2.png"
 						}
 						alt=""
 					/>

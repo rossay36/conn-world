@@ -3,12 +3,12 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { setCredentials } from "./authSlice";
 import ClipLoader from "react-spinners/ClipLoader";
-import { useLoginMutation } from "./authApiSlice";
+import { useLoginMutation, useRefreshMutation } from "./authApiSlice";
 import usePersist from "../../hooks/usePersist";
 import "./Login.css";
 import { TbWorldHeart } from "react-icons/tb";
 
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const Login = () => {
 	const userRef = useRef();
@@ -21,6 +21,7 @@ const Login = () => {
 	const dispatch = useDispatch();
 
 	const [login, { isLoading }] = useLoginMutation();
+	const [refresh, { isLoading: loading }] = useRefreshMutation();
 
 	useEffect(() => {
 		userRef.current.focus();
@@ -119,7 +120,7 @@ const Login = () => {
 						</h3>
 					</article>
 					<img
-						src={IMG_URL + "world.png"}
+						src={"/images/world.png"}
 						alt="Login Image"
 						className="login_image"
 					/>

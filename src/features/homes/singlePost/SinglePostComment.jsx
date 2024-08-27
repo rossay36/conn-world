@@ -1,6 +1,6 @@
 import Comments from "../../../conponents/comment/Comments";
 import { format } from "timeago.js";
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 import { Link } from "react-router-dom";
 import { getStorage, ref, getMetadata } from "firebase/storage";
 import { useEffect, useState } from "react";

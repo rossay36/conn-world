@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetUsersQuery } from "./usersApiSlice";
 import { Link } from "react-router-dom";
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 import useAuth from "../../hooks/useAuth";
 import useFriendRequest from "../../hooks/useFriedRequest";
 
@@ -31,9 +31,7 @@ export const CurrentUserFriends = ({ fIds, scrollToPictures }) => {
 				<img
 					className="CurrentUserFriends_img"
 					src={
-						user?.profilePicture
-							? user?.profilePicture
-							: IMG_URL + "/avatar2.png"
+						user?.profilePicture ? user?.profilePicture : "/images/avatar2.png"
 					}
 					alt=""
 				/>

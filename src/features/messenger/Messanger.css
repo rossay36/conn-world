@@ -1,10 +1,13 @@
+.messenger_navigation {
+	width: max-content;
+}
 .messanger {
 	max-width: 100%;
-	min-height: 69vh;
+	min-height: 97vh;
 	padding: 0 0.3rem;
-	margin-top: -16px;
 	background-color: rgb(39, 38, 38);
 }
+
 .messanger_media_queries {
 	display: none;
 	max-width: 100%;
@@ -47,6 +50,17 @@
 	justify-content: space-between;
 }
 
+.messangerLeftbar_header_link {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+.messangerLeftbar_header_columns {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
 .messangerLeftbar_header_image {
 	display: flex;
 	align-items: center;
@@ -82,7 +96,7 @@
 
 .messangerLeftbar_lists_scroll {
 	overflow-y: scroll;
-	height: 69vh;
+	height: 70vh;
 }
 
 .messangerLeftbar_lists {
@@ -187,6 +201,20 @@
 	padding-left: 0.5rem;
 }
 
+.MessangerRightbar_header_btn {
+	max-width: max-content;
+	padding: 0.3rem;
+}
+
+.back_button,
+.messenger_navigate_link {
+	display: flex;
+	background: none;
+	height: 1.5rem;
+	width: 1.5rem;
+	color: #fff;
+}
+
 .MessangerRightbar_header_user_container {
 	display: flex;
 	align-items: center;
@@ -234,7 +262,7 @@
 	width: 100%;
 	overflow-y: scroll;
 	padding-bottom: 1rem;
-	height: 66.5vh;
+	height: 75.5vh;
 }
 
 .conversation {
@@ -490,14 +518,13 @@ textarea:focus {
 	.messanger_media_queries {
 		display: block;
 		max-width: 100%;
-		min-height: 70vh;
+		min-height: 88vh;
 		padding: 0 0.3rem;
-		margin-top: -55px;
 		background-color: rgb(39, 38, 38);
 	}
 
 	.messangerLeftbar_lists_scroll {
-		height: 90vh;
+		height: 87vh;
 	}
 
 	.messanger_wrapper {
@@ -508,7 +535,7 @@ textarea:focus {
 		width: 100%;
 		overflow-y: scroll;
 		padding-bottom: 1rem;
-		height: 84vh;
+		height: 88.4vh;
 	}
 
 	.messangerLeftbar_header_img {
@@ -527,19 +554,6 @@ textarea:focus {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-	}
-
-	.MessangerRightbar_header_btn {
-		max-width: max-content;
-		padding: 0.3rem;
-	}
-
-	.back_button {
-		display: flex;
-		background: none;
-		height: 1.5rem;
-		width: 1.5rem;
-		color: #fff;
 	}
 	.messanger_leftbar {
 		flex: 6;
@@ -565,9 +579,8 @@ textarea:focus {
 	.messanger_media_queries {
 		display: block;
 		max-width: 100%;
-		min-height: 83vh;
+		min-height: 88vh;
 		padding: 0 0.3rem;
-		margin-top: -55px;
 		background-color: rgb(39, 38, 38);
 	}
 
@@ -583,7 +596,7 @@ textarea:focus {
 		width: 100%;
 		overflow-y: scroll;
 		padding-bottom: 1rem;
-		height: 82vh;
+		height: 87vh;
 	}
 
 	.messangerLeftbar_header_img {
@@ -604,18 +617,6 @@ textarea:focus {
 		gap: 0.5rem;
 	}
 
-	.MessangerRightbar_header_btn {
-		max-width: max-content;
-		padding: 0.3rem;
-	}
-
-	.back_button {
-		display: flex;
-		background: none;
-		height: 1.5rem;
-		width: 1.5rem;
-		color: #fff;
-	}
 	.messanger_leftbar {
 		flex: 6;
 		min-height: 93vh;
@@ -660,14 +661,14 @@ textarea:focus {
 	.messanger_media_queries {
 		display: block;
 		max-width: 100%;
-		min-height: 70vh;
+		min-height: 85vh;
 		padding: 0 0.3rem;
-		margin-top: -50px;
 		background-color: rgb(39, 38, 38);
+		border: 1px solid green;
 	}
 
 	.messangerLeftbar_lists_scroll {
-		height: 70vh;
+		height: 85vh;
 	}
 
 	.messanger_wrapper {
@@ -678,7 +679,7 @@ textarea:focus {
 		width: 100%;
 		overflow-y: scroll;
 		padding-bottom: 1rem;
-		height: 76vh;
+		height: 83vh;
 	}
 
 	.messangerLeftbar_header_img {
@@ -699,18 +700,6 @@ textarea:focus {
 		gap: 0.5rem;
 	}
 
-	.MessangerRightbar_header_btn {
-		max-width: max-content;
-		padding: 0.3rem;
-	}
-
-	.back_button {
-		display: flex;
-		background: none;
-		height: 1.5rem;
-		width: 1.5rem;
-		color: #fff;
-	}
 	.messanger_leftbar {
 		flex: 6;
 		min-height: 90vh;
@@ -755,14 +744,14 @@ textarea:focus {
 	.messanger_media_queries {
 		display: block;
 		max-width: 100%;
-		min-height: 70vh;
+		min-height: 75vh;
 		padding: 0 0.3rem;
-		margin-top: -50px;
+
 		background-color: rgb(39, 38, 38);
 	}
 
 	.messangerLeftbar_lists_scroll {
-		height: 60vh;
+		height: 75vh;
 	}
 
 	.messanger_wrapper {
@@ -773,7 +762,7 @@ textarea:focus {
 		width: 100%;
 		overflow-y: scroll;
 		padding-bottom: 1rem;
-		height: 60vh;
+		height: 73vh;
 	}
 
 	.messangerLeftbar_header_img {
@@ -792,19 +781,6 @@ textarea:focus {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-	}
-
-	.MessangerRightbar_header_btn {
-		max-width: max-content;
-		padding: 0.3rem;
-	}
-
-	.back_button {
-		display: flex;
-		background: none;
-		height: 1.5rem;
-		width: 1.5rem;
-		color: #fff;
 	}
 	.messanger_leftbar {
 		flex: 6;

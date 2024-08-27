@@ -18,7 +18,7 @@ import { RingLoader } from "react-spinners";
 import EditProfilePicture from "./EditProfilePicture";
 import EditCoverPicture from "./EditCoverPicture";
 
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const ProfilePictures = ({ profileSectionRef, user, openPhotoViewer }) => {
 	const [updateActiveSlide, { isLoading: loading }] =
@@ -180,14 +180,14 @@ const ProfilePictures = ({ profileSectionRef, user, openPhotoViewer }) => {
 									src={
 										user?.coverPicture
 											? user?.coverPicture
-											: IMG_URL + "avatar3.png"
+											: "/images/avatar2.png"
 									}
 									alt=""
 									onClick={() =>
 										openPhotoViewer(
 											user?.coverPicture
 												? user?.coverPicture
-												: IMG_URL + "avatar3.png"
+												: "/images/avatar2.png"
 										)
 									}
 								/>
@@ -207,14 +207,14 @@ const ProfilePictures = ({ profileSectionRef, user, openPhotoViewer }) => {
 						src={
 							user?.profilePicture
 								? user?.profilePicture
-								: IMG_URL + "avatar2.png"
+								: "/images/avatar2.png"
 						}
 						alt=""
 						onClick={() =>
 							openPhotoViewer(
 								user?.profilePicture
 									? user?.profilePicture
-									: IMG_URL + "avatar2.png"
+									: "/images/avatar2.png"
 							)
 						}
 					/>

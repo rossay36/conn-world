@@ -1,7 +1,6 @@
 import "./footer.css";
-import { MdHome, MdOutlineEventRepeat } from "react-icons/md";
+import { MdHome, MdOutlineEventRepeat, MdLogout } from "react-icons/md";
 import { BsBlockquoteRight } from "react-icons/bs";
-import { MdLogout } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import {
 	useSendLogoutMutation,
@@ -11,20 +10,20 @@ import { useEffect } from "react";
 import { useGetUsersQuery } from "../../features/profile/usersApiSlice";
 import useAuth from "../../hooks/useAuth";
 import { FaUserFriends } from "react-icons/fa";
-import { toggleFrindAndFeedComponent } from "../../features/auth/authSlice";
+import {
+	logOut,
+	toggleFrindAndFeedComponent,
+} from "../../features/auth/authSlice";
 import { useDispatch } from "react-redux";
 
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 const Footer = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const [sendLogout, { isLoading, isSuccess, isError, error }] =
 		useSendLogoutMutation();
-
-	const [refetch] = useRefreshMutation();
+	const [refetch, { isLoading: isRefreshing }] = useRefreshMutation();
 
 	const { userId } = useAuth();
-
 	const { user } = useGetUsersQuery("usersList", {
 		selectFromResult: ({ data }) => ({
 			user: data?.entities[userId],
@@ -32,16 +31,36 @@ const Footer = () => {
 	});
 
 	useEffect(() => {
-		if (isSuccess) navigate("/");
+		if (isSuccess) {
+			navigate("/");
+		}
 	}, [isSuccess, navigate]);
 
+	useEffect(() => {
+		if (isError && error.status === 401) {
+			// Handle unauthorized errors, possibly redirect to login
+			console.error("Unauthorized error during logout:", error);
+			navigate("/login"); // Redirect to login page
+		}
+	}, [isError, error, navigate]);
+
 	const onNewNoteClicked = () => {
-		refetch();
+		refetch(); // Optionally, you can refetch or handle refresh here
 		navigate(".");
 	};
 
 	const handleToggleFrindAndFeedComponent = () => {
 		dispatch(toggleFrindAndFeedComponent());
+	};
+
+	const handleLogout = async () => {
+		try {
+			await sendLogout().unwrap();
+			navigate("/");
+		} catch (err) {
+			console.error("Logout failed:", err);
+			// Handle logout error
+		}
 	};
 
 	return (
@@ -55,7 +74,7 @@ const Footer = () => {
 						src={
 							user?.profilePicture
 								? user?.profilePicture
-								: IMG_URL + "avatar2.png"
+								: "/images/avatar2.png"
 						}
 						alt="profile"
 					/>
@@ -67,7 +86,6 @@ const Footer = () => {
 					className="footer_icon"
 					onClick={onNewNoteClicked}
 				/>
-
 				<BsBlockquoteRight className="footer_icon" />
 				<MdOutlineEventRepeat className="footer_icon" />
 				<Link to="/home/friend-request">
@@ -80,7 +98,7 @@ const Footer = () => {
 					className="footer_icon"
 					title="Logout"
 					type="button"
-					onClick={sendLogout}
+					onClick={handleLogout}
 				/>
 			</div>
 		</div>

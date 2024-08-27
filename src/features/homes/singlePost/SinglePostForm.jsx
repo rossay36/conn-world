@@ -8,7 +8,7 @@ import { FcCancel } from "react-icons/fc";
 import useAuth from "../../../hooks/useAuth";
 import { LiaPhotoVideoSolid } from "react-icons/lia";
 
-const SinglePostForm = ({ post, onCommentAdded }) => {
+const SinglePostForm = ({ post, handleCommentAdded }) => {
 	const [commentText, setCommentText] = useState("");
 	const [files, setFiles] = useState([]);
 	const [commentfilePreviews, setCommentFilePreviews] = useState([]);
@@ -58,8 +58,8 @@ const SinglePostForm = ({ post, onCommentAdded }) => {
 			setUploadings(false);
 
 			// Notify parent component to update comments
-			if (onCommentAdded) {
-				onCommentAdded();
+			if (handleCommentAdded) {
+				handleCommentAdded();
 			}
 
 			console.log("Comment successfully added");

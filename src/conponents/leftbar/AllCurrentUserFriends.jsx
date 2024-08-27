@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useFriendRequest from "../../hooks/useFriedRequest";
 import useAuth from "../../hooks/useAuth";
 
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const AllCurrentUserFriends = ({ friendId }) => {
 	const { userId } = useAuth();
@@ -25,7 +25,7 @@ const AllCurrentUserFriends = ({ friendId }) => {
 					src={
 						friends?.profilePicture
 							? friends?.profilePicture
-							: IMG_URL + "/avatar2.png"
+							: "/images/avatar2.png"
 					}
 					alt=""
 				/>

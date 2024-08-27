@@ -74,25 +74,13 @@ const HomeRightbar = () => {
 					onBeforeChange={handleBeforeChange}
 				>
 					<div className="carousel-slide">
-						<img
-							src="../../../src/assets/ad1.png"
-							className="carousel_img"
-							alt="Ad 1"
-						/>
+						<img src="/images/ad5.png" className="carousel_img" alt="Ad 1" />
 					</div>
 					<div className="carousel-slide">
-						<img
-							src="../../../src/assets/ad3.png"
-							className="carousel_img"
-							alt="Ad 3"
-						/>
+						<img src="/images/ad3.png" className="carousel_img" alt="Ad 3" />
 					</div>
 					<div className="carousel-slide">
-						<img
-							src="../../../src/assets/ad4.png"
-							className="carousel_img"
-							alt="Ad 4"
-						/>
+						<img src="/images/ad4.png" className="carousel_img" alt="Ad 4" />
 					</div>
 				</Carousel>
 			</div>

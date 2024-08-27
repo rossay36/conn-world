@@ -97,17 +97,10 @@ const CommentForm = ({ post }) => {
 		);
 	};
 
-	// useEffect(() => {
-	// 	console.log("Post prop changed:", post);
-
-	// 	setCommentFilePreviews([]);
-	// 	setFiles([]);
-	// }, [post]);
-
 	return (
 		<form className="comment_inputs" onSubmit={handleSubmit}>
 			<div className="comment_input_container">
-				<label htmlFor="fileInputs" className="comment_file_input">
+				<label htmlFor={post?._id} className="comment_file_input">
 					<MdOutlinePermMedia
 						style={{ color: "tomato" }}
 						className="shareIcon"
@@ -115,7 +108,7 @@ const CommentForm = ({ post }) => {
 					<input
 						style={{ display: "none" }}
 						type="file"
-						id="fileInputs"
+						id={post?._id}
 						accept="image/*, video/*"
 						multiple
 						onChange={handleCommentFileChange}

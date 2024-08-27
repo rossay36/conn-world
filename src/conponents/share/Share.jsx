@@ -16,7 +16,7 @@ import { RingLoader } from "react-spinners";
 import { GrTag } from "react-icons/gr";
 import { LiaPhotoVideoSolid } from "react-icons/lia";
 
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const Share = ({ isShareVisible, shareDrop }) => {
 	const errRef = useRef();
@@ -138,7 +138,7 @@ const Share = ({ isShareVisible, shareDrop }) => {
 							src={
 								user?.profilePicture
 									? user?.profilePicture
-									: IMG_URL + "avatar2.png"
+									: "/images/avatar2.png"
 							}
 							alt="img"
 						/>

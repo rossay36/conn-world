@@ -6,7 +6,7 @@ import { useAddNewUserMutation } from "./authApiSlice";
 import { ClipLoader } from "react-spinners";
 import "./Register.css";
 
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const Register = () => {
 	const [addNewUser, { isLoading }] = useAddNewUserMutation();
@@ -209,7 +209,7 @@ const Register = () => {
 						</h3>
 					</article>
 					<img
-						src={IMG_URL + "world.png"}
+						src={"/images/world.png"}
 						alt="Login Image"
 						className="register_image"
 					/>

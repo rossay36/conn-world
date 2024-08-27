@@ -5,7 +5,7 @@ import { RingLoader } from "react-spinners";
 import { useGetUsersQuery } from "../usersApiSlice";
 import useAuth from "../../../hooks/useAuth";
 import { Link } from "react-router-dom";
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const ProfileUserFriends = ({ scrollToPictures, friendIds }) => {
 	const { userId } = useAuth();
@@ -45,7 +45,7 @@ const ProfileUserFriends = ({ scrollToPictures, friendIds }) => {
 							src={
 								friendUsers?.profilePicture
 									? friendUsers?.profilePicture
-									: IMG_URL + "/avatar2.png"
+									: "/images/avatar2.png"
 							}
 							alt=""
 						/>

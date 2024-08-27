@@ -4,8 +4,9 @@ import { useGetUsersQuery } from "../profile/usersApiSlice";
 import "./Messanger.css";
 import MessangerLeftbar from "./MessangerLeftbar";
 import MessangerRightbar from "./MessangerRightbar";
-import { useNavigate, useParams } from "react-router-dom";
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io";
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const Messanger = () => {
 	const { userId } = useAuth();
@@ -33,7 +34,7 @@ const Messanger = () => {
 	const handleFriendClick = (friendId) => {
 		setSelectedFriendId(friendId);
 		setIsChatActive(true);
-		navigate(`/home/messanger/${friendId}`);
+		navigate(`/home/messenger/${friendId}`);
 		setIsSidebarVisible(false); // Hide left bar when a friend is selected
 	};
 
@@ -41,7 +42,7 @@ const Messanger = () => {
 		setSelectedFriendId(null);
 		setIsChatActive(false);
 		setIsSidebarVisible(true); // Show left bar again
-		navigate("/home/messanger");
+		navigate("/home/messenger");
 	};
 
 	return (
@@ -51,19 +52,27 @@ const Messanger = () => {
 					<div className="messanger_leftbar">
 						<article className="messangerLeftbar">
 							<header className="messangerLeftbar_header">
-								<div className="messangerLeftbar_header_image">
-									<img
-										className="messangerLeftbar_header_img"
-										src={
-											currentUser?.profilePicture
-												? currentUser?.profilePicture
-												: IMG_URL + "avatar2.png"
-										}
-										alt=""
-									/>
-									<p className="messangerLeftbar_username">
-										{currentUser?.username}
-									</p>
+								<div className="messangerLeftbar_header_columns">
+									<div className="messenger_navigation">
+										<Link className="messenger_navigate_link">back</Link>
+									</div>
+									<Link
+										to={`/home/${userId}`}
+										className="messangerLeftbar_header_image"
+									>
+										<img
+											className="messangerLeftbar_header_img"
+											src={
+												currentUser?.profilePicture
+													? currentUser?.profilePicture
+													: "/images/avatar2.png"
+											}
+											alt=""
+										/>
+										<p className="messangerLeftbar_username">
+											{currentUser?.username}
+										</p>
+									</Link>
 								</div>
 								<h1 className="messangerLeftbar_chat">Chats</h1>
 							</header>
@@ -99,18 +108,28 @@ const Messanger = () => {
 							<article className="messangerLeftbar">
 								<header className="messangerLeftbar_header">
 									<div className="messangerLeftbar_header_image">
-										<img
-											className="messangerLeftbar_header_img"
-											src={
-												currentUser?.profilePicture
-													? currentUser?.profilePicture
-													: IMG_URL + "avatar2.png"
-											}
-											alt=""
-										/>
-										<p className="messangerLeftbar_username">
-											{currentUser?.username}
-										</p>
+										<div className="messenger_navigation">
+											<Link className="messenger_navigate_link">
+												<IoIosArrowBack />
+											</Link>
+										</div>
+										<Link
+											to={`/home/${userId}`}
+											className="messangerLeftbar_header_link"
+										>
+											<img
+												className="messangerLeftbar_header_img"
+												src={
+													currentUser?.profilePicture
+														? currentUser?.profilePicture
+														: "/images/avatar2.png"
+												}
+												alt=""
+											/>
+											<p className="messangerLeftbar_username">
+												{currentUser?.username}
+											</p>
+										</Link>
 									</div>
 									<h1 className="messangerLeftbar_chat">Chats</h1>
 								</header>

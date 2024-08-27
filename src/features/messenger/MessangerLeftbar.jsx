@@ -2,7 +2,7 @@ import React from "react";
 import { useGetUsersQuery } from "../profile/usersApiSlice";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const MessangerLeftbar = ({ recipientId, onClick }) => {
 	const { userId } = useAuth();
@@ -28,7 +28,7 @@ const MessangerLeftbar = ({ recipientId, onClick }) => {
 					src={
 						friends?.profilePicture
 							? friends?.profilePicture
-							: IMG_URL + "avatar2.png"
+							: "/images/avatar2.png"
 					}
 					alt=""
 				/>

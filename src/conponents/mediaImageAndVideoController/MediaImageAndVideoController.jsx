@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { getStorage, ref, getMetadata } from "firebase/storage";
-// import "./MediaImageAndVideoController.css"; // Your styles for this component
-
+import "./MediaImageAndVideoController.css";
+import { useDispatch } from "react-redux";
+import { openMediaViewer } from "../../features/auth/mediaSlice";
 const MediaImageAndVideoController = ({
 	mediaUrls = [],
 	initialMuted = true,
@@ -10,6 +11,7 @@ const MediaImageAndVideoController = ({
 	const [mediaTypes, setMediaTypes] = useState({});
 	const [isMuted, setIsMuted] = useState(initialMuted);
 	const videoRefs = useRef({});
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const fetchMediaTypes = async () => {
@@ -42,61 +44,26 @@ const MediaImageAndVideoController = ({
 		fetchMediaTypes();
 	}, [mediaUrls]);
 
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					const video = videoRefs.current[entry.target.src];
-					if (video) {
-						if (entry.isIntersecting) {
-							video.play();
-							video.muted = isMuted;
-						} else {
-							video.pause();
-							video.currentTime = 0;
-						}
-					}
-				});
-			},
-			{ threshold: 0.5 }
-		);
-
-		Object.values(videoRefs.current).forEach((video) => {
-			if (video) observer.observe(video);
-		});
-
-		return () => {
-			Object.values(videoRefs.current).forEach((video) => {
-				if (video) observer.unobserve(video);
-			});
-		};
-	}, [isMuted, mediaUrls]);
-
-	const handleMuteToggle = () => {
-		setIsMuted((prevMuted) => {
-			const newMuted = !prevMuted;
-			Object.values(videoRefs.current).forEach((video) => {
-				if (video) video.muted = newMuted;
-			});
-			return newMuted;
-		});
+	const handleMediaClick = (mediaUrl) => {
+		const type = mediaTypes[mediaUrl]?.startsWith("video/") ? "video" : "image";
+		dispatch(openMediaViewer({ url: mediaUrl, type }));
 	};
 
 	const containerClass = () => {
 		const numMedia = mediaUrls.length;
 		return numMedia === 2
-			? "comment_img_container_double"
+			? "MediaImageAndVideoController_img_container_double"
 			: numMedia === 3
-			? "comment_img_container_triple"
+			? "MediaImageAndVideoController_img_container_triple"
 			: numMedia === 4
-			? "comment_img_container_four"
+			? "MediaImageAndVideoController_img_container_four"
 			: numMedia > 4
-			? "comment_img_container_multiple"
-			: "comment_img_container_single";
+			? "MediaImageAndVideoController_img_container_multiple"
+			: "MediaImageAndVideoController_img_container_single";
 	};
 
 	return (
-		<>
+		<div className="MediaImageAndVideoController">
 			{mediaUrls.length > 0 && (
 				<div className={containerClass()}>
 					{mediaUrls.map((mediaUrl) => (
@@ -104,44 +71,43 @@ const MediaImageAndVideoController = ({
 							key={mediaUrl}
 							className={
 								mediaUrls.length === 2
-									? "comment_item_double"
+									? "MediaImageAndVideoController_item_double"
 									: mediaUrls.length === 3
-									? "comment_item_triple"
+									? "MediaImageAndVideoController_item_triple"
 									: mediaUrls.length === 4
-									? "comment_item_four"
+									? "MediaImageAndVideoController_item_four"
 									: mediaUrls.length === 5
-									? "comment_item_five"
+									? "MediaImageAndVideoController_item_five"
 									: mediaUrls.length === 6
-									? "comment_item_six"
-									: "comment_item"
+									? "MediaImageAndVideoController_item_six"
+									: "MediaImageAndVideoController_item"
 							}
 						>
 							{mediaTypes[mediaUrl]?.startsWith("video/") ? (
 								<video
 									ref={(el) => (videoRefs.current[mediaUrl] = el)}
 									controls
-									autoPlay
+									autoPlay={false}
 									muted={isMuted}
-									loop
-									onClick={handleMuteToggle}
-									className={`postVideos ${mediaUrls.length}`}
+									onClick={() => handleMediaClick(mediaUrl)}
+									className="postVideos"
 								>
 									<source src={mediaUrl} type={mediaTypes[mediaUrl]} />
 									Your browser does not support the video tag.
 								</video>
 							) : (
 								<img
-									className={`comment_imgs ${mediaUrls.length}`}
+									className="comment_imgs"
 									src={mediaUrl}
 									alt="media"
-									onClick={() => onClick && onClick(mediaUrl)}
+									onClick={() => handleMediaClick(mediaUrl)}
 								/>
 							)}
 						</div>
 					))}
 				</div>
 			)}
-		</>
+		</div>
 	);
 };
 

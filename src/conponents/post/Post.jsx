@@ -9,8 +9,8 @@ import PostComment from "./PostComment";
 import PostDetails from "../PostDetails";
 import PostLikes from "../comment/PostLikes";
 
-import CommentForm from "../commentForm/CommentForm";
 import { MdOutlineComment } from "react-icons/md";
+import CommentForm from "../commentForm/CommentForm";
 
 const Post = ({ postId, scrollToPictures }) => {
 	const [comments, setComments] = useState([]);
@@ -24,9 +24,6 @@ const Post = ({ postId, scrollToPictures }) => {
 			post: data?.entities[postId],
 		}),
 	});
-
-	const [photoViewerOpen, setPhotoViewerOpen] = useState(false);
-	const [selectedPhoto, setSelectedPhoto] = useState(null);
 
 	useEffect(() => {
 		if (post) {
@@ -63,16 +60,6 @@ const Post = ({ postId, scrollToPictures }) => {
 		setIsOpen((prevIsOpen) => !prevIsOpen);
 	};
 
-	const openPhotoViewer = (imageUrl) => {
-		setSelectedPhoto(imageUrl);
-		setPhotoViewerOpen(true);
-	};
-
-	const closePhotoViewer = () => {
-		setSelectedPhoto(null);
-		setPhotoViewerOpen(false);
-	};
-
 	if (isLoading) {
 		return (
 			<div
@@ -94,11 +81,7 @@ const Post = ({ postId, scrollToPictures }) => {
 	return (
 		<div className="post">
 			<div className="postWrapper">
-				<PostDetails
-					post={post}
-					scrollToPictures={scrollToPictures}
-					openPhotoViewer={openPhotoViewer}
-				/>
+				<PostDetails post={post} scrollToPictures={scrollToPictures} />
 				<div className="postBottom">
 					<PostLikes
 						post={post}
@@ -106,22 +89,20 @@ const Post = ({ postId, scrollToPictures }) => {
 						scrollToPictures={scrollToPictures}
 					/>
 					<>
-						<div className="PostComment_container" ref={commentContainerRef}>
-							{isOpen && (
-								<>
-									<div className="post_comment_wrapper">
-										<PostComment
-											post={post}
-											openPhotoViewer={openPhotoViewer}
-											scrollToPictures={scrollToPictures}
-											isOpen={isOpen}
-											comments={comments}
-										/>
-									</div>
-									<CommentForm post={post} />
-								</>
-							)}
-						</div>
+						{isOpen && (
+							<div className="PostComment_container" ref={commentContainerRef}>
+								<p className="postComment_topbar">{`${post?.username} Post And Comments`}</p>
+								<div className="postComment_container_top">
+									<PostComment
+										post={post}
+										scrollToPictures={scrollToPictures}
+										isOpen={isOpen}
+										comments={comments}
+									/>
+								</div>
+								<CommentForm post={post} />
+							</div>
+						)}
 						<div className="commment__toggle" onClick={toggleDropdown}>
 							<span className="commment_text_comment">
 								<p>{post?.comments?.length}</p>
@@ -136,18 +117,6 @@ const Post = ({ postId, scrollToPictures }) => {
 					</>
 				</div>
 			</div>
-			{photoViewerOpen && (
-				<div className={"photoViewerModal"}>
-					<img
-						src={selectedPhoto}
-						alt="Expanded Photo"
-						className="expandedPhoto"
-					/>
-					<button onClick={closePhotoViewer} className="closeButton">
-						Close
-					</button>
-				</div>
-			)}
 		</div>
 	);
 };

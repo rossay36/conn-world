@@ -1,17 +1,16 @@
 .post {
-	max-width: 100%;
-	min-height: 50%;
+	width: 100%;
+	min-height: 20%;
 	border-radius: 10px;
 	background-color: var(--BGCOLORS);
 	box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.829);
 	margin: 0.5rem 0;
-	padding: 1rem 1rem 1rem 1rem;
 	z-index: 0;
 }
 
 .postWrapper {
 	position: relative;
-	padding: 5px;
+	padding: 0.2rem;
 }
 
 .postTop {
@@ -64,32 +63,6 @@
 	color: rgb(170, 168, 168);
 }
 
-.postMediaContainer {
-	display: flex;
-	justify-content: center;
-	gap: 0.5rem;
-	padding: 0.5rem 0 0.5rem 0.5rem;
-}
-
-.post_img_single {
-	width: 100%;
-	height: 100%;
-	display: block;
-	border-radius: 0.3rem;
-}
-
-.post_img_multiple {
-	width: 200px;
-	height: 200px;
-	border-radius: 0.3rem;
-}
-
-.post_img_double {
-	width: 200px;
-	height: 250px;
-	border-radius: 0.3rem;
-}
-
 .postBottom {
 	position: relative;
 	display: flex;
@@ -99,11 +72,15 @@
 
 .PostComment_container {
 	position: absolute;
-	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: rgb(15, 15, 15);
+	height: 65vh;
 	z-index: 1;
-	max-height: 300px;
 	bottom: -280px;
 	right: 5px;
+	top: 2rem;
 }
 
 .commment__toggle {
@@ -253,12 +230,11 @@
 @media screen and (max-width: 768px) {
 	.post {
 		max-width: 100%;
-		min-height: 50%;
+		min-height: 20%;
 		border-radius: 10px;
 		background-color: var(--BGCOLORS);
 		box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.829);
 		margin: 0.5rem 0;
-		padding: 1rem 1rem 1rem 1rem;
 		z-index: 0;
 	}
 }
@@ -266,7 +242,7 @@
 @media screen and (max-width: 480px) {
 	.post {
 		max-width: 100%;
-		min-height: 60%;
+		min-height: 20%;
 		margin: 1.5rem 0 0.5rem 0;
 		padding: 0;
 		z-index: 0;
@@ -304,8 +280,8 @@
 
 @media screen and (max-width: 320px) {
 	.post {
-		max-width: 100%;
-		min-height: 60%;
+		max-width: 95%;
+		min-height: 20%;
 		margin: 1.5rem 0 0.5rem 0;
 		padding: 0;
 		z-index: 0;

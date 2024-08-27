@@ -3,25 +3,18 @@ import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 import { useGetCommentsQuery } from "../../features/homes/commentApiSlice";
 import { useGetUsersQuery } from "../../features/profile/usersApiSlice";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { GiSelfLove } from "react-icons/gi";
 import { MdOutlineComment } from "react-icons/md";
 import { BiRepost } from "react-icons/bi";
 import { CiViewBoard } from "react-icons/ci";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import { GrTag } from "react-icons/gr";
-import { getStorage, ref, getMetadata } from "firebase/storage";
 import MediaImageAndVideoController from "../mediaImageAndVideoController/MediaImageAndVideoController";
 
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const Comments = ({ commentId, scrollToPictures, openPhotoViewer }) => {
-	// const { comment, isLoading, error } = useGetCommentsQuery("commentsList", {
-	// 	selectFromResult: ({ data }) => ({
-	// 		comment: data?.entities[commentId],
-	// 	}),
-	// });
-
 	const {
 		comment = {},
 		isLoading,
@@ -46,88 +39,6 @@ const Comments = ({ commentId, scrollToPictures, openPhotoViewer }) => {
 		}),
 	});
 
-	const [mediaTypes, setMediaTypes] = useState({});
-	const [isMuted, setIsMuted] = useState(true); // Default to muted
-	const videoRefs = useRef({}); // To keep track of video elements
-
-	useEffect(() => {
-		// Fetch media types from Firebase Storage
-		const fetchMediaTypes = async () => {
-			if (!Array.isArray(comment?.commentImage)) {
-				console.error("comment.commentImage is not an array or is undefined");
-				return;
-			}
-
-			const mediaTypePromises = comment.commentImage.map(async (mediaUrl) => {
-				const storage = getStorage();
-				const storageRef = ref(storage, mediaUrl);
-				try {
-					const metadata = await getMetadata(storageRef);
-					return { url: mediaUrl, type: metadata.contentType };
-				} catch (error) {
-					console.error("Error fetching metadata:", error);
-					return { url: mediaUrl, type: null };
-				}
-			});
-
-			try {
-				const mediaTypeResults = await Promise.all(mediaTypePromises);
-				const mediaTypesMap = mediaTypeResults.reduce((acc, { url, type }) => {
-					acc[url] = type;
-					return acc;
-				}, {});
-				setMediaTypes(mediaTypesMap);
-			} catch (error) {
-				console.error("Error processing media types:", error);
-			}
-		};
-
-		fetchMediaTypes();
-	}, [comment?.commentImage, user?.image]); // Add `comment?.commentImage` as a dependency
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					const video = videoRefs.current[entry.target.src];
-					if (video) {
-						if (entry.isIntersecting) {
-							video.play();
-							video.muted = isMuted;
-						} else {
-							video.pause();
-							video.currentTime = 0; // Optional: reset the video to the beginning
-						}
-					}
-				});
-			},
-			{ threshold: 0.5 } // Play video if at least 50% of it is visible
-		);
-
-		Object.values(videoRefs.current).forEach((video) => {
-			if (video) observer.observe(video);
-		});
-
-		return () => {
-			Object.values(videoRefs.current).forEach((video) => {
-				if (video) observer.unobserve(video);
-			});
-		};
-	}, [user?.image, isMuted]); // Re-run when `isMuted` changes
-
-	const handleMuteToggle = () => {
-		setIsMuted((prevMuted) => {
-			const newMuted = !prevMuted;
-			// Update all videos to the new mute state
-			Object.values(videoRefs.current).forEach((video) => {
-				if (video) {
-					video.muted = newMuted;
-				}
-			});
-			return newMuted;
-		});
-	};
-
 	if (isLoading) {
 		return <div>Loading comment...</div>;
 	}
@@ -148,7 +59,7 @@ const Comments = ({ commentId, scrollToPictures, openPhotoViewer }) => {
 							src={
 								user?.profilePicture
 									? user?.profilePicture
-									: IMG_URL + "avatar2.png"
+									: "/images/avatar2.png"
 							}
 							alt="Profile"
 							className="comment_img"

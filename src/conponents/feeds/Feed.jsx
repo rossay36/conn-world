@@ -102,9 +102,6 @@ const Feed = ({ scrollToPictures, profilePostId }) => {
 
 		content = (
 			<div className="feed" ref={feedRef}>
-				{/* {!profilePostId || profilePostId === userId ? (
-					<Share isShareVisible={isShareVisible} />
-				) : null} */}
 				{postContent}
 			</div>
 		);

@@ -14,8 +14,6 @@ import { GrClose } from "react-icons/gr";
 const Profile = () => {
 	const { userId } = useAuth();
 	const { userId: friendId } = useParams();
-	const [photoViewerOpen, setPhotoViewerOpen] = useState(false);
-	const [selectedPhoto, setSelectedPhoto] = useState(null);
 	const [showAllFriends, setShowAllFriends] = useState(false); // State for showing all friends
 	const profileSectionRef = useRef(null);
 
@@ -30,16 +28,6 @@ const Profile = () => {
 			behavior: "smooth",
 			block: "start",
 		});
-	};
-
-	const openPhotoViewer = (imageUrl) => {
-		setSelectedPhoto(imageUrl);
-		setPhotoViewerOpen(true);
-	};
-
-	const closePhotoViewer = () => {
-		setSelectedPhoto(null);
-		setPhotoViewerOpen(false);
 	};
 
 	const handleShowMoreFriends = () => {
@@ -67,11 +55,7 @@ const Profile = () => {
 				<Leftbar />
 			</div>
 			<div className="profileRight">
-				<ProfilePictures
-					openPhotoViewer={openPhotoViewer}
-					user={user}
-					profileSectionRef={profileSectionRef}
-				/>
+				<ProfilePictures user={user} profileSectionRef={profileSectionRef} />
 				<div className="profileRightBottom">
 					<div
 						className="friends_feed_grid"
@@ -134,24 +118,10 @@ const Profile = () => {
 							friendId={friendId}
 							userId={userId}
 							scrollToPictures={scrollToPictures}
-							openPhotoViewer={openPhotoViewer}
 						/>
 					</div>
 				</div>
 			</div>
-
-			{photoViewerOpen && (
-				<div className="photoViewerModal">
-					<img
-						src={selectedPhoto}
-						alt="Expanded Photo"
-						className="expandedPhoto"
-					/>
-					<button onClick={closePhotoViewer} className="closeButton">
-						Close
-					</button>
-				</div>
-			)}
 		</div>
 	);
 };

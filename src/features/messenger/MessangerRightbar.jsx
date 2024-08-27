@@ -15,8 +15,9 @@ import io from "socket.io-client"; // Import socket.io-client
 import { useSelector } from "react-redux";
 import { selectCurrentToken } from "../auth/authSlice";
 import { IoIosArrowBack } from "react-icons/io";
+import { Link } from "react-router-dom";
 
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const SOCKET_SERVER_URL = "http://localhost:3500";
 
@@ -125,43 +126,46 @@ const MessangerRightbar = ({ onClick, recipientId, isChatActive }) => {
 
 	return (
 		<div className="MessangerRightbar">
-			<div className="MessangerRightbar_header_top">
-				<div className="MessangerRightbar_header_btn">
-					<button className="back_button" onClick={onClick}>
-						<IoIosArrowBack />
-					</button>
-				</div>
-				<header className="MessangerRightbar_header">
-					<div className="MessangerRightbar_header_user_container">
-						<img
-							className="MessangerRightbar_header_user_img"
-							src={
-								currentFriend?.profilePicture
-									? currentFriend?.profilePicture
-									: IMG_URL + "avatar2.png"
-							}
-							alt=""
-						/>
-						<p className="MessangerRightbar_header_user_name">
-							{currentFriend?.lastname} {currentFriend?.firstname}
-						</p>
-					</div>
-					<div className="MessangerRightbar_header_icon_container">
-						<div className="MessangerRightbar_header_icon">
-							<IoCallOutline className="MessangerRightbar_header_icons" />
-						</div>
-						<div className="MessangerRightbar_header_icon">
-							<MdOutlineVideocam className="MessangerRightbar_header_iconV" />
-						</div>
-						<div className="MessangerRightbar_header_icon">
-							<FaSearch className="MessangerRightbar_header_icons" />
-						</div>
-					</div>
-				</header>
-			</div>
-
 			{recipientId && (
 				<>
+					<div className="MessangerRightbar_header_top">
+						<div className="MessangerRightbar_header_btn">
+							<button className="back_button" onClick={onClick}>
+								<IoIosArrowBack />
+							</button>
+						</div>
+						<header className="MessangerRightbar_header">
+							<Link
+								to={`/home/${currentFriend?._id}`}
+								className="MessangerRightbar_header_user_container"
+							>
+								<img
+									className="MessangerRightbar_header_user_img"
+									src={
+										currentFriend?.profilePicture
+											? currentFriend?.profilePicture
+											: "/images/avatar2.png"
+									}
+									alt=""
+								/>
+								<p className="MessangerRightbar_header_user_name">
+									{currentFriend?.lastname} {currentFriend?.firstname}
+								</p>
+							</Link>
+							<div className="MessangerRightbar_header_icon_container">
+								<div className="MessangerRightbar_header_icon">
+									<IoCallOutline className="MessangerRightbar_header_icons" />
+								</div>
+								<div className="MessangerRightbar_header_icon">
+									<MdOutlineVideocam className="MessangerRightbar_header_iconV" />
+								</div>
+								<div className="MessangerRightbar_header_icon">
+									<FaSearch className="MessangerRightbar_header_icons" />
+								</div>
+							</div>
+						</header>
+					</div>
+
 					<div className="conversation_wrapper">
 						<div className="conversation_wrapper_encrpt">
 							<span className="conversation_wrapper_text">

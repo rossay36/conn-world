@@ -1,4 +1,5 @@
 .singlePost {
+	width: 100%;
 	height: 78vh;
 	margin-top: -20px;
 	display: flex;
@@ -19,6 +20,7 @@
 }
 
 .singlePost_wrapp {
+	height: 80vh;
 	padding: 0.5rem;
 }
 
@@ -86,6 +88,7 @@
 }
 
 .SinglePostForm_inputs {
+	width: 95%;
 	max-height: 55px;
 	background-color: #141414;
 	display: flex;
@@ -156,6 +159,7 @@
 	.singlePost {
 		display: flex;
 		align-items: start;
+		margin-top: 0;
 	}
 	.singlePost_leftbar {
 		flex: 3.5;
@@ -163,6 +167,15 @@
 	}
 	.singlePost_container {
 		flex: 5.5;
+		min-height: 81vh;
+	}
+
+	.singlePost_wrapp {
+		height: 81vh;
+	}
+
+	.SingPost_scroll {
+		height: 81vh;
 	}
 	.singlePost_rightbar {
 		flex: 3.2;
@@ -173,6 +186,8 @@
 	.singlePost {
 		display: flex;
 		align-items: start;
+		margin-top: 0;
+		height: 75vh;
 	}
 	.singlePost_leftbar {
 		flex: 3.5;
@@ -180,6 +195,15 @@
 	}
 	.singlePost_container {
 		flex: 5.5;
+		min-height: 80vh;
+	}
+
+	.singlePost_wrapp {
+		height: 75vh;
+	}
+
+	.SingPost_scroll {
+		height: 75vh;
 	}
 	.singlePost_rightbar {
 		flex: 3.2;
@@ -188,15 +212,27 @@
 }
 @media screen and (max-width: 480px) {
 	.singlePost {
+		width: 100%;
 		display: flex;
 		align-items: start;
+		margin-top: 0;
 	}
 	.singlePost_leftbar {
 		flex: 3.5;
 		display: none;
 	}
 	.singlePost_container {
+		max-width: 100%;
 		flex: 5.5;
+		min-height: 70vh;
+	}
+
+	.singlePost_wrapp {
+		height: 70vh;
+	}
+
+	.SingPost_scroll {
+		height: 68.5vh;
 	}
 	.singlePost_rightbar {
 		flex: 3.2;
@@ -205,8 +241,11 @@
 }
 @media screen and (max-width: 320px) {
 	.singlePost {
+		width: 100%;
 		display: flex;
 		align-items: start;
+		margin-top: 0;
+		height: 61vh;
 	}
 	.singlePost_leftbar {
 		flex: 3.5;
@@ -214,6 +253,15 @@
 	}
 	.singlePost_container {
 		flex: 5.5;
+		min-height: 51vh;
+	}
+
+	.singlePost_wrapp {
+		height: 51vh;
+	}
+
+	.SingPost_scroll {
+		height: 51vh;
 	}
 	.singlePost_rightbar {
 		flex: 3.2;

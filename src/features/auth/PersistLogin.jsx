@@ -34,6 +34,7 @@ const PersistLogin = () => {
 	};
 
 	useEffect(() => {
+		console.log("PersistLogin Effect Ran");
 		if (
 			effectRan.current === true ||
 			import.meta.env.NODE_ENV !== "development"
@@ -45,7 +46,7 @@ const PersistLogin = () => {
 		return () => (effectRan.current = true);
 
 		// eslint-disable-next-line
-	}, []);
+	}, [token, persist, verifyFunction]);
 
 	let content;
 	if (!persist) {

@@ -29,7 +29,7 @@ const LikeDropdown = ({ likerId, scrollToPictures }) => {
 						src={
 							user?.profilePicture
 								? user?.profilePicture
-								: IMG_URL + "avatar2.png"
+								: "/images/avatar2.png"
 						} // Replace with actual avatar URL
 						alt=""
 					/>

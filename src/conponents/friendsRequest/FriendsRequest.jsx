@@ -6,7 +6,7 @@ import { useGetUsersQuery } from "../../features/profile/usersApiSlice";
 import useFriendRequest from "../../hooks/useFriedRequest";
 import { useSelector } from "react-redux";
 import { selectShowfriendsOrFeedComponent } from "../../features/auth/authSlice";
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const FriendsRequest = ({ friendId }) => {
 	const { userId: paramsId } = useParams();
@@ -64,7 +64,7 @@ const FriendsRequest = ({ friendId }) => {
 								src={
 									friendUsers?.profilePicture
 										? friendUsers?.profilePicture
-										: IMG_URL + "/avatar2.png"
+										: "/images/avatar2.png"
 								}
 								alt=""
 							/>

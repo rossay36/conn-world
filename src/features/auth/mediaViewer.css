@@ -1,0 +1,39 @@
+.mediaViewerModal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+}
+
+.expandedMedia {
+	max-width: 100%;
+	max-height: 90%;
+}
+
+.videoContainer {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.videoContainer > * {
+	max-width: 100%;
+	max-height: 90%;
+}
+
+.closeButton {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: #fff;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+}

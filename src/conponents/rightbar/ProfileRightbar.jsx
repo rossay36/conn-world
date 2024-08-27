@@ -2,8 +2,6 @@ import "./rightbar.css";
 import useFriendRequest from "../../hooks/useFriedRequest";
 import { useGetUsersQuery } from "../../features/profile/usersApiSlice";
 import ProfileUsersFriends from "./ProfileUsersFriends";
-import useAuth from "../../hooks/useAuth";
-import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import useAcceptRequest from "../../hooks/useAcceptRequest";
 
@@ -56,15 +54,11 @@ const ProfileRightbar = ({
 			</div>
 			<h4 className="rightbarTitle">{currentUser?.username} albium</h4>
 			<div className="rightbarFollowings">
-				{currentUser?.posts?.length ? (
-					userFriend?.posts?.map((postIds) => (
-						<ProfileUsersFriends
-							key={postIds}
-							postIds={postIds}
-							scrollToPictures={scrollToPictures}
-							openPhotoViewer={openPhotoViewer}
-						/>
-					))
+				{currentUser?.media?.length ? (
+					<ProfileUsersFriends
+						currentUser={currentUser}
+						scrollToPictures={scrollToPictures}
+					/>
 				) : (
 					<p>you don't have current Users add friends</p>
 				)}

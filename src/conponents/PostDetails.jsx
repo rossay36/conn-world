@@ -4,7 +4,7 @@ import { MdMoreVert } from "react-icons/md";
 import { format } from "timeago.js";
 import MediaImageAndVideoController from "./mediaImageAndVideoController/MediaImageAndVideoController";
 
-const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
+// const IMG_URL = import.meta.env.VITE_PUBLIC_FOLDER;
 
 const PostDetails = ({ scrollToPictures, post, openPhotoViewer }) => {
 	return (
@@ -17,7 +17,7 @@ const PostDetails = ({ scrollToPictures, post, openPhotoViewer }) => {
 							src={
 								post?.profilePicture
 									? post?.profilePicture
-									: IMG_URL + "/avatar2.png"
+									: "/images/avatar2.png"
 							}
 							alt=""
 						/>
@@ -36,10 +36,7 @@ const PostDetails = ({ scrollToPictures, post, openPhotoViewer }) => {
 					</Link>
 				</header>
 				<div className="postMediaContainer">
-					<MediaImageAndVideoController
-						mediaUrls={post?.image}
-						onClick={openPhotoViewer}
-					/>
+					<MediaImageAndVideoController mediaUrls={post?.image} />
 				</div>
 			</div>
 		</>
