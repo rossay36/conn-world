@@ -64,8 +64,7 @@ const Login = () => {
 		return (
 			<div>
 				<EmptyOrErroCOmponent
-					title={"Login..."}
-					desc={"Please Await"}
+					desc={"Please wait"}
 					icons={<ClipLoader color="#fff" />}
 				/>
 			</div>

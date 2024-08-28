@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./Public.css";
 
 const Public = () => {
-	const content = (
+	return (
 		<section className="public">
 			<header className="public_header">
 				<h1 className="public_title">
@@ -32,6 +32,5 @@ const Public = () => {
 			</footer>
 		</section>
 	);
-	return content;
 };
 export default Public;

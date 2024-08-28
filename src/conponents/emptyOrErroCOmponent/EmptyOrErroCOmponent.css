@@ -10,7 +10,7 @@
 
 .emptyOrErroCOmponent_container {
 	width: 100%;
-	min-height: 100vh;
+	min-height: 90vh;
 	display: flex;
 	align-items: start;
 	justify-content: center;
@@ -24,7 +24,7 @@
 	color: yellow;
 }
 .emptyOrErroCOmponent_desc {
-	font-size: 15px;
+	font-size: 20px;
 	margin-left: 10px;
 	color: yellow;
 }

@@ -1,18 +1,23 @@
 .public {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	gap: 1rem;
 	padding: 1em;
 	max-width: 100%;
-	min-height: 70vh;
-	flex-grow: 1;
+	height: 100vh;
+}
+
+.public_header {
+	border-bottom: 2px solid var(--BORDER-COLOR);
 }
 
 .public__main {
-	border-top: 2px solid var(--BORDER-COLOR);
-	border-bottom: 2px solid var(--BORDER-COLOR);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-self: start;
 	padding: 1em 0;
-	flex-grow: 1;
 }
 
 .public__addr {
@@ -25,6 +30,7 @@
 }
 
 .public_footer {
+	border-top: 2px solid var(--BORDER-COLOR);
 	display: flex;
 	align-items: center;
 	justify-content: center;

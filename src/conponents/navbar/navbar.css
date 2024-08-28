@@ -80,7 +80,7 @@
 
 .nav_share_button {
 	width: 230px;
-	font-size: 13px;
+	font-size: 17px;
 	padding: 0.2rem 0.5rem;
 	background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
 	color: #fff;
@@ -109,7 +109,7 @@
 
 .feed_share_button {
 	width: 100%;
-	font-size: 13px;
+	font-size: 17px;
 	padding: 0.2rem 0.5rem;
 	background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
 	color: #fff;
@@ -152,7 +152,7 @@
 .nav_span {
 	width: 17px;
 	height: 17px;
-	font-size: 10px;
+	font-size: 15px;
 	padding: 5px;
 	position: absolute;
 	display: flex;
@@ -273,7 +273,7 @@
 
 	.feed_share_button {
 		width: 100%;
-		font-size: 13px;
+		font-size: 15px;
 		padding: 0.5rem 0.5rem;
 		background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
 		color: #fff;
@@ -381,7 +381,7 @@
 
 	.feed_share_button {
 		width: 100%;
-		font-size: 13px;
+		font-size: 15px;
 		padding: 0.5rem 0.5rem;
 		background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
 		color: #fff;
@@ -479,7 +479,7 @@
 
 	.feed_share_button {
 		width: 100%;
-		font-size: 13px;
+		font-size: 15px;
 		padding: 0.4rem 0.5rem;
 		background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
 		color: #fff;
@@ -573,7 +573,7 @@
 
 	.feed_share_button {
 		width: 100%;
-		font-size: 13px;
+		font-size: 15px;
 		padding: 0.4rem 0.5rem;
 		background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
 		color: #fff;
@@ -667,7 +667,7 @@
 
 	.feed_share_button {
 		width: 100%;
-		font-size: 13px;
+		font-size: 15px;
 		padding: 0.3rem 0.5rem;
 		background: linear-gradient(135deg, rgb(78, 77, 77), #121212);
 		color: #fff;

@@ -52,7 +52,7 @@
 .nav_addFriend {
 	border: none;
 	color: #bab6b6;
-	font-size: 15px;
+	font-size: 20px;
 	background: none;
 	cursor: pointer;
 }
@@ -65,7 +65,7 @@
 	padding: 0.1rem 0.5rem;
 }
 .friend_request_username_name {
-	font-size: 15px;
+	font-size: 20px;
 	color: #5e5c5c;
 }
 
@@ -101,7 +101,7 @@
 }
 
 .friend_request_name {
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: 900;
 	color: #000;
 }
@@ -160,7 +160,7 @@
 }
 .friend_request_bottom_value {
 	color: #000;
-	font-size: 11px;
+	font-size: 20px;
 }
 
 @media screen and (max-width: 900px) {

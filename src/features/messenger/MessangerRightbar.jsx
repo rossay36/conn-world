@@ -127,7 +127,7 @@ const MessangerRightbar = ({ onClick, recipientId, isChatActive }) => {
 	return (
 		<div className="MessangerRightbar">
 			{recipientId && (
-				<>
+				<main className="messenger_right_wrapper">
 					<div className="MessangerRightbar_header_top">
 						<div className="MessangerRightbar_header_btn">
 							<button className="back_button" onClick={onClick}>
@@ -231,7 +231,7 @@ const MessangerRightbar = ({ onClick, recipientId, isChatActive }) => {
 							</button>
 						)}
 					</form>
-				</>
+				</main>
 			)}
 		</div>
 	);

@@ -173,13 +173,13 @@
 }
 
 .comment_date {
-	font-size: 10px;
+	font-size: 15px;
 	font-weight: 300;
 	color: rgb(170, 168, 168);
 }
 
 .comment_time_date {
-	font-size: 13px;
+	font-size: 15px;
 	font-weight: 200;
 	color: rgb(170, 168, 168);
 }
@@ -187,21 +187,21 @@
 .comment_name {
 	letter-spacing: 1.5px;
 	font-weight: 700;
-	font-size: 14px;
+	font-size: 20px;
 	font-weight: 300;
 	color: rgb(202, 198, 198);
 }
 
 .comment_text {
 	/* margin-left: 2.5rem; */
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: 900;
 	color: #fff;
 	margin-bottom: 1rem;
 }
 
 .comment_title {
-	font-size: 13px;
+	font-size: 20px;
 	font-weight: 300;
 	color: rgb(170, 168, 168);
 	margin-bottom: 0.3rem;
@@ -236,7 +236,7 @@
 
 .comment_icons {
 	color: #fff;
-	font-size: 20px;
+	font-size: 25px;
 }
 
 .comment_filePreview {
@@ -299,6 +299,6 @@
 }
 .comment_child_text {
 	cursor: pointer;
-	font-size: 10px;
+	font-size: 20px;
 	color: #6c6b6b;
 }
